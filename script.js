@@ -10,7 +10,11 @@ const state = {
   lastFrame: 0,
   rafId: null,
   running: true,
+  disabled: false,
 };
+
+const perfSamples = [];
+let perfCheckDone = false;
 
 const config = {
   minParticles: 420,
@@ -111,8 +115,38 @@ function step() {
   ctx.restore();
 }
 
+function disableAnimation(hideCanvas = true) {
+  state.running = false;
+  state.disabled = true;
+  if (state.rafId !== null) {
+    cancelAnimationFrame(state.rafId);
+    state.rafId = null;
+  }
+  if (hideCanvas) {
+    canvas.style.display = "none";
+  }
+}
+
 function animate(timestamp) {
-  if (!state.running) return;
+  if (!state.running || state.disabled) return;
+
+  // Collect a small sample of frame intervals to detect slow devices
+  if (!perfCheckDone) {
+    if (state.lastFrame) {
+      perfSamples.push(timestamp - state.lastFrame);
+    }
+    if (perfSamples.length >= 60) {
+      const avg = perfSamples.reduce((a, b) => a + b, 0) / perfSamples.length;
+      const fps = 1000 / avg;
+      if (fps < 20) {
+        // 裝置效能太弱：停用動畫，但保留 canvas 作為靜態背景
+        disableAnimation(false);
+        return;
+      }
+      perfCheckDone = true;
+    }
+  }
+
   const interval = 1000 / config.targetFps;
   if (timestamp - state.lastFrame >= interval) {
     state.lastFrame = timestamp;
@@ -131,6 +165,7 @@ function init() {
 }
 
 window.addEventListener("resize", () => {
+  if (state.disabled) return;
   resizeCanvas();
   createParticles();
 });
@@ -146,6 +181,7 @@ window.addEventListener("pointerleave", () => {
 });
 
 document.addEventListener("visibilitychange", () => {
+  if (state.disabled) return;
   state.running = !document.hidden;
   if (state.running && state.rafId === null) {
     state.lastFrame = performance.now();
@@ -168,6 +204,15 @@ function setupLocationToggle() {
     const isOpen = section.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
 
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: "ui_click",
+        ui_component: "floating_toggle",
+        ui_label: "office",
+        ui_state: isOpen ? "open" : "close",
+      });
+    }
+
     if (isOpen && contactSection && contactToggle) {
       contactSection.classList.remove("is-open");
       contactToggle.setAttribute("aria-expanded", "false");
@@ -186,6 +231,15 @@ function setupContactToggle() {
     const isOpen = section.classList.toggle("is-open");
     toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
 
+    if (window.dataLayer) {
+      window.dataLayer.push({
+        event: "ui_click",
+        ui_component: "floating_toggle",
+        ui_label: "contact",
+        ui_state: isOpen ? "open" : "close",
+      });
+    }
+
     if (isOpen && locationSection && locationToggle) {
       locationSection.classList.remove("is-open");
       locationToggle.setAttribute("aria-expanded", "false");
@@ -193,6 +247,23 @@ function setupContactToggle() {
   });
 }
 
-init();
-setupLocationToggle();
-setupContactToggle();
+function prefersReducedMotion() {
+  return (
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
+function startApp() {
+  if (prefersReducedMotion()) {
+    // 使用者明確偏好減少動態：停用動畫並隱藏 canvas
+    disableAnimation(true);
+  } else {
+    init();
+  }
+
+  setupLocationToggle();
+  setupContactToggle();
+}
+
+startApp();

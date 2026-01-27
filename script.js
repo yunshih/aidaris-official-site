@@ -142,7 +142,7 @@ function animate(timestamp) {
     if (perfSamples.length >= 60) {
       const avg = perfSamples.reduce((a, b) => a + b, 0) / perfSamples.length;
       const fps = 1000 / avg;
-      if (fps < 20) {
+      if (fps < 15) {
         // 裝置效能太弱：停用動畫，但保留 canvas 作為靜態背景，並讓中間 AIDARIS 做呼吸燈
         disableAnimation(false, "perf");
         return;

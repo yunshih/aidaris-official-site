@@ -35,6 +35,53 @@
       </div>
     </main>
 
+    <section class="location-section">
+      <button
+        class="location-toggle"
+        type="button"
+        aria-label="Open office location map"
+        aria-expanded="false"
+        aria-controls="location-card"
+      >
+        <span class="location-toggle-dot"></span>
+        <span class="location-toggle-label">Office</span>
+      </button>
+      <div class="location-card" id="location-card">
+        <div class="location-header">
+          <span class="location-label">Office Location</span>
+          <span class="location-coords">9 F.-1, No. 21, Wufu 3rd Rd., Qianjin Dist., Kaohsiung City 801005, Taiwan (R.O.C.)</span>
+        </div>
+        <div class="location-map">
+          <iframe
+            title="Aidaris office location on map"
+            src="https://www.google.com/maps?q=22.622528,120.299667&hl=en&z=16&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <button
+        class="contact-toggle"
+        type="button"
+        aria-label="Show contact email"
+        aria-expanded="false"
+        aria-controls="contact-card"
+      >
+        <span class="contact-toggle-dot"></span>
+        <span class="contact-toggle-label">Contact</span>
+      </button>
+      <div class="contact-card" id="contact-card">
+        <div class="location-header">
+          <span class="location-label">Contact</span>
+        </div>
+        <p class="contact-description">For project inquiries or collaboration:</p>
+        <a class="contact-email" href="mailto:hello@aidaris.com">hello@aidaris.com</a>
+      </div>
+    </section>
+
     <footer class="site-footer">
       <span class="footer-tab">© 2026 <span class="footer-brand">AIDARIS</span>. All rights reserved.</span>
     </footer>

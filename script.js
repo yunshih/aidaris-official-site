@@ -157,4 +157,42 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
+function setupLocationToggle() {
+  const section = document.querySelector(".location-section");
+  const toggle = document.querySelector(".location-toggle");
+  const contactSection = document.querySelector(".contact-section");
+  const contactToggle = document.querySelector(".contact-toggle");
+  if (!section || !toggle) return;
+
+  toggle.addEventListener("click", () => {
+    const isOpen = section.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+    if (isOpen && contactSection && contactToggle) {
+      contactSection.classList.remove("is-open");
+      contactToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
+function setupContactToggle() {
+  const section = document.querySelector(".contact-section");
+  const toggle = document.querySelector(".contact-toggle");
+  const locationSection = document.querySelector(".location-section");
+  const locationToggle = document.querySelector(".location-toggle");
+  if (!section || !toggle) return;
+
+  toggle.addEventListener("click", () => {
+    const isOpen = section.classList.toggle("is-open");
+    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+    if (isOpen && locationSection && locationToggle) {
+      locationSection.classList.remove("is-open");
+      locationToggle.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
 init();
+setupLocationToggle();
+setupContactToggle();

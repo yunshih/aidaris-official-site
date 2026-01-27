@@ -115,7 +115,7 @@ function step() {
   ctx.restore();
 }
 
-function disableAnimation(hideCanvas = true) {
+function disableAnimation(hideCanvas = true, reason = "unknown") {
   state.running = false;
   state.disabled = true;
   if (state.rafId !== null) {
@@ -124,6 +124,10 @@ function disableAnimation(hideCanvas = true) {
   }
   if (hideCanvas) {
     canvas.style.display = "none";
+  }
+
+  if (reason === "perf") {
+    document.body.classList.add("bg-disabled-perf");
   }
 }
 
@@ -139,8 +143,8 @@ function animate(timestamp) {
       const avg = perfSamples.reduce((a, b) => a + b, 0) / perfSamples.length;
       const fps = 1000 / avg;
       if (fps < 20) {
-        // 裝置效能太弱：停用動畫，但保留 canvas 作為靜態背景
-        disableAnimation(false);
+        // 裝置效能太弱：停用動畫，但保留 canvas 作為靜態背景，並讓中間 AIDARIS 做呼吸燈
+        disableAnimation(false, "perf");
         return;
       }
       perfCheckDone = true;
@@ -257,7 +261,7 @@ function prefersReducedMotion() {
 function startApp() {
   if (prefersReducedMotion()) {
     // 使用者明確偏好減少動態：停用動畫並隱藏 canvas
-    disableAnimation(true);
+    disableAnimation(true, "reduced-motion");
   } else {
     init();
   }

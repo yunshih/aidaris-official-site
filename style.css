@@ -89,6 +89,22 @@ h1 {
   margin-bottom: 22px;
 }
 
+@keyframes aidaris-breath {
+  0%,
+  100% {
+    text-shadow: 0 0 16px rgba(182, 234, 95, 0.5), 0 0 32px rgba(35, 190, 200, 0.2);
+    transform: translateY(0);
+  }
+  50% {
+    text-shadow: 0 0 26px rgba(182, 234, 95, 0.9), 0 0 46px rgba(35, 190, 200, 0.4);
+    transform: translateY(-1px);
+  }
+}
+
+body.bg-disabled-perf .hero-content h1 {
+  animation: aidaris-breath 2.8s ease-in-out infinite;
+}
+
 .subtitle {
   font-family: "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
   color: var(--muted);

@@ -11,21 +11,25 @@ const state = {
   rafId: null,
   running: true,
   disabled: false,
+  startTime: 0,
 };
 
 const perfSamples = [];
 let perfCheckDone = false;
 
 const config = {
-  minParticles: 420,
-  maxParticles: 900,
-  density: 0.00012,
-  speed: 0.5,
+  minParticles: 900,
+  maxParticles: 2600,
+  density: 0.0003,
+  speed: 0.7,
   fieldScale: 0.002,
   fade: 0.1,
   glow: 0.35,
   maxDpr: 1.5,
   targetFps: 30,
+  rampDurationMs: 6000,
+  rampStartRatio: 0.35,
+  rampStep: 40,
 };
 
 function getParticleCount() {
@@ -43,8 +47,7 @@ function resizeCanvas() {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 
-function createParticles() {
-  const count = getParticleCount();
+function createParticles(count = getParticleCount()) {
   state.particles = Array.from({ length: count }, () => ({
     x: Math.random() * state.width,
     y: Math.random() * state.height,
@@ -52,6 +55,29 @@ function createParticles() {
     vy: 0,
     life: Math.random() * 200 + 100,
   }));
+}
+
+function addParticles(count) {
+  for (let i = 0; i < count; i += 1) {
+    state.particles.push({
+      x: Math.random() * state.width,
+      y: Math.random() * state.height,
+      vx: 0,
+      vy: 0,
+      life: Math.random() * 200 + 100,
+    });
+  }
+}
+
+function getRampTarget(timestamp) {
+  if (!state.startTime) {
+    state.startTime = timestamp;
+  }
+  const baseCount = getParticleCount();
+  const elapsed = Math.max(0, timestamp - state.startTime);
+  const ramp = Math.min(1, elapsed / config.rampDurationMs);
+  const ratio = config.rampStartRatio + (1 - config.rampStartRatio) * ramp;
+  return Math.max(1, Math.floor(baseCount * ratio));
 }
 
 function flowField(x, y, t) {
@@ -151,6 +177,14 @@ function animate(timestamp) {
     }
   }
 
+  const targetCount = getRampTarget(timestamp);
+  const currentCount = state.particles.length;
+  if (currentCount < targetCount) {
+    addParticles(Math.min(config.rampStep, targetCount - currentCount));
+  } else if (currentCount > targetCount) {
+    state.particles.length = targetCount;
+  }
+
   const interval = 1000 / config.targetFps;
   if (timestamp - state.lastFrame >= interval) {
     state.lastFrame = timestamp;
@@ -161,7 +195,8 @@ function animate(timestamp) {
 
 function init() {
   resizeCanvas();
-  createParticles();
+  state.startTime = performance.now();
+  createParticles(getRampTarget(state.startTime));
   ctx.fillStyle = "rgba(2, 3, 1, 1)";
   ctx.fillRect(0, 0, state.width, state.height);
   state.lastFrame = performance.now();
@@ -171,7 +206,8 @@ function init() {
 window.addEventListener("resize", () => {
   if (state.disabled) return;
   resizeCanvas();
-  createParticles();
+  const now = performance.now();
+  createParticles(getRampTarget(now));
 });
 
 window.addEventListener("pointermove", (event) => {

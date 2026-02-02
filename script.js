@@ -17,20 +17,53 @@ const state = {
 const perfSamples = [];
 let perfCheckDone = false;
 
-const config = {
+const baseConfig = {
   minParticles: 900,
   maxParticles: 2600,
   density: 0.0003,
-  speed: 0.7,
-  fieldScale: 0.002,
-  fade: 0.1,
-  glow: 0.35,
+  speed: 0.65,
+  fieldScale: 0.0011,
+  fade: 0.055,
+  glow: 0.6,
   maxDpr: 1.5,
   targetFps: 30,
   rampDurationMs: 6000,
   rampStartRatio: 0.35,
   rampStep: 40,
+  nearRatio: 0.35,
+  nearSpeed: 1.1,
+  farSpeed: 0.78,
+  nearLineWidth: 1.3,
+  farLineWidth: 0.7,
+  nearGlow: 1.1,
+  farGlow: 0.6,
+  nearAlpha: 0.8,
+  farAlpha: 0.35,
 };
+
+const config = { ...baseConfig };
+
+function applyResponsiveConfig() {
+  const isMobile = window.innerWidth < 768;
+  if (isMobile) {
+    config.minParticles = 520;
+    config.maxParticles = 1400;
+    config.density = 0.00018;
+    config.speed = 0.55;
+    config.fade = 0.07;
+    config.glow = 0.45;
+    config.maxDpr = 1.2;
+    config.targetFps = 24;
+    config.nearLineWidth = 1.1;
+    config.farLineWidth = 0.6;
+    config.nearGlow = 0.9;
+    config.farGlow = 0.5;
+    config.nearAlpha = 0.7;
+    config.farAlpha = 0.3;
+  } else {
+    Object.assign(config, baseConfig);
+  }
+}
 
 function getParticleCount() {
   const area = state.width * state.height;
@@ -39,6 +72,7 @@ function getParticleCount() {
 }
 
 function resizeCanvas() {
+  applyResponsiveConfig();
   state.width = window.innerWidth;
   state.height = window.innerHeight;
   const dpr = Math.min(window.devicePixelRatio || 1, config.maxDpr);
@@ -54,6 +88,7 @@ function createParticles(count = getParticleCount()) {
     vx: 0,
     vy: 0,
     life: Math.random() * 200 + 100,
+    layer: Math.random() < config.nearRatio ? 1 : 0,
   }));
 }
 
@@ -65,6 +100,7 @@ function addParticles(count) {
       vx: 0,
       vy: 0,
       life: Math.random() * 200 + 100,
+      layer: Math.random() < config.nearRatio ? 1 : 0,
     });
   }
 }
@@ -84,24 +120,25 @@ function flowField(x, y, t) {
   const nx = x * config.fieldScale;
   const ny = y * config.fieldScale;
   const angle =
-    Math.sin(nx * 2.2 + t * 0.7) +
-    Math.cos(ny * 2.6 - t * 0.9) +
-    Math.sin((nx + ny) * 1.4 + t * 0.5);
+    Math.sin(nx * 1.5 + t * 0.5) +
+    Math.cos(ny * 1.7 - t * 0.7) +
+    Math.sin((nx + ny) * 1.0 + t * 0.35);
   return angle * Math.PI;
 }
 
-function tintFor(y) {
+function tintFor(y, alpha) {
   const ratio = y / state.height;
   const top = { r: 35, g: 190, b: 200 };
   const bottom = { r: 190, g: 215, b: 85 };
   const r = Math.floor(top.r + (bottom.r - top.r) * ratio);
   const g = Math.floor(top.g + (bottom.g - top.g) * ratio);
   const b = Math.floor(top.b + (bottom.b - top.b) * ratio);
-  return `rgba(${r}, ${g}, ${b}, 0.7)`;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-function step() {
-  state.time += 0.006;
+function step(deltaMs) {
+  const dt = Math.min(deltaMs, 50) / 16.67;
+  state.time += 0.007 * dt;
   ctx.fillStyle = `rgba(2, 3, 1, ${config.fade})`;
   ctx.fillRect(0, 0, state.width, state.height);
 
@@ -109,16 +146,22 @@ function step() {
   ctx.globalCompositeOperation = "lighter";
 
   for (const p of state.particles) {
+    const isNear = p.layer === 1;
+    const speedScale = isNear ? config.nearSpeed : config.farSpeed;
+    const lineWidth = isNear ? config.nearLineWidth : config.farLineWidth;
+    const glowScale = isNear ? config.nearGlow : config.farGlow;
+    const alpha = isNear ? config.nearAlpha : config.farAlpha;
     const angle = flowField(p.x, p.y, state.time);
     const pullX = state.mouse.active ? (state.mouse.x - p.x) * 0.00035 : 0;
     const pullY = state.mouse.active ? (state.mouse.y - p.y) * 0.00035 : 0;
-    p.vx += Math.cos(angle) * config.speed + pullX;
-    p.vy += Math.sin(angle) * config.speed + pullY;
-    p.vx *= 0.96;
-    p.vy *= 0.96;
-    p.x += p.vx;
-    p.y += p.vy;
-    p.life -= 1;
+    p.vx += (Math.cos(angle) * config.speed * speedScale + pullX) * dt;
+    p.vy += (Math.sin(angle) * config.speed * speedScale + pullY) * dt;
+    const damping = Math.pow(0.985, dt);
+    p.vx *= damping;
+    p.vy *= damping;
+    p.x += p.vx * dt;
+    p.y += p.vy * dt;
+    p.life -= dt;
 
     if (p.x < -50 || p.x > state.width + 50 || p.y < -50 || p.y > state.height + 50 || p.life <= 0) {
       p.x = Math.random() * state.width;
@@ -128,13 +171,13 @@ function step() {
       p.life = Math.random() * 200 + 100;
     }
 
-    ctx.strokeStyle = tintFor(p.y);
-    ctx.lineWidth = 0.9;
-    ctx.shadowColor = "rgba(182, 234, 95, 0.35)";
-    ctx.shadowBlur = 10 * config.glow;
+    ctx.strokeStyle = tintFor(p.y, alpha);
+    ctx.lineWidth = lineWidth;
+    ctx.shadowColor = `rgba(182, 234, 95, ${0.35 + alpha * 0.4})`;
+    ctx.shadowBlur = 18 * config.glow * glowScale;
     ctx.beginPath();
     ctx.moveTo(p.x, p.y);
-    ctx.lineTo(p.x - p.vx * 1.6, p.y - p.vy * 1.6);
+    ctx.lineTo(p.x - p.vx * 3.2, p.y - p.vy * 3.2);
     ctx.stroke();
   }
 
@@ -187,8 +230,9 @@ function animate(timestamp) {
 
   const interval = 1000 / config.targetFps;
   if (timestamp - state.lastFrame >= interval) {
+    const deltaMs = state.lastFrame ? timestamp - state.lastFrame : interval;
     state.lastFrame = timestamp;
-    step();
+    step(deltaMs);
   }
   state.rafId = requestAnimationFrame(animate);
 }

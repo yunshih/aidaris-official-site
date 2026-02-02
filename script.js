@@ -338,6 +338,19 @@ function prefersReducedMotion() {
   );
 }
 
+function updateLocalVersion() {
+  const target = document.querySelector("[data-version]");
+  if (!target) return;
+  const last = new Date(document.lastModified);
+  const pad = (num) => String(num).padStart(2, "0");
+  const y = last.getFullYear();
+  const m = pad(last.getMonth() + 1);
+  const d = pad(last.getDate());
+  const h = pad(last.getHours());
+  const min = pad(last.getMinutes());
+  target.textContent = `v${y}${m}${d}-${h}${min}`;
+}
+
 function startApp() {
   if (prefersReducedMotion()) {
     // 使用者明確偏好減少動態：停用動畫並隱藏 canvas
@@ -348,6 +361,7 @@ function startApp() {
 
   setupLocationToggle();
   setupContactToggle();
+  updateLocalVersion();
 }
 
 startApp();

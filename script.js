@@ -338,6 +338,13 @@ function prefersReducedMotion() {
   );
 }
 
+function updateLocalVersion() {
+  const target = document.querySelector("[data-version]");
+  if (!target) return;
+  const last = new Date(document.lastModified);
+  target.textContent = `v${Math.floor(last.getTime() / 1000)}`;
+}
+
 function startApp() {
   if (prefersReducedMotion()) {
     // 使用者明確偏好減少動態：停用動畫並隱藏 canvas
@@ -348,6 +355,7 @@ function startApp() {
 
   setupLocationToggle();
   setupContactToggle();
+  updateLocalVersion();
 }
 
 startApp();

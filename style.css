@@ -93,7 +93,7 @@ body {
 h1 {
   font-family: "Gugi", "Offside", "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
   font-size: clamp(2.4rem, 5.2vw, 4.6rem);
-  letter-spacing: 0.04em;
+  letter-spacing: 0;
   line-height: 1.08;
   margin-bottom: 22px;
   white-space: nowrap;
@@ -107,6 +107,10 @@ h1 {
   color: #ffbd59;
   -webkit-text-stroke: 0.7px currentColor;
   text-shadow: 0 0 1px currentColor;
+}
+
+.logo-text {
+  letter-spacing: 0.04em;
 }
 
 @keyframes aidaris-breath {

@@ -1,5 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@100..900&family=Offside&display=swap");
 
+@font-face {
+  font-family: "SuperG";
+  src: url("assets/fonts/Aka-AcidGR-SuperG.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 *,
 *::before,
 *::after {
@@ -70,6 +78,7 @@ body {
   font-size: 0.65rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  color: #ffffff;
 }
 
 .eyebrow {
@@ -89,6 +98,16 @@ h1 {
   margin-bottom: 22px;
 }
 
+.logo-initial {
+  font-family: "SuperG", "Gugi", "Offside", "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
+  font-weight: 1200;
+  font-size: 1.8em;
+  display: inline-block;
+  color: #ffbd59;
+  -webkit-text-stroke: 0.7px currentColor;
+  text-shadow: 0 0 1px currentColor;
+}
+
 @keyframes aidaris-breath {
   0%,
   100% {
@@ -104,12 +123,21 @@ body.bg-disabled-perf .hero-content h1 {
 }
 
 .subtitle {
-  font-family: "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
+  font-family: "Offside", "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
   color: var(--muted);
   font-size: clamp(1rem, 1.2vw, 1.25rem);
   line-height: 1.8;
   letter-spacing: 0.02em;
   margin-bottom: 0;
+}
+
+.subtitle-highlight {
+  color: #ffbd59;
+}
+
+.capabilities,
+.subtitle-highlight {
+  font-family: "Offside", "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
 }
 
 .location-section {

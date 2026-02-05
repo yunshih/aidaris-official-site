@@ -133,6 +133,14 @@ body.bg-disabled-perf .hero-content h1 {
 
 .subtitle-highlight {
   color: #ffbd59;
+  font-size: 0.95em;
+  display: inline-block;
+  white-space: normal;
+}
+
+.subtitle-nowrap {
+  display: inline-block;
+  white-space: normal;
 }
 
 .capabilities,
@@ -327,5 +335,15 @@ body.bg-disabled-perf .hero-content h1 {
   .hero-content {
     width: 100%;
     max-width: none;
+  }
+}
+
+@media (min-width: 960px) {
+  .subtitle-highlight {
+    white-space: nowrap;
+  }
+
+  .subtitle-nowrap {
+    white-space: nowrap;
   }
 }

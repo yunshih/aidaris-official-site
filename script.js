@@ -1,5 +1,5 @@
 const canvas = document.getElementById("flow-canvas");
-const ctx = canvas.getContext("2d");
+const ctx = canvas ? canvas.getContext("2d") : null;
 
 const state = {
   width: 0,
@@ -191,7 +191,7 @@ function disableAnimation(hideCanvas = true, reason = "unknown") {
     cancelAnimationFrame(state.rafId);
     state.rafId = null;
   }
-  if (hideCanvas) {
+  if (hideCanvas && canvas) {
     canvas.style.display = "none";
   }
 
@@ -247,11 +247,15 @@ function init() {
   state.rafId = requestAnimationFrame(animate);
 }
 
+let resizeTimer = 0;
 window.addEventListener("resize", () => {
   if (state.disabled) return;
-  resizeCanvas();
-  const now = performance.now();
-  createParticles(getRampTarget(now));
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(() => {
+    resizeCanvas();
+    const now = performance.now();
+    createParticles(getRampTarget(now));
+  }, 150);
 });
 
 window.addEventListener("pointermove", (event) => {
@@ -277,57 +281,60 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
-function setupLocationToggle() {
-  const section = document.querySelector(".location-section");
-  const toggle = document.querySelector(".location-toggle");
-  const contactSection = document.querySelector(".contact-section");
-  const contactToggle = document.querySelector(".contact-toggle");
-  if (!section || !toggle) return;
+function setupToggles() {
+  const panels = [
+    {
+      label: "office",
+      sectionSel: ".location-section",
+      toggleSel: ".location-toggle",
+    },
+    {
+      label: "contact",
+      sectionSel: ".contact-section",
+      toggleSel: ".contact-toggle",
+    },
+  ];
 
-  toggle.addEventListener("click", () => {
-    const isOpen = section.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  const resolved = panels.map((p) => ({
+    ...p,
+    section: document.querySelector(p.sectionSel),
+    toggle: document.querySelector(p.toggleSel),
+  }));
 
-    if (window.dataLayer) {
-      window.dataLayer.push({
-        event: "ui_click",
-        ui_component: "floating_toggle",
-        ui_label: "office",
-        ui_state: isOpen ? "open" : "close",
-      });
-    }
+  function closePanel(panel) {
+    if (!panel.section || !panel.toggle) return;
+    panel.section.classList.remove("is-open");
+    panel.toggle.setAttribute("aria-expanded", "false");
+  }
 
-    if (isOpen && contactSection && contactToggle) {
-      contactSection.classList.remove("is-open");
-      contactToggle.setAttribute("aria-expanded", "false");
-    }
+  resolved.forEach((panel) => {
+    if (!panel.section || !panel.toggle) return;
+    panel.toggle.addEventListener("click", () => {
+      const isOpen = panel.section.classList.toggle("is-open");
+      panel.toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+
+      if (window.dataLayer) {
+        window.dataLayer.push({
+          event: "ui_click",
+          ui_component: "floating_toggle",
+          ui_label: panel.label,
+          ui_state: isOpen ? "open" : "close",
+        });
+      }
+
+      // Close other panels when one opens
+      if (isOpen) {
+        resolved.forEach((other) => {
+          if (other !== panel) closePanel(other);
+        });
+      }
+    });
   });
-}
 
-function setupContactToggle() {
-  const section = document.querySelector(".contact-section");
-  const toggle = document.querySelector(".contact-toggle");
-  const locationSection = document.querySelector(".location-section");
-  const locationToggle = document.querySelector(".location-toggle");
-  if (!section || !toggle) return;
-
-  toggle.addEventListener("click", () => {
-    const isOpen = section.classList.toggle("is-open");
-    toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-
-    if (window.dataLayer) {
-      window.dataLayer.push({
-        event: "ui_click",
-        ui_component: "floating_toggle",
-        ui_label: "contact",
-        ui_state: isOpen ? "open" : "close",
-      });
-    }
-
-    if (isOpen && locationSection && locationToggle) {
-      locationSection.classList.remove("is-open");
-      locationToggle.setAttribute("aria-expanded", "false");
-    }
+  // Escape to close all panels
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "Escape") return;
+    resolved.forEach(closePanel);
   });
 }
 
@@ -346,15 +353,17 @@ function updateLocalVersion() {
 }
 
 function startApp() {
-  if (prefersReducedMotion()) {
+  if (!ctx) {
+    // Canvas 2D 不可用（舊版或受限環境）：停用動畫並隱藏 canvas
+    disableAnimation(true, "unsupported");
+  } else if (prefersReducedMotion()) {
     // 使用者明確偏好減少動態：停用動畫並隱藏 canvas
     disableAnimation(true, "reduced-motion");
   } else {
     init();
   }
 
-  setupLocationToggle();
-  setupContactToggle();
+  setupToggles();
   updateLocalVersion();
 }
 

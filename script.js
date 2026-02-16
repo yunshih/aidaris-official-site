@@ -336,6 +336,16 @@ function setupToggles() {
     if (e.key !== "Escape") return;
     resolved.forEach(closePanel);
   });
+
+  // Click outside panel to close
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+    const isInsideAnyPanel = resolved.some(
+      (panel) =>
+        panel.section?.contains(target) || panel.toggle?.contains(target)
+    );
+    if (!isInsideAnyPanel) resolved.forEach(closePanel);
+  });
 }
 
 function prefersReducedMotion() {

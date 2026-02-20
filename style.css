@@ -242,6 +242,26 @@ h1 {
   box-shadow: 0 0 8px rgba(182, 234, 95, 0.5);
 }
 
+/* Services list: title + one-line description */
+.services-list li {
+  margin-bottom: 20px;
+}
+
+.services-item-title {
+  display: block;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.services-item-desc {
+  display: block;
+  font-size: 0.88em;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-top: 4px;
+  padding-left: 0;
+}
+
 .fit-conclusion {
   font-family: "Offside", "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
   font-size: clamp(1.05rem, 1.3vw, 1.25rem);

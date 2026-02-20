@@ -5,7 +5,6 @@ const state = {
   width: 0,
   height: 0,
   particles: [],
-  time: 0,
   lastFrame: 0,
   rafId: null,
   running: true,
@@ -138,7 +137,6 @@ function tintFor(y, alpha) {
 
 function step(deltaMs) {
   const dt = Math.min(deltaMs, 50) / 16.67;
-  state.time += 0.007 * dt;
   ctx.fillStyle = `rgba(2, 3, 1, ${config.fade})`;
   ctx.fillRect(0, 0, state.width, state.height);
 

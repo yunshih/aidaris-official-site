@@ -6,7 +6,6 @@ const state = {
   height: 0,
   particles: [],
   time: 0,
-  mouse: { x: 0, y: 0, active: false },
   lastFrame: 0,
   rafId: null,
   running: true,
@@ -18,27 +17,27 @@ const perfSamples = [];
 let perfCheckDone = false;
 
 const baseConfig = {
-  minParticles: 900,
-  maxParticles: 2600,
-  density: 0.0003,
-  speed: 0.65,
-  fieldScale: 0.0011,
-  fade: 0.055,
-  glow: 0.6,
+  minMeteors: 28,
+  maxMeteors: 65,
+  density: 0.000018,
+  speedMin: 2.8,
+  speedMax: 6.5,
+  trailLength: 42,
+  trailLengthNear: 72,
+  nearRatio: 0.4,
+  fade: 0.04,
+  glow: 0.7,
   maxDpr: 1.5,
   targetFps: 30,
-  rampDurationMs: 6000,
-  rampStartRatio: 0.35,
-  rampStep: 40,
-  nearRatio: 0.35,
-  nearSpeed: 1.1,
-  farSpeed: 0.78,
-  nearLineWidth: 1.3,
-  farLineWidth: 0.7,
-  nearGlow: 1.1,
+  rampDurationMs: 4000,
+  rampStartRatio: 0.4,
+  rampStep: 3,
+  nearLineWidth: 2,
+  farLineWidth: 1,
+  nearGlow: 1.2,
   farGlow: 0.6,
-  nearAlpha: 0.8,
-  farAlpha: 0.35,
+  nearAlpha: 0.85,
+  farAlpha: 0.4,
 };
 
 const config = { ...baseConfig };
@@ -46,29 +45,32 @@ const config = { ...baseConfig };
 function applyResponsiveConfig() {
   const isMobile = window.innerWidth < 768;
   if (isMobile) {
-    config.minParticles = 520;
-    config.maxParticles = 1400;
-    config.density = 0.00018;
-    config.speed = 0.55;
-    config.fade = 0.07;
-    config.glow = 0.45;
+    config.minMeteors = 18;
+    config.maxMeteors = 40;
+    config.density = 0.000012;
+    config.speedMin = 2.2;
+    config.speedMax = 5;
+    config.trailLength = 32;
+    config.trailLengthNear = 52;
+    config.fade = 0.05;
+    config.glow = 0.5;
     config.maxDpr = 1.2;
     config.targetFps = 24;
-    config.nearLineWidth = 1.1;
-    config.farLineWidth = 0.6;
-    config.nearGlow = 0.9;
+    config.nearLineWidth = 1.6;
+    config.farLineWidth = 0.85;
+    config.nearGlow = 1;
     config.farGlow = 0.5;
-    config.nearAlpha = 0.7;
-    config.farAlpha = 0.3;
+    config.nearAlpha = 0.75;
+    config.farAlpha = 0.35;
   } else {
     Object.assign(config, baseConfig);
   }
 }
 
-function getParticleCount() {
+function getMeteorCount() {
   const area = state.width * state.height;
   const count = Math.floor(area * config.density);
-  return Math.max(config.minParticles, Math.min(config.maxParticles, count));
+  return Math.max(config.minMeteors, Math.min(config.maxMeteors, count));
 }
 
 function resizeCanvas() {
@@ -81,25 +83,33 @@ function resizeCanvas() {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 }
 
-function createParticles(count = getParticleCount()) {
-  state.particles = Array.from({ length: count }, () => ({
-    x: Math.random() * state.width,
-    y: Math.random() * state.height,
-    vx: 0,
-    vy: 0,
-    life: Math.random() * 200 + 100,
-    layer: Math.random() < config.nearRatio ? 1 : 0,
-  }));
+function randomSpeed() {
+  return config.speedMin + Math.random() * (config.speedMax - config.speedMin);
+}
+
+function createParticles(count = getMeteorCount()) {
+  state.particles = Array.from({ length: count }, () => {
+    const speed = randomSpeed();
+    const angle = -Math.PI / 2 + (Math.random() - 0.5) * 0.35;
+    return {
+      x: Math.random() * state.width,
+      y: Math.random() * state.height,
+      vx: Math.cos(angle) * speed * 0.08,
+      vy: Math.sin(angle) * speed,
+      layer: Math.random() < config.nearRatio ? 1 : 0,
+    };
+  });
 }
 
 function addParticles(count) {
   for (let i = 0; i < count; i += 1) {
+    const speed = randomSpeed();
+    const angle = -Math.PI / 2 + (Math.random() - 0.5) * 0.35;
     state.particles.push({
       x: Math.random() * state.width,
       y: Math.random() * state.height,
-      vx: 0,
-      vy: 0,
-      life: Math.random() * 200 + 100,
+      vx: Math.cos(angle) * speed * 0.08,
+      vy: Math.sin(angle) * speed,
       layer: Math.random() < config.nearRatio ? 1 : 0,
     });
   }
@@ -109,21 +119,11 @@ function getRampTarget(timestamp) {
   if (!state.startTime) {
     state.startTime = timestamp;
   }
-  const baseCount = getParticleCount();
+  const baseCount = getMeteorCount();
   const elapsed = Math.max(0, timestamp - state.startTime);
   const ramp = Math.min(1, elapsed / config.rampDurationMs);
   const ratio = config.rampStartRatio + (1 - config.rampStartRatio) * ramp;
   return Math.max(1, Math.floor(baseCount * ratio));
-}
-
-function flowField(x, y, t) {
-  const nx = x * config.fieldScale;
-  const ny = y * config.fieldScale;
-  const angle =
-    Math.sin(nx * 1.5 + t * 0.5) +
-    Math.cos(ny * 1.7 - t * 0.7) +
-    Math.sin((nx + ny) * 1.0 + t * 0.35);
-  return angle * Math.PI;
 }
 
 function tintFor(y, alpha) {
@@ -145,39 +145,44 @@ function step(deltaMs) {
   ctx.save();
   ctx.globalCompositeOperation = "lighter";
 
+  const trailLenNear = config.trailLengthNear;
+  const trailLenFar = config.trailLength;
+
   for (const p of state.particles) {
     const isNear = p.layer === 1;
-    const speedScale = isNear ? config.nearSpeed : config.farSpeed;
+    const trailLen = isNear ? trailLenNear : trailLenFar;
     const lineWidth = isNear ? config.nearLineWidth : config.farLineWidth;
     const glowScale = isNear ? config.nearGlow : config.farGlow;
     const alpha = isNear ? config.nearAlpha : config.farAlpha;
-    const angle = flowField(p.x, p.y, state.time);
-    const pullX = state.mouse.active ? (state.mouse.x - p.x) * 0.00035 : 0;
-    const pullY = state.mouse.active ? (state.mouse.y - p.y) * 0.00035 : 0;
-    p.vx += (Math.cos(angle) * config.speed * speedScale + pullX) * dt;
-    p.vy += (Math.sin(angle) * config.speed * speedScale + pullY) * dt;
-    const damping = Math.pow(0.985, dt);
-    p.vx *= damping;
-    p.vy *= damping;
+
     p.x += p.vx * dt;
     p.y += p.vy * dt;
-    p.life -= dt;
 
-    if (p.x < -50 || p.x > state.width + 50 || p.y < -50 || p.y > state.height + 50 || p.life <= 0) {
+    if (p.y < -trailLen - 20) {
       p.x = Math.random() * state.width;
-      p.y = Math.random() * state.height;
-      p.vx = 0;
-      p.vy = 0;
-      p.life = Math.random() * 200 + 100;
+      p.y = state.height + trailLen + Math.random() * 80;
+    } else if (p.x < -20 || p.x > state.width + 20) {
+      p.x = Math.max(0, Math.min(state.width, p.x));
+      p.vx *= -0.6;
     }
 
-    ctx.strokeStyle = tintFor(p.y, alpha);
+    const speed = Math.sqrt(p.vx * p.vx + p.vy * p.vy) || 1;
+    const tailX = p.x - (p.vx / speed) * trailLen;
+    const tailY = p.y - (p.vy / speed) * trailLen;
+
+    const gradient = ctx.createLinearGradient(tailX, tailY, p.x, p.y);
+    gradient.addColorStop(0, "rgba(35, 190, 200, 0)");
+    gradient.addColorStop(0.4, tintFor((tailY + p.y) / 2, alpha * 0.5));
+    gradient.addColorStop(1, tintFor(p.y, alpha));
+
+    ctx.strokeStyle = gradient;
     ctx.lineWidth = lineWidth;
-    ctx.shadowColor = `rgba(182, 234, 95, ${0.35 + alpha * 0.4})`;
-    ctx.shadowBlur = 18 * config.glow * glowScale;
+    ctx.lineCap = "round";
+    ctx.shadowColor = `rgba(182, 234, 95, ${0.4 + alpha * 0.5})`;
+    ctx.shadowBlur = 16 * config.glow * glowScale;
     ctx.beginPath();
-    ctx.moveTo(p.x, p.y);
-    ctx.lineTo(p.x - p.vx * 3.2, p.y - p.vy * 3.2);
+    ctx.moveTo(tailX, tailY);
+    ctx.lineTo(p.x, p.y);
     ctx.stroke();
   }
 
@@ -256,16 +261,6 @@ window.addEventListener("resize", () => {
     const now = performance.now();
     createParticles(getRampTarget(now));
   }, 150);
-});
-
-window.addEventListener("pointermove", (event) => {
-  state.mouse.x = event.clientX;
-  state.mouse.y = event.clientY;
-  state.mouse.active = true;
-});
-
-window.addEventListener("pointerleave", () => {
-  state.mouse.active = false;
 });
 
 document.addEventListener("visibilitychange", () => {

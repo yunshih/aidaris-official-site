@@ -266,6 +266,82 @@ h1 {
   letter-spacing: 0.06em;
 }
 
+/* About page */
+.about-page .hero-content {
+  max-width: 680px;
+}
+
+.about-block {
+  margin-bottom: 32px;
+}
+
+.about-block:last-child {
+  margin-bottom: 0;
+}
+
+.about-heading {
+  font-family: "Offside", "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.about-lead {
+  font-family: "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
+  font-size: clamp(0.95rem, 1.1vw, 1.1rem);
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.about-sub {
+  font-family: "Offside", "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
+  font-size: clamp(0.9rem, 1vw, 1rem);
+  font-weight: 500;
+  color: var(--muted);
+  margin: 20px 0 12px;
+}
+
+.about-list {
+  margin-bottom: 0;
+}
+
+/* Office page */
+.office-page .hero-content {
+  max-width: 560px;
+}
+
+.office-title {
+  font-family: "Offside", "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
+  font-size: clamp(1.1rem, 1.3vw, 1.35rem);
+  font-weight: 500;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.office-address {
+  font-family: "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
+  font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+  line-height: 1.7;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+.office-map iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(2, 6, 4, 0.7);
+}
+
+@media (max-width: 860px) {
+  .office-map iframe {
+    height: 260px;
+  }
+}
+
 .location-section {
   position: fixed;
   right: 0;

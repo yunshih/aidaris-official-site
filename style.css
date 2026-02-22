@@ -34,6 +34,7 @@ body {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  padding-bottom: 56px;
 }
 
 #flow-canvas {
@@ -480,6 +481,51 @@ h1 {
   }
 }
 
+/* Previous / Next page (same order as nav) */
+.prev-next {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 6px 8vw 8px;
+  border-top: 1px solid rgba(182, 234, 95, 0.12);
+  background: rgba(2, 6, 4, 0.92);
+  backdrop-filter: blur(12px);
+}
+.prev-next-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.prev-next-link {
+  font-family: "Offside", "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
+  font-size: 0.88rem;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: color 0.2s ease, background 0.2s ease;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+}
+.prev-next-link:hover {
+  color: var(--accent);
+  background: rgba(182, 234, 95, 0.08);
+}
+.prev-next-prev {
+  margin-right: auto;
+}
+.prev-next-next {
+  margin-left: auto;
+}
+
 .site-footer {
   position: relative;
   z-index: 1;
@@ -493,7 +539,7 @@ h1 {
 .footer-tab {
   position: fixed;
   left: 0;
-  bottom: 0;
+  bottom: 56px;
   transform: rotate(-90deg);
   transform-origin: left top;
   display: inline-block;

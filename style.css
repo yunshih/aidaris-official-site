@@ -816,3 +816,31 @@ h1 {
   font-weight: 500;
 }
 
+/* Language switcher */
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: "Offside", "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 5px 12px;
+  border: 1px solid rgba(182, 234, 95, 0.2);
+  border-radius: 8px;
+  background: rgba(182, 234, 95, 0.06);
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  margin-left: 8px;
+  white-space: nowrap;
+}
+.lang-switch:hover {
+  color: var(--accent);
+  background: rgba(182, 234, 95, 0.14);
+  border-color: rgba(182, 234, 95, 0.4);
+}
+.lang-switch:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+

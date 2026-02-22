@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="zh-Hant" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>第一性原理在軟體工程中的思維與應用 - AIDARIS Blog</title>
+    <meta name="description" content="大多數軟體決策都是靠類比做出的：「別的公司這樣做。」第一性原理思維剝除假設，從根本事實重新推導。以下是如何將它應用在軟體工程中。" />
+    <link rel="canonical" href="https://aidaris.com/zh/blog/first-principles-in-software/" />
+    <link rel="alternate" hreflang="en" href="https://aidaris.com/blog/first-principles-in-software/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/first-principles-in-software/" />
+    <link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/first-principles-in-software/" />
+    <meta name="keywords" content="第一性原理, 軟體工程, 系統設計, 架構決策, 技術選型, 微服務, 工程思維, 問題分析, AIDARIS" />
+    <meta name="theme-color" content="#020301" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AIDARIS" />
+    <meta property="og:title" content="第一性原理在軟體工程中的思維與應用" />
+    <meta property="og:description" content="大多數軟體決策都是靠類比做出的。第一性原理思維剝除假設，從根本事實重新推導。" />
+    <meta property="og:url" content="https://aidaris.com/zh/blog/first-principles-in-software/" />
+    <meta property="og:image" content="https://aidaris.com/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="article:published_time" content="2025-12-15" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="第一性原理在軟體工程中的思維與應用" />
+    <meta name="twitter:description" content="大多數軟體決策都是靠類比做出的。第一性原理思維剝除假設，從根本事實重新推導。" />
+    <meta name="twitter:image" content="https://aidaris.com/assets/og-image.png" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://aidaris.com/" },
+        { "@type": "ListItem", "position": 2, "name": "部落格", "item": "https://aidaris.com/zh/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "第一性原理在軟體工程中的應用", "item": "https://aidaris.com/zh/blog/first-principles-in-software/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "第一性原理在軟體工程中的思維與應用",
+      "description": "大多數軟體決策都是靠類比做出的：「別的公司這樣做。」第一性原理思維剝除假設，從根本事實重新推導。以下是如何將它應用在軟體工程中。",
+      "datePublished": "2025-12-15",
+      "author": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "inLanguage": "zh-Hant",
+      "mainEntityOfPage": "https://aidaris.com/zh/blog/first-principles-in-software/"
+    }
+    </script>
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@400;500;600&family=Offside&display=swap" />
+    <link rel="preload" href="../../../assets/fonts/Aka-AcidGR-SuperG.woff" as="font" type="font/woff" crossorigin />
+    <link rel="stylesheet" href="../../../style.css" />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TLBV435S');</script>
+  </head>
+  <body>
+  <a href="#main-content" class="skip-link">跳至內容</a>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLBV435S"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <canvas id="flow-canvas" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="主要導覽">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <a class="nav-brand" href="../../../"><span class="nav-brand-initial">a</span><span class="nav-brand-text">AIDARIS</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../../../who-we-are/">Who We Are</a>
+      <a class="nav-link" href="../../../what-we-do/">What We Do</a>
+      <a class="nav-link" href="../../../how-we-work/">How We Work</a>
+      <a class="nav-link" href="../../../why-we-fit/">Why We Fit</a>
+      <a class="nav-link" href="../../../when-to-engage/">When to Engage</a>
+      <a class="nav-link" href="../../../where-to-find-us/">Where to Find Us</a>
+      <a class="nav-link nav-link--current" href="../">Blog</a>
+      <a class="lang-switch" href="../../../blog/first-principles-in-software/" title="Switch to English">EN</a>
+    </div>
+    <label for="nav-toggle" class="nav-menu-btn" aria-label="開啟選單"><span></span><span></span><span></span></label>
+  </nav>
+
+  <main id="main-content" class="fit-section">
+    <div class="fit-content hero-content article-content">
+      <h1 class="eyebrow">第一性原理在軟體工程中的思維與應用</h1>
+      <p class="article-meta">2025 年 12 月 · Aidaris Technologies</p>
+
+      <div class="article-body">
+        <p>亞里斯多德將第一性原理定義為「認識事物的最初基礎」。用現代的話來說，就是將問題分解到最根本的事實——那些你知道獨立於任何假設而成立的東西——然後從那裡向上推理。</p>
+
+        <p>在軟體工程中，大多數決策並不是這樣做出的。它們是靠類比做出的：「Netflix 用微服務，所以我們也該用。」「業界標準是 Kubernetes，所以我們需要它。」「大家都寫 React，所以我們就用那個。」類比推理很快，但它繼承了可能不適用於你的脈絡的假設。第一性原理思維更慢，但它能導向真正符合你問題的解決方案。</p>
+
+        <h2>為什麼類比在軟體中會失敗</h2>
+        <p>基於類比的推理在你的情況與參考案例高度相似時才管用。問題是在軟體領域，情況很少如此。Netflix 運營的規模是大多數公司永遠不會達到的。Google 的基礎設施挑戰不是你的基礎設施挑戰。那個用某個特定技術棧成功的新創公司，有著不同的團隊、不同的限制和不同的使用者。</p>
+        <p>當你在沒有理解問題的情況下複製解決方案，你會得到：</p>
+        <ul>
+          <li><strong>過度工程</strong> — 為你沒有且可能永遠不需要的規模而建構。一個只有三個使用者的分散式系統不是令人印象深刻的架構；它是不必要的複雜度。</li>
+          <li><strong>貨物崇拜實踐</strong> — 因為「大家都這樣做」而採用儀式和流程，卻不理解原因。沒有人覺得有用的每日站會。不產生任何改變的衝刺回顧會議。</li>
+          <li><strong>技術錯配</strong> — 因為熱門而非因為解決你的實際問題而選擇工具。在你的資料是關聯式的時候使用文件資料庫。在一台伺服器就夠用的時候運行 Kubernetes。</li>
+        </ul>
+
+        <h2>第一性原理如何應用於軟體</h2>
+        <p>軟體中的第一性原理思維意味著問：<strong>關於我要解決的問題，什麼是根本上成立的事實，而與其他人如何解決類似問題無關？</strong></p>
+
+        <p>這適用於軟體工程的每個層面：</p>
+
+        <p><strong>架構。</strong>不要問「我們該用微服務還是單體架構？」，而是問：「我們領域中的實際邊界在哪裡？我們的團隊如何溝通？我們的部署頻率是多少？我們需要隔離哪些故障模式？」架構應該從這些問題的答案中浮現，而不是從你參加的某場研討會中。</p>
+
+        <p><strong>技術選型。</strong>不要問「最好的框架是什麼？」，而是問：「這個系統的根本需求是什麼？限制條件是什麼——團隊技能、時間線、維護負擔、效能需求？」一個無聊但被充分理解、符合你限制的技術，幾乎總是比一個令人興奮但不符合的技術更好。</p>
+
+        <p><strong>流程設計。</strong>不要照搬 Spotify 的「小隊模型」或 Google 的 SRE 手冊，而是問：「我們團隊中的實際協調問題是什麼？工作在哪裡卡住？缺少哪些回饋迴路？」設計你的流程來解決你的問題，而不是別人的問題。</p>
+
+        <p><strong>除錯。</strong>第一性原理思維在除錯中是自然而然的，這也是為什麼優秀的除錯者往往是優秀的第一性原理思考者。當一個系統出錯時，你不會從對原因的假設開始。你從已知的事實開始：症狀、輸入、狀態。你從證據推理，而非從類比推理。</p>
+
+        <h2>軟體決策的五個為什麼</h2>
+        <p>一個應用第一性原理的實用方法是「五個為什麼」技巧——反覆問「為什麼」直到你到達一個根本事實。應用到軟體決策上，它通常會揭示真正的理由比預期的更薄弱：</p>
+
+        <ul>
+          <li><em>「我們需要 Kubernetes。」</em> — 為什麼？「因為我們需要容器編排。」— 為什麼？「因為我們有微服務。」— 為什麼？「因為我們想要獨立擴展。」— 為什麼？「因為⋯⋯嗯，其實我們的流量是可預測的，而且只有一個團隊。」追根究柢，實際需求可能是一個簡單的部署流水線，而不是一個分散式編排平台。</li>
+          <li><em>「我們應該用 Go 重寫。」</em> — 為什麼？「因為它更快。」— 為什麼速度在這裡重要？「因為我們的 API 回應時間很慢。」— 為什麼它們慢？「因為 N+1 資料庫查詢。」真正的問題是查詢最佳化，不是語言選擇。</li>
+        </ul>
+
+        <p>這不是反對 Kubernetes 或 Go 的論點。它們是很優秀的工具。這是主張在選擇解決方案之前先理解你的實際問題。</p>
+
+        <h2>不會改變的基本面</h2>
+        <p>第一性原理思維最強大的面向之一，是識別出無論技術趨勢如何變化都成立的事實。在軟體工程中，某些基本面已經維持了數十年：</p>
+        <ul>
+          <li><strong>複雜度是可靠性的頭號敵人。</strong>每個額外的組件、依賴和抽象層都是一個潛在的故障點。滿足需求的最簡單系統通常是最可靠的。</li>
+          <li><strong>回饋迴路決定品質。</strong>你越快知道某個東西壞了——透過測試、監控、使用者回饋——修復它的成本就越低。每個好的工程實踐都可以追溯到縮緊回饋迴路。</li>
+          <li><strong>介面比實作更重要。</strong>實作會改變；介面會持續。一個設計良好的 API 契約會比底層的數十次實作變更活得更久。投資在把邊界做對上。</li>
+          <li><strong>人類溝通是瓶頸。</strong>康威定律本質上是一個偽裝的第一性原理：你的軟體結構會映射你的組織結構。技術架構無法彌補組織功能障礙。</li>
+        </ul>
+
+        <h2>平衡：原則與務實</h2>
+        <p>第一性原理思維不是忽略現有解決方案的藉口。從零開始重新發明一切和盲目複製一樣危險。重點不是完全拒絕類比——而是<strong>有意識地</strong>使用它。</p>
+        <p>務實的做法是：</p>
+        <ul>
+          <li><strong>從你的問題出發。</strong>在看解決方案之前，用限制條件和需求精確地定義問題。</li>
+          <li><strong>理解現有解決方案為什麼存在。</strong>當你研究別人如何解決類似問題時，理解推理過程，而不僅僅是結果。他們在什麼限制下運作？那些限制與你的有何不同？</li>
+          <li><strong>適合的就採用，差一點的就調整，不存在的就自建。</strong>大多數時候，一個經過驗證的解決方案加上小幅調整就是正確的選擇。但你應該能夠清楚說明<em>為什麼</em>它適合。</li>
+          <li><strong>定期重新檢視假設。</strong>兩年前驅動某個決策的限制條件可能已經不再適用。第一性原理思維不是一次性的練習；它是一個持續的紀律。</li>
+        </ul>
+
+        <h2>從事實出發，而非從潮流出發</h2>
+        <p>軟體產業充斥著潮流：新的框架、新的範式、取代去年「最佳實踐」的新「最佳實踐」。追逐潮流的團隊建造脆弱的系統。從基本面推理的團隊建造持久的系統。</p>
+
+        <p>第一性原理思維不是要唱反調。而是要有意識。它意味著讓每個重大技術決策都可追溯到一個真實的需求、一個真實的限制，或對問題領域的真實理解。它意味著擁有在問「怎麼做」之前先問「為什麼」的紀律。</p>
+
+        <p>在 AIDARIS，這是我們處理每個合作案的方式。我們不從技術棧或方法論開始。我們從問題開始。我們問客戶的狀況中什麼是根本上成立的，然後從那裡開始建構。如果你重視基於推理而非時尚的工程決策，<a href="../../../where-to-find-us/" style="color:#ffbd59;text-decoration:underline">讓我們聊聊</a>。</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="prev-next" aria-label="上一頁與下一頁">
+    <div class="prev-next-inner">
+      <a href="../" class="prev-next-link prev-next-prev">← 所有文章</a>
+    </div>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="footer-tab">© 2025–2026 <span class="footer-brand">AIDARIS</span>. All rights reserved. <span class="footer-version" data-version>v</span></span>
+  </footer>
+
+  <script src="../../../script.js"></script>
+  </body>
+</html>

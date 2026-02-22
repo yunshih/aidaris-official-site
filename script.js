@@ -274,73 +274,6 @@ document.addEventListener("visibilitychange", () => {
   }
 });
 
-function setupToggles() {
-  const panels = [
-    {
-      label: "office",
-      sectionSel: ".location-section",
-      toggleSel: ".location-toggle",
-    },
-    {
-      label: "contact",
-      sectionSel: ".contact-section",
-      toggleSel: ".contact-toggle",
-    },
-  ];
-
-  const resolved = panels.map((p) => ({
-    ...p,
-    section: document.querySelector(p.sectionSel),
-    toggle: document.querySelector(p.toggleSel),
-  }));
-
-  function closePanel(panel) {
-    if (!panel.section || !panel.toggle) return;
-    panel.section.classList.remove("is-open");
-    panel.toggle.setAttribute("aria-expanded", "false");
-  }
-
-  resolved.forEach((panel) => {
-    if (!panel.section || !panel.toggle) return;
-    panel.toggle.addEventListener("click", () => {
-      const isOpen = panel.section.classList.toggle("is-open");
-      panel.toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
-
-      if (window.dataLayer) {
-        window.dataLayer.push({
-          event: "ui_click",
-          ui_component: "floating_toggle",
-          ui_label: panel.label,
-          ui_state: isOpen ? "open" : "close",
-        });
-      }
-
-      // Close other panels when one opens
-      if (isOpen) {
-        resolved.forEach((other) => {
-          if (other !== panel) closePanel(other);
-        });
-      }
-    });
-  });
-
-  // Escape to close all panels
-  document.addEventListener("keydown", (e) => {
-    if (e.key !== "Escape") return;
-    resolved.forEach(closePanel);
-  });
-
-  // Click outside panel to close
-  document.addEventListener("click", (e) => {
-    const target = e.target;
-    const isInsideAnyPanel = resolved.some(
-      (panel) =>
-        panel.section?.contains(target) || panel.toggle?.contains(target)
-    );
-    if (!isInsideAnyPanel) resolved.forEach(closePanel);
-  });
-}
-
 function prefersReducedMotion() {
   return (
     window.matchMedia &&
@@ -366,7 +299,6 @@ function startApp() {
     init();
   }
 
-  setupToggles();
   updateLocalVersion();
 }
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://aidaris.com/</loc>
     <lastmod>2026-02-22</lastmod>
@@ -44,19 +45,73 @@
   </url>
   <url>
     <loc>https://aidaris.com/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/" />
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/zh/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/" />
     <lastmod>2026-02-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://aidaris.com/blog/rise-of-human-ai-engineers/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/rise-of-human-ai-engineers/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/rise-of-human-ai-engineers/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/rise-of-human-ai-engineers/" />
+    <lastmod>2026-02-22</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/zh/blog/rise-of-human-ai-engineers/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/rise-of-human-ai-engineers/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/rise-of-human-ai-engineers/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/rise-of-human-ai-engineers/" />
     <lastmod>2026-02-22</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://aidaris.com/blog/industrialization-vs-ai-in-software/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/industrialization-vs-ai-in-software/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/industrialization-vs-ai-in-software/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/industrialization-vs-ai-in-software/" />
     <lastmod>2026-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/zh/blog/industrialization-vs-ai-in-software/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/industrialization-vs-ai-in-software/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/industrialization-vs-ai-in-software/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/industrialization-vs-ai-in-software/" />
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/blog/first-principles-in-software/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/first-principles-in-software/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/first-principles-in-software/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/first-principles-in-software/" />
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/zh/blog/first-principles-in-software/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/first-principles-in-software/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/first-principles-in-software/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/first-principles-in-software/" />
+    <lastmod>2025-12-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>

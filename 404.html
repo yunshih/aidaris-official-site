@@ -8,14 +8,17 @@
     <meta name="description" content="The page you are looking for does not exist." />
     <meta name="robots" content="noindex" />
     <meta name="theme-color" content="#020301" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@100..900&family=Offside&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@400;500;600&family=Offside&display=swap" />
     <link rel="preload" href="assets/fonts/Aka-AcidGR-SuperG.woff" as="font" type="font/woff" crossorigin />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
   <canvas id="flow-canvas" aria-hidden="true"></canvas>
 
   <nav class="site-nav" aria-label="Main navigation">
@@ -32,7 +35,7 @@
     <label for="nav-toggle" class="nav-menu-btn" aria-label="Open menu"><span></span><span></span><span></span></label>
   </nav>
 
-  <main class="fit-section">
+  <main id="main-content" class="fit-section">
     <div class="fit-content hero-content" style="text-align:center">
       <p class="eyebrow">404</p>
       <h1 style="font-size:clamp(1.6rem,3vw,2.4rem);white-space:normal;margin-bottom:16px">Page Not Found</h1>

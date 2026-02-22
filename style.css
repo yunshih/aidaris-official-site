@@ -26,6 +26,32 @@
   --glass: rgba(5, 14, 8, 0.72);
 }
 
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 100;
+  font-family: "Offside", "Noto Sans TC", sans-serif;
+  font-size: 0.9rem;
+  color: var(--bg);
+  background: var(--accent);
+  padding: 10px 20px;
+  border-radius: 0 0 8px 0;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: auto;
+  height: auto;
+  overflow: visible;
+}
+
 body {
   font-family: "SF Pro Display", "Inter", "Helvetica Neue", Arial, sans-serif;
   color: var(--text);
@@ -83,11 +109,13 @@ body {
 
 .eyebrow {
   font-family: "Offside", "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
+  font-weight: normal;
   letter-spacing: 0.22em;
   font-size: 1.3rem;
   line-height: 1.4;
   color: var(--accent);
   margin-bottom: 18px;
+  white-space: normal;
 }
 
 h1 {

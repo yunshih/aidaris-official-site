@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The 10% Engineer: Why AIOps Makes Site Reliability Talent More Critical, Not Less - AIDARIS Blog</title>
+    <meta name="description" content="When AI handles 90% of operational events, the remaining 10% becomes exponentially more consequential—and so do the engineers responsible for it. The case for why AIOps raises the value of SRE expertise, not lowers it." />
+    <link rel="canonical" href="https://aidaris.com/blog/aiops-sre-10-percent-engineer/" />
+    <link rel="alternate" hreflang="en" href="https://aidaris.com/blog/aiops-sre-10-percent-engineer/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/aiops-sre-10-percent-engineer/" />
+    <link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/aiops-sre-10-percent-engineer/" />
+    <meta name="theme-color" content="#020301" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AIDARIS" />
+    <meta property="og:title" content="The 10% Engineer: Why AIOps Makes Site Reliability Talent More Critical, Not Less" />
+    <meta property="og:description" content="When AI handles 90% of operational events, the remaining 10% becomes exponentially more consequential—and so do the engineers responsible for it." />
+    <meta property="og:url" content="https://aidaris.com/blog/aiops-sre-10-percent-engineer/" />
+    <meta property="og:image" content="https://aidaris.com/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_TW" />
+    <meta property="article:published_time" content="2026-03-04" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The 10% Engineer: Why AIOps Makes Site Reliability Talent More Critical, Not Less" />
+    <meta name="twitter:description" content="When AI handles 90% of operational events, the 10% that remains becomes exponentially more important—and so do the engineers responsible for it." />
+    <meta name="twitter:image" content="https://aidaris.com/assets/og-image.png" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://aidaris.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://aidaris.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "The 10% Engineer", "item": "https://aidaris.com/blog/aiops-sre-10-percent-engineer/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The 10% Engineer: Why AIOps Makes Site Reliability Talent More Critical, Not Less",
+      "description": "When AI handles 90% of operational events, the remaining 10% becomes exponentially more consequential—and so do the engineers responsible for it.",
+      "datePublished": "2026-03-04",
+      "author": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "inLanguage": "en",
+      "mainEntityOfPage": "https://aidaris.com/blog/aiops-sre-10-percent-engineer/"
+    }
+    </script>
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@400;500;600&family=Offside&display=swap" />
+    <link rel="preload" href="../../assets/fonts/Aka-AcidGR-SuperG.woff" as="font" type="font/woff" crossorigin />
+    <link rel="stylesheet" href="../../style.css" />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TLBV435S');</script>
+  </head>
+  <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLBV435S"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <canvas id="flow-canvas" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <a class="nav-brand" href="../../"><span class="nav-brand-initial">a</span><span class="nav-brand-text">AIDARIS</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../../who-we-are/">Who We Are</a>
+      <a class="nav-link" href="../../what-we-do/">What We Do</a>
+      <a class="nav-link" href="../../how-we-work/">How We Work</a>
+      <a class="nav-link" href="../../why-we-fit/">Why We Fit</a>
+      <a class="nav-link" href="../../when-to-engage/">When to Engage</a>
+      <a class="nav-link" href="../../where-to-find-us/">Where to Find Us</a>
+      <a class="nav-link nav-link--current" href="../">Blog</a>
+    </div>
+    <label for="nav-toggle" class="nav-menu-btn" aria-label="Open menu"><span></span><span></span><span></span></label>
+  </nav>
+
+  <main id="main-content" class="fit-section">
+    <div class="fit-content hero-content article-content">
+      <h1 class="eyebrow">The 10% Engineer: Why AIOps Makes Site Reliability Talent More Critical, Not Less</h1>
+      <p class="article-meta">March 2026 · 7 min read · Aidaris Technologies <span class="blog-category-badge">Engineering Philosophy</span></p>
+      <div class="article-tags">
+        <span class="blog-tag">SRE</span>
+        <span class="blog-tag">AIOps</span>
+        <span class="blog-tag">Reliability</span>
+      </div>
+
+      <div class="article-body">
+        <p>The central premise of AIOps is appealing: automate incident detection, response, and remediation so that engineers can stop fighting fires and start building better systems. In the most ambitious implementations, the goal is to reduce human intervention to 20%—or even 10%—of all operational events. Less on-call burden. Less alert fatigue. Less toil.</p>
+
+        <p>But here is the counterintuitive reality: <strong>when AI handles 90% of the work, the remaining 10% becomes exponentially more important—and so do the people responsible for it.</strong> AIOps does not make site reliability engineers less necessary. It makes excellent ones irreplaceable.</p>
+
+        <h2>The Problem That Created the Opening for AIOps</h2>
+        <p>SRE teams today are overwhelmed not by complexity, but by volume. A mid-sized SaaS company might generate thousands of alerts per day, the vast majority of which are false positives or resolvable through known runbooks. Engineers spend hours each week acknowledging, triaging, and resolving incidents that follow entirely predictable patterns. This is not engineering—it is maintenance labor, and it erodes both morale and cognitive capacity over time.</p>
+        <p>AIOps addresses this directly. Modern observability platforms, combined with ML-based anomaly detection and automated runbook execution, can now handle a substantial portion of operational events without human involvement:</p>
+        <ul>
+          <li>Correlate related events and reduce alert storms to single actionable signals</li>
+          <li>Identify root causes from distributed traces, logs, and metrics without manual investigation</li>
+          <li>Execute known remediations—restarting services, scaling resources, triggering rollbacks—based on learned patterns</li>
+          <li>Draft incident summaries and post-mortems from event timelines</li>
+          <li>Predict capacity exhaustion hours or days before it occurs</li>
+        </ul>
+        <p>The honest question this raises: if AI can do all of that, what is the SRE actually for?</p>
+
+        <h2>The 10% That Remains—and Why It Is the Hardest</h2>
+        <p>The incidents that AI cannot resolve are not the simple ones. They are the ones that have never happened before—novel failure modes emerging from new architectural decisions, unexpected third-party behavior, or combinations of conditions that no training data anticipated. These are precisely the cases where human judgment is most irreplaceable and most expensive to get wrong.</p>
+        <p>But the residual 10% of human responsibility goes beyond incident response. It encompasses the decisions that define the system's entire reliability contract:</p>
+        <ul>
+          <li><strong>What does "reliable" mean for this product?</strong> A 99.9% SLO and a 99.99% SLO are not just different numbers. They imply different cost structures, architectural constraints, and customer expectations. Only a human with full business context can make that commitment.</li>
+          <li><strong>What should AI be allowed to do automatically?</strong> Auto-restart is safe in most contexts. Auto-rollback during a live database migration may not be. Defining those guardrails requires domain expertise that cannot be learned from historical incidents alone.</li>
+          <li><strong>What does this incident reveal about the system's design?</strong> Post-incident analysis that leads to architectural change is a distinctly human capability. AIOps can surface patterns; only engineers can decide whether those patterns indicate a design flaw worth fixing—and whether the fix is worth the risk of introducing new ones.</li>
+          <li><strong>When has AI reached its limit and escalation is needed?</strong> Recognizing that an incident is genuinely novel—not a variant of something the system has seen before—is itself a form of judgment that requires deep system understanding.</li>
+        </ul>
+
+        <h2>AI Increases Leverage—and Raises the Stakes</h2>
+        <p>Here is the mechanism that makes SRE talent more critical in an AIOps world, not less.</p>
+        <p>Before AIOps, a team of five SREs might manage a system serving 100,000 users. With AIOps absorbing routine operational work, that same team might now manage a system serving one million users—or three separate systems at 300,000 each. The leverage multiplied. So did the consequences of every decision they make.</p>
+        <p>Consider the analogy of a commercial pilot with autopilot. Autopilot does not reduce the skill requirements of flying—it changes what those skills must cover. Pilots today need to understand the automation deeply enough to know when to trust it, when to override it, and how to recover when it fails in ways the designers did not anticipate. No airline made its cockpit less capable because autopilot exists. The best airlines made it more capable, because the moments when autopilot cannot help are the moments that matter most.</p>
+        <p>The same logic applies to SRE in an AIOps environment:</p>
+        <ul>
+          <li><strong>Every architectural decision carries more weight.</strong> A flawed reliability design now affects a system that was previously impossible to manage with the same headcount. Mistakes propagate at scale.</li>
+          <li><strong>Governing AI systems requires genuine expertise.</strong> Tuning anomaly detection thresholds, validating auto-remediation runbooks, reviewing AI-generated post-mortems for accuracy—these are new tasks that require a sophisticated understanding of both the AI system and the infrastructure it manages. They cannot be delegated to someone without deep domain knowledge.</li>
+          <li><strong>Novel failures are, by definition, the hardest ones.</strong> The incidents that reach human engineers in an AIOps environment are the ones AI could not handle. These are not routine. They demand the kind of disciplined, first-principles analysis that is difficult to develop and impossible to automate.</li>
+        </ul>
+
+        <h2>The Scarcity of the Judgment Layer</h2>
+        <p>There is one more dimension worth naming explicitly: if AIOps raises the bar for the SRE role, it simultaneously raises the scarcity of the people who meet that bar.</p>
+        <p>An SRE who can design reliability architectures, govern AI operational systems, and make sound judgment calls on novel incidents at scale is genuinely rare. The tools are getting better. The humans who can direct them effectively are not becoming more common. If anything, the concentration of real SRE expertise into smaller teams managing larger systems makes that expertise more valuable—not less—as a function of supply and demand.</p>
+        <p>This is the same pattern that emerged in manufacturing when automation took over repetitive assembly. The machine became commoditized. The engineering judgment required to design, calibrate, and improve the machine became the scarce resource. The teams that understood this built durable capability. The teams that treated it as a headcount reduction exercise discovered that the capability they eliminated was the same capability they needed when things went wrong at scale.</p>
+
+        <h2>What This Means for Building SRE Teams</h2>
+        <p>The conclusion for organizations is not "we need fewer SREs." It is "we need SREs with a different and significantly higher capability profile."</p>
+        <ul>
+          <li><strong>Stop hiring for on-call throughput.</strong> The ability to resolve a PagerDuty alert by following a runbook is increasingly something AIOps handles. Hire instead for the ability to design systems that rarely require human intervention in the first place—and for the judgment to handle the ones that do.</li>
+          <li><strong>Hire for architectural ownership of reliability.</strong> What SLOs should this system carry? Where are its reliability boundaries? What failure modes are acceptable? These questions should occupy the majority of your SRE team's cognitive capacity, and answering them well requires significantly more capability than runbook execution.</li>
+          <li><strong>Design the human-AI handoff deliberately.</strong> The boundary between what AI handles automatically and what requires human escalation is not self-evident. It must be explicitly designed, continuously tuned, and clearly owned. This is SRE work at the systems level—and it compounds in value over time.</li>
+          <li><strong>Recognize that engineering process determines AIOps quality.</strong> AI learns from your historical incidents. If your systems are poorly instrumented, your runbooks incomplete, and your post-mortems superficial, your AIOps system will inherit those limitations—and amplify them at scale. The engineers who set that foundation are not peripheral to your AIOps strategy. They are the foundation.</li>
+        </ul>
+
+        <h2>The 10% Is Not a Reduction. It Is a Concentration.</h2>
+        <p>When we say AIOps allows engineers to focus on 10% of operational work, the risk is that it sounds like a reduction in importance. It is the opposite. That 10% is not the easy 10% that is left over after AI handles the routine. It is the irreducible 10% that AI structurally cannot handle: novel failures, reliability as a business decision, system governance, and architectural judgment under uncertainty.</p>
+        <p>Concentrating engineering time on that 10% is not a cost-reduction strategy. It is a quality-elevation strategy. It means your reliability engineering talent is finally spending its time on the problems that only it can solve—not on the noise that any sufficiently trained model can process.</p>
+        <p>At AIDARIS, we build systems designed to deserve their reliability commitments—not to work around the absence of them. In an AIOps world, that foundational engineering work matters more than ever. If you are thinking about what your SRE function needs to look like as AI takes on more of the operational load, <a href="../../where-to-find-us/" style="color:#ffbd59;text-decoration:underline">we'd like to be part of that conversation</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="prev-next" aria-label="Previous and next page">
+    <div class="prev-next-inner">
+      <a href="../" class="prev-next-link prev-next-prev">← All Articles</a>
+      <a class="lang-switch prev-next-next" href="../../zh/blog/aiops-sre-10-percent-engineer/" title="切換為中文">中文</a>
+    </div>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="footer-tab">© 2025–2026 <span class="footer-brand">AIDARIS</span>. All rights reserved. <span class="footer-version" data-version>v</span></span>
+  </footer>
+
+  <script src="../../script.js"></script>
+  </body>
+</html>

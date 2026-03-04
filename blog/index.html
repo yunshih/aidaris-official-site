@@ -82,26 +82,47 @@
       <h1 class="eyebrow">Blog</h1>
       <p class="contact-page-intro">Insights on software engineering, cloud architecture, SRE, and building reliable systems.</p>
 
+      <div class="blog-filter-bar" role="group" aria-label="Filter articles by category">
+        <button class="blog-filter-btn active" data-filter="all">All</button>
+        <button class="blog-filter-btn" data-filter="ai-engineering">AI &amp; Engineering</button>
+        <button class="blog-filter-btn" data-filter="engineering-philosophy">Engineering Philosophy</button>
+      </div>
+
       <ul class="blog-list">
-        <li>
+        <li data-category="ai-engineering" data-tags="human-ai future-of-work team-building">
           <a class="blog-card" href="rise-of-human-ai-engineers/">
             <div class="blog-card-title">The End of the Traditional Software Engineer: The Rise of Human-AI Engineers</div>
-            <div class="blog-card-meta">February 2026</div>
+            <div class="blog-card-meta">February 2026 · 7 min read <span class="blog-category-badge">AI &amp; Engineering</span></div>
             <div class="blog-card-excerpt">The traditional software engineer role is disappearing. In its place: Human-AI Engineers who co-create with AI—directing, reviewing, and architecting alongside machine intelligence.</div>
+            <div class="blog-card-tags">
+              <span class="blog-tag" data-tag="human-ai">Human-AI</span>
+              <span class="blog-tag" data-tag="future-of-work">Future of Work</span>
+              <span class="blog-tag" data-tag="team-building">Team Building</span>
+            </div>
           </a>
         </li>
-        <li>
+        <li data-category="ai-engineering" data-tags="ai engineering-process strategy">
           <a class="blog-card" href="industrialization-vs-ai-in-software/">
             <div class="blog-card-title">From Factory Floors to AI Pipelines: What Software Can Learn from Manufacturing</div>
-            <div class="blog-card-meta">January 2026</div>
+            <div class="blog-card-meta">January 2026 · 6 min read <span class="blog-category-badge">AI &amp; Engineering</span></div>
             <div class="blog-card-excerpt">Manufacturing's industrialization took two centuries. Software's AI transformation is happening in years. The parallels—and the lessons—are worth paying attention to.</div>
+            <div class="blog-card-tags">
+              <span class="blog-tag" data-tag="ai">AI</span>
+              <span class="blog-tag" data-tag="engineering-process">Engineering Process</span>
+              <span class="blog-tag" data-tag="strategy">Strategy</span>
+            </div>
           </a>
         </li>
-        <li>
+        <li data-category="engineering-philosophy" data-tags="architecture decision-making best-practices">
           <a class="blog-card" href="first-principles-in-software/">
             <div class="blog-card-title">First Principles Thinking in Software Engineering</div>
-            <div class="blog-card-meta">December 2025</div>
+            <div class="blog-card-meta">December 2025 · 7 min read <span class="blog-category-badge">Engineering Philosophy</span></div>
             <div class="blog-card-excerpt">Most software decisions are made by analogy: "other companies do it this way." First principles thinking strips away assumptions and rebuilds from fundamental truths.</div>
+            <div class="blog-card-tags">
+              <span class="blog-tag" data-tag="architecture">Architecture</span>
+              <span class="blog-tag" data-tag="decision-making">Decision Making</span>
+              <span class="blog-tag" data-tag="best-practices">Best Practices</span>
+            </div>
           </a>
         </li>
       </ul>
@@ -120,5 +141,51 @@
   </footer>
 
   <script src="../script.js"></script>
+  <script>
+  (function () {
+    var filterBar = document.querySelector('.blog-filter-bar');
+    var items = Array.from(document.querySelectorAll('.blog-list li[data-category]'));
+    if (!filterBar || !items.length) return;
+
+    function applyFilter(filterValue) {
+      items.forEach(function (item) {
+        item.hidden = filterValue !== 'all' && item.dataset.category !== filterValue;
+      });
+    }
+
+    function setActiveBtn(activeFilter) {
+      filterBar.querySelectorAll('.blog-filter-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.dataset.filter === activeFilter);
+      });
+    }
+
+    filterBar.addEventListener('click', function (e) {
+      var btn = e.target.closest('.blog-filter-btn');
+      if (!btn) return;
+      var filter = btn.dataset.filter;
+      setActiveBtn(filter);
+      applyFilter(filter);
+      document.querySelectorAll('.blog-tag').forEach(function (t) { t.classList.remove('active'); });
+    });
+
+    document.querySelectorAll('.blog-tag[data-tag]').forEach(function (tag) {
+      tag.addEventListener('click', function (e) {
+        e.preventDefault();
+        var tagName = tag.dataset.tag;
+        var anyVisible = false;
+        items.forEach(function (item) {
+          var tags = item.dataset.tags ? item.dataset.tags.split(' ') : [];
+          var match = tags.includes(tagName);
+          item.hidden = !match;
+          if (match) anyVisible = true;
+        });
+        setActiveBtn('all');
+        document.querySelectorAll('.blog-tag').forEach(function (t) {
+          t.classList.toggle('active', t.dataset.tag === tagName);
+        });
+      });
+    });
+  })();
+  </script>
   </body>
 </html>

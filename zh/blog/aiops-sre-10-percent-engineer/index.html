@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-Hant" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>那剩下的 10%：為什麼 AIOps 讓 SRE 工程師更不可或缺 - AIDARIS Blog</title>
+    <meta name="description" content="當 AI 接手 90% 的運維事件，剩下的 10% 反而變得空前關鍵——負責那 10% 的工程師亦然。說明 AIOps 為何提升而非降低 SRE 人才的價值。" />
+    <link rel="canonical" href="https://aidaris.com/zh/blog/aiops-sre-10-percent-engineer/" />
+    <link rel="alternate" hreflang="en" href="https://aidaris.com/blog/aiops-sre-10-percent-engineer/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/aiops-sre-10-percent-engineer/" />
+    <link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/aiops-sre-10-percent-engineer/" />
+    <meta name="keywords" content="AIOps, SRE, 網站可靠性工程, 可靠性, 人機協作運維, 告警疲勞, SLO, AIDARIS" />
+    <meta name="theme-color" content="#020301" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AIDARIS" />
+    <meta property="og:title" content="那剩下的 10%：為什麼 AIOps 讓 SRE 工程師更不可或缺" />
+    <meta property="og:description" content="當 AI 接手 90% 的運維事件，剩下的 10% 反而變得空前關鍵——負責那 10% 的工程師亦然。" />
+    <meta property="og:url" content="https://aidaris.com/zh/blog/aiops-sre-10-percent-engineer/" />
+    <meta property="og:image" content="https://aidaris.com/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="article:published_time" content="2026-03-04" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="那剩下的 10%：為什麼 AIOps 讓 SRE 工程師更不可或缺" />
+    <meta name="twitter:description" content="當 AI 接手 90% 的運維事件，剩下的 10% 反而變得空前關鍵——負責那 10% 的工程師亦然。" />
+    <meta name="twitter:image" content="https://aidaris.com/assets/og-image.png" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://aidaris.com/" },
+        { "@type": "ListItem", "position": 2, "name": "部落格", "item": "https://aidaris.com/zh/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "那剩下的 10%", "item": "https://aidaris.com/zh/blog/aiops-sre-10-percent-engineer/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "那剩下的 10%：為什麼 AIOps 讓 SRE 工程師更不可或缺",
+      "description": "當 AI 接手 90% 的運維事件，剩下的 10% 反而變得空前關鍵——負責那 10% 的工程師亦然。說明 AIOps 為何提升而非降低 SRE 人才的價值。",
+      "datePublished": "2026-03-04",
+      "author": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "inLanguage": "zh-Hant",
+      "mainEntityOfPage": "https://aidaris.com/zh/blog/aiops-sre-10-percent-engineer/"
+    }
+    </script>
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@400;500;600&family=Offside&display=swap" />
+    <link rel="preload" href="../../../assets/fonts/Aka-AcidGR-SuperG.woff" as="font" type="font/woff" crossorigin />
+    <link rel="stylesheet" href="../../../style.css" />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TLBV435S');</script>
+  </head>
+  <body>
+  <a href="#main-content" class="skip-link">跳至內容</a>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLBV435S"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <canvas id="flow-canvas" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="主要導覽">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <a class="nav-brand" href="../../../"><span class="nav-brand-initial">a</span><span class="nav-brand-text">AIDARIS</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../../../who-we-are/">Who We Are</a>
+      <a class="nav-link" href="../../../what-we-do/">What We Do</a>
+      <a class="nav-link" href="../../../how-we-work/">How We Work</a>
+      <a class="nav-link" href="../../../why-we-fit/">Why We Fit</a>
+      <a class="nav-link" href="../../../when-to-engage/">When to Engage</a>
+      <a class="nav-link" href="../../../where-to-find-us/">Where to Find Us</a>
+      <a class="nav-link nav-link--current" href="../">Blog</a>
+    </div>
+    <label for="nav-toggle" class="nav-menu-btn" aria-label="開啟選單"><span></span><span></span><span></span></label>
+  </nav>
+
+  <main id="main-content" class="fit-section">
+    <div class="fit-content hero-content article-content">
+      <h1 class="eyebrow">那剩下的 10%：為什麼 AIOps 讓 SRE 工程師更不可或缺</h1>
+      <p class="article-meta">2026 年 3 月 · 約 7 分鐘 · Aidaris Technologies <span class="blog-category-badge">工程哲學</span></p>
+      <div class="article-tags">
+        <span class="blog-tag">SRE</span>
+        <span class="blog-tag">AIOps</span>
+        <span class="blog-tag">可靠性</span>
+      </div>
+
+      <div class="article-body">
+        <p>AIOps 的核心主張令人嚮往：自動化事件偵測、響應與修復，讓工程師不再疲於救火，而能專注於建構更好的系統。在最積極的實踐中，目標是將人工介入降至所有運維事件的 20%，甚至 10%。更少的 on-call 負擔、更少的告警疲勞、更少的重複性勞動。</p>
+
+        <p>但現實中存在一個反直覺的真相：<strong>當 AI 承擔 90% 的工作，剩下的 10% 反而變得空前關鍵——負責這 10% 的工程師亦然。</strong> AIOps 不會讓 SRE 工程師變得可有可無，而是讓頂尖的 SRE 成為真正無可取代的存在。</p>
+
+        <h2>讓 AIOps 得以出現的問題根源</h2>
+        <p>今天的 SRE 團隊並非被複雜度淹沒，而是被量給壓垮的。一家中型 SaaS 公司每天可能產生數千則告警，其中絕大多數是誤報，或者照著既有 runbook 就能解決的事件。工程師每週花費大量時間在確認、分類、處理那些完全可預測的事件。這不是工程工作——這是維護性勞動，長期下來會同時侵蝕士氣與認知能量。</p>
+        <p>AIOps 直接回應這個問題。結合機器學習異常偵測與自動化 runbook 執行的現代可觀測性平台，已能在無需人工介入的情況下處理相當比例的運維事件：</p>
+        <ul>
+          <li>關聯相關事件，將告警風暴收斂為單一可行動的訊號</li>
+          <li>在不需人工調查的情況下，從分散式 trace、log 與 metrics 中定位根本原因</li>
+          <li>根據學習到的模式執行已知的修復動作——重啟服務、擴容、觸發 rollback</li>
+          <li>從事件時間軸自動產生事件摘要與事後分析草稿</li>
+          <li>提前數小時乃至數天預測容量耗盡的風險</li>
+        </ul>
+        <p>這引出一個誠實的問題：如果 AI 能做到這一切，SRE 的存在意義到底是什麼？</p>
+
+        <h2>那剩下的 10%——以及為何它是最難的部分</h2>
+        <p>AI 無法解決的事件，不會是簡單的那些。而是從未發生過的那些——從新架構決策、非預期的第三方行為，或任何訓練資料從未見過的條件組合中所衍生的全新故障模式。而這恰恰是人類判斷力最不可取代、出錯代價也最高昂的地方。</p>
+        <p>但人工職責的這 10% 不只是事件響應。它涵蓋了定義整個系統可靠性承諾的決策：</p>
+        <ul>
+          <li><strong>「可靠」對這個產品意味著什麼？</strong> 99.9% 和 99.99% 的 SLO 不只是數字上的差異，它們意味著截然不同的成本結構、架構約束與客戶期望。只有具備完整業務脈絡的人，才能做出這樣的承諾。</li>
+          <li><strong>AI 可以自動執行到什麼程度？</strong> 多數情境下，自動重啟是安全的。在資料庫遷移期間自動 rollback，則未必如此。定義這些邊界，需要的領域知識不是光靠歷史事件就能學到的。</li>
+          <li><strong>這次事件透露了系統設計上的什麼問題？</strong> 能夠進而帶動架構改變的事後分析，是一種本質上屬於人類的能力。AIOps 可以浮現出模式；只有工程師能判斷這些模式是否指向值得修正的設計缺陷——以及修正的代價是否可接受。</li>
+          <li><strong>何時代表 AI 已到達極限、需要人工接手？</strong> 辨別出一個事件是真正的新類型——而非系統見過的某種變體——本身就是一種需要深刻系統理解的判斷力。</li>
+        </ul>
+
+        <h2>AI 放大了槓桿，也提高了賭注</h2>
+        <p>以下是 AIOps 世界中 SRE 人才更加關鍵而非較不重要的機制。</p>
+        <p>在 AIOps 之前，五名 SRE 可能管理一個服務十萬名使用者的系統。當 AIOps 吸收了例行運維工作，同樣這五個人，現在可能在管理一個服務百萬名使用者的系統——或三個各有三十萬使用者的系統。槓桿倍增了，每一個決策的後果也隨之倍增。</p>
+        <p>想想啟用了自動駕駛的商業飛行員。自動駕駛並不降低飛行的技術要求，它改變了那些技術必須覆蓋的範疇。今天的飛行員需要深入理解自動化系統，知道何時信任它、何時超越它，以及當它以設計者未預料的方式失效時如何復原。沒有任何一家航空公司因為有了自動駕駛就讓駕駛艙變得較不稱職。最優秀的航空公司反而讓它更稱職——因為自動駕駛無法應對的那些時刻，正是最關鍵的時刻。</p>
+        <p>同樣的邏輯適用於 AIOps 環境中的 SRE：</p>
+        <ul>
+          <li><strong>每一個架構決策都承載更大的份量。</strong> 有缺陷的可靠性設計，現在影響的是一個以前根本無法用相同人力管理的系統。錯誤在規模中擴散。</li>
+          <li><strong>治理 AI 系統需要真正的專業能力。</strong> 調整異常偵測的閾值、驗證自動修復 runbook 的正確性、審查 AI 生成的事後分析是否準確——這些新任務需要對 AI 系統本身與其所管理的基礎設施都有深刻理解，無法委由缺乏領域知識的人來做。</li>
+          <li><strong>新型故障，從定義上就是最難的那些。</strong> 在 AIOps 環境中抵達人工工程師的事件，都是 AI 無法處理的那些。這些不是例行事件，它們需要那種難以養成、也不可能自動化的第一性原理式分析。</li>
+        </ul>
+
+        <h2>判斷力層次的稀缺性</h2>
+        <p>還有一個值得明確說出的維度：如果 AIOps 提高了 SRE 職位的門檻，它同時也提高了能達到這個門檻的人的稀缺程度。</p>
+        <p>一位能夠設計可靠性架構、治理 AI 運維系統、並在規模化環境中對新型事件做出穩健判斷的 SRE，是真正稀有的存在。工具在變好；能夠有效指揮這些工具的人，並沒有變得更普遍。更小的團隊管理更大的系統，意味著真正的 SRE 專業能力在供需關係上只會更加珍貴——而非更不珍貴。</p>
+        <p>當自動化接管了製造業的重複性組裝工作，同樣的模式出現了：機器變得商品化，設計、校準並改進機器所需的工程判斷力，成了稀缺資源。理解這一點的團隊建立起了持久的競爭能力；把它當成降低人力成本機會的團隊，發現自己裁撤掉的正是大規模出錯時最需要的那種能力。</p>
+
+        <h2>這對建構 SRE 團隊意味著什麼</h2>
+        <p>對組織來說，結論不是「我們需要更少的 SRE」，而是「我們需要能力輪廓截然不同、且顯著更高的 SRE」。</p>
+        <ul>
+          <li><strong>停止招募 on-call 吞吐量。</strong> 靠著照 runbook 解決 PagerDuty 告警的能力，越來越多是 AIOps 在做的事。改為招募那些能夠從根本上設計出幾乎不需要人工介入的系統的人——以及在真正需要介入時有判斷力的人。</li>
+          <li><strong>招募能主導可靠性架構的工程師。</strong> 這個系統應該承諾什麼樣的 SLO？它的可靠性邊界在哪裡？哪些故障模式是可接受的？這些問題應該佔據 SRE 團隊的大部分認知資源，而回答好這些問題，需要的能力遠比執行 runbook 深厚。</li>
+          <li><strong>有意識地設計人機交接點。</strong> AI 自動處理什麼、什麼需要人工升級，這個邊界不是自明的。它必須被明確設計、持續調整、清晰歸屬。這是系統層次的 SRE 工作，而且隨著時間推移會複利增值。</li>
+          <li><strong>認識到工程流程決定 AIOps 的品質上限。</strong> AI 從你的歷史事件中學習。如果你的系統可觀測性不足、runbook 不完整、事後分析流於形式，你的 AIOps 系統就會繼承這些局限——並在規模中放大它們。奠定這個基礎的工程師，不是你 AIOps 策略的周邊角色，他們就是那個基礎。</li>
+        </ul>
+
+        <h2>那 10% 不是縮減，而是濃縮</h2>
+        <p>當我們說 AIOps 讓工程師可以聚焦在 10% 的運維工作上，風險在於這聽起來像是重要性的降低。事實恰恰相反。那 10% 不是 AI 處理掉例行事務之後剩下的輕鬆部分，而是 AI 在結構上無法處理的那部分：新型故障、作為商業決策的可靠性、系統治理，以及在不確定性下的架構判斷。</p>
+        <p>讓工程時間集中在那 10% 上，不是成本削減策略，而是品質提升策略。這意味著你的可靠性工程人才，終於可以把時間花在只有他們能解決的問題上——而不是任何一個訓練充分的模型都能處理的雜訊。</p>
+        <p>在 AIDARIS，我們建構的系統是設計來值得它所承諾的可靠性——而不是在可靠性缺失的情況下設法繞過去。在 AIOps 的世界裡，這種奠基性的工程工作比以往任何時候都更加關鍵。如果你正在思考，隨著 AI 承擔越來越多的運維負擔，你的 SRE 職能需要演變成什麼樣子，<a href="../../../where-to-find-us/" style="color:#ffbd59;text-decoration:underline">我們希望參與這個對話</a>。</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="prev-next" aria-label="上一頁與下一頁">
+    <div class="prev-next-inner">
+      <a href="../" class="prev-next-link prev-next-prev">← 所有文章</a>
+      <a class="lang-switch prev-next-next" href="../../../blog/aiops-sre-10-percent-engineer/" title="Switch to English">EN</a>
+    </div>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="footer-tab">© 2025–2026 <span class="footer-brand">AIDARIS</span>. All rights reserved. <span class="footer-version" data-version>v</span></span>
+  </footer>
+
+  <script src="../../../script.js"></script>
+  </body>
+</html>

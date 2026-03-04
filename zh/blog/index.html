@@ -83,26 +83,47 @@
       <h1 class="eyebrow">部落格</h1>
       <p class="contact-page-intro">關於軟體工程、雲端架構、SRE 與建構可靠系統的見解。</p>
 
+      <div class="blog-filter-bar" role="group" aria-label="依分類篩選文章">
+        <button class="blog-filter-btn active" data-filter="all">全部</button>
+        <button class="blog-filter-btn" data-filter="ai-engineering">AI 與工程</button>
+        <button class="blog-filter-btn" data-filter="engineering-philosophy">工程哲學</button>
+      </div>
+
       <ul class="blog-list">
-        <li>
+        <li data-category="ai-engineering" data-tags="human-ai future-of-work team-building">
           <a class="blog-card" href="rise-of-human-ai-engineers/">
             <div class="blog-card-title">傳統軟體工程師的終結：人機協作工程師的崛起</div>
-            <div class="blog-card-meta">2026 年 2 月</div>
+            <div class="blog-card-meta">2026 年 2 月 · 約 7 分鐘 <span class="blog-category-badge">AI 與工程</span></div>
             <div class="blog-card-excerpt">傳統的軟體工程師角色正在消失。取而代之的是：與 AI 共同創作的人機協作工程師——指揮、審查並與機器智慧攜手架構系統。</div>
+            <div class="blog-card-tags">
+              <span class="blog-tag" data-tag="human-ai">人機協作</span>
+              <span class="blog-tag" data-tag="future-of-work">工作未來</span>
+              <span class="blog-tag" data-tag="team-building">團隊建設</span>
+            </div>
           </a>
         </li>
-        <li>
+        <li data-category="ai-engineering" data-tags="ai engineering-process strategy">
           <a class="blog-card" href="industrialization-vs-ai-in-software/">
             <div class="blog-card-title">從工廠車間到 AI 流水線：軟體能從製造業學到什麼</div>
-            <div class="blog-card-meta">2026 年 1 月</div>
+            <div class="blog-card-meta">2026 年 1 月 · 約 6 分鐘 <span class="blog-category-badge">AI 與工程</span></div>
             <div class="blog-card-excerpt">製造業的工業化花了兩個世紀，軟體的 AI 轉型卻只需數年。這些平行對照——以及其中的教訓——值得我們關注。</div>
+            <div class="blog-card-tags">
+              <span class="blog-tag" data-tag="ai">AI</span>
+              <span class="blog-tag" data-tag="engineering-process">工程流程</span>
+              <span class="blog-tag" data-tag="strategy">策略</span>
+            </div>
           </a>
         </li>
-        <li>
+        <li data-category="engineering-philosophy" data-tags="architecture decision-making best-practices">
           <a class="blog-card" href="first-principles-in-software/">
             <div class="blog-card-title">第一性原理在軟體工程中的思維與應用</div>
-            <div class="blog-card-meta">2025 年 12 月</div>
+            <div class="blog-card-meta">2025 年 12 月 · 約 7 分鐘 <span class="blog-category-badge">工程哲學</span></div>
             <div class="blog-card-excerpt">大多數軟體決策都是靠類比做出的：「別的公司這樣做。」第一性原理思維剝除假設，從根本事實重新推導。</div>
+            <div class="blog-card-tags">
+              <span class="blog-tag" data-tag="architecture">架構</span>
+              <span class="blog-tag" data-tag="decision-making">決策思維</span>
+              <span class="blog-tag" data-tag="best-practices">最佳實踐</span>
+            </div>
           </a>
         </li>
       </ul>
@@ -121,5 +142,48 @@
   </footer>
 
   <script src="../../script.js"></script>
+  <script>
+  (function () {
+    var filterBar = document.querySelector('.blog-filter-bar');
+    var items = Array.from(document.querySelectorAll('.blog-list li[data-category]'));
+    if (!filterBar || !items.length) return;
+
+    function applyFilter(filterValue) {
+      items.forEach(function (item) {
+        item.hidden = filterValue !== 'all' && item.dataset.category !== filterValue;
+      });
+    }
+
+    function setActiveBtn(activeFilter) {
+      filterBar.querySelectorAll('.blog-filter-btn').forEach(function (btn) {
+        btn.classList.toggle('active', btn.dataset.filter === activeFilter);
+      });
+    }
+
+    filterBar.addEventListener('click', function (e) {
+      var btn = e.target.closest('.blog-filter-btn');
+      if (!btn) return;
+      var filter = btn.dataset.filter;
+      setActiveBtn(filter);
+      applyFilter(filter);
+      document.querySelectorAll('.blog-tag').forEach(function (t) { t.classList.remove('active'); });
+    });
+
+    document.querySelectorAll('.blog-tag[data-tag]').forEach(function (tag) {
+      tag.addEventListener('click', function (e) {
+        e.preventDefault();
+        var tagName = tag.dataset.tag;
+        items.forEach(function (item) {
+          var tags = item.dataset.tags ? item.dataset.tags.split(' ') : [];
+          item.hidden = !tags.includes(tagName);
+        });
+        setActiveBtn('all');
+        document.querySelectorAll('.blog-tag').forEach(function (t) {
+          t.classList.toggle('active', t.dataset.tag === tagName);
+        });
+      });
+    });
+  })();
+  </script>
   </body>
 </html>

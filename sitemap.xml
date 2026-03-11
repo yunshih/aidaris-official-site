@@ -48,7 +48,7 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/" />
-    <lastmod>2026-03-04</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -57,9 +57,27 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/" />
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/" />
-    <lastmod>2026-03-04</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/blog/zero-touch-operations/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/zero-touch-operations/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/zero-touch-operations/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/zero-touch-operations/" />
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/zh/blog/zero-touch-operations/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/zero-touch-operations/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/zero-touch-operations/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/zero-touch-operations/" />
+    <lastmod>2026-03-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://aidaris.com/blog/aiops-sre-10-percent-engineer/</loc>

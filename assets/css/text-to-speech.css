@@ -202,7 +202,7 @@
 }
 
 /* Accessibility */
-.tts-btn:focus {
+.tts-btn:focus-visible {
   outline: 2px solid var(--accent, #b6ea5f);
   outline-offset: 2px;
 }

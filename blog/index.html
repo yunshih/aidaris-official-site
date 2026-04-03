@@ -84,9 +84,9 @@
       <p class="contact-page-intro">Insights on software engineering, cloud architecture, SRE, and building reliable systems.</p>
 
       <div class="blog-filter-bar" role="group" aria-label="Filter articles by category">
-        <button class="blog-filter-btn active" data-filter="all">All</button>
-        <button class="blog-filter-btn" data-filter="ai-engineering">AI &amp; Engineering</button>
-        <button class="blog-filter-btn" data-filter="engineering-philosophy">Engineering Philosophy</button>
+        <button class="blog-filter-btn active" data-filter="all" aria-pressed="true">All</button>
+        <button class="blog-filter-btn" data-filter="ai-engineering" aria-pressed="false">AI &amp; Engineering</button>
+        <button class="blog-filter-btn" data-filter="engineering-philosophy" aria-pressed="false">Engineering Philosophy</button>
       </div>
 
       <ul class="blog-list">
@@ -241,7 +241,9 @@
 
     function setActiveBtn(activeFilter) {
       filterBar.querySelectorAll('.blog-filter-btn').forEach(function (btn) {
-        btn.classList.toggle('active', btn.dataset.filter === activeFilter);
+        var isActive = btn.dataset.filter === activeFilter;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
       });
     }
 

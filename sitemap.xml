@@ -151,4 +151,94 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://aidaris.com/blog/human-oversight-layer-4/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/human-oversight-layer-4/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/human-oversight-layer-4/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/human-oversight-layer-4/" />
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/zh/blog/human-oversight-layer-4/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/human-oversight-layer-4/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/human-oversight-layer-4/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/human-oversight-layer-4/" />
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/blog/immutable-infrastructure-layer-3/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/immutable-infrastructure-layer-3/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/immutable-infrastructure-layer-3/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/immutable-infrastructure-layer-3/" />
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/zh/blog/immutable-infrastructure-layer-3/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/immutable-infrastructure-layer-3/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/immutable-infrastructure-layer-3/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/immutable-infrastructure-layer-3/" />
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/blog/observability-layer-0/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/observability-layer-0/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/observability-layer-0/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/observability-layer-0/" />
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/zh/blog/observability-layer-0/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/observability-layer-0/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/observability-layer-0/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/observability-layer-0/" />
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/blog/runbook-automation-layer-1/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/runbook-automation-layer-1/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/runbook-automation-layer-1/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/runbook-automation-layer-1/" />
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/zh/blog/runbook-automation-layer-1/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/runbook-automation-layer-1/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/runbook-automation-layer-1/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/runbook-automation-layer-1/" />
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/blog/slos-control-loops-layer-2/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/slos-control-loops-layer-2/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/slos-control-loops-layer-2/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/slos-control-loops-layer-2/" />
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://aidaris.com/zh/blog/slos-control-loops-layer-2/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://aidaris.com/blog/slos-control-loops-layer-2/" />
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/slos-control-loops-layer-2/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/slos-control-loops-layer-2/" />
+    <lastmod>2026-04-03</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

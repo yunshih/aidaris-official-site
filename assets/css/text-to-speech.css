@@ -187,8 +187,22 @@
   }
 }
 
+/* Error message */
+.tts-error {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  color: #ffbd59;
+  opacity: 0.9;
+  animation: tts-fade-out 6s ease forwards;
+}
+
+@keyframes tts-fade-out {
+  0%, 70% { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+
 /* Accessibility */
-.tts-btn:focus {
+.tts-btn:focus-visible {
   outline: 2px solid var(--accent, #b6ea5f);
   outline-offset: 2px;
 }

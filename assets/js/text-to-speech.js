@@ -207,14 +207,14 @@ class ArticleTextToSpeech {
 }
 
 // Auto-initialize when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => {
-    if (new ArticleTextToSpeech().isSupported()) {
-      new ArticleTextToSpeech();
-    }
-  });
-} else {
-  if (new ArticleTextToSpeech().isSupported()) {
+function initTTS() {
+  if ('speechSynthesis' in window) {
     new ArticleTextToSpeech();
   }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initTTS);
+} else {
+  initTTS();
 }

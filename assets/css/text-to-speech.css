@@ -77,6 +77,17 @@
   display: none;
 }
 
+/* Paragraph Highlighting */
+.article-body p.tts-highlighted,
+.article-body li.tts-highlighted,
+.article-body h2.tts-highlighted {
+  background: rgba(182, 234, 95, 0.15);
+  padding: 0.5rem;
+  border-left: 3px solid var(--accent, #b6ea5f);
+  transition: all 0.3s ease;
+  border-radius: 2px;
+}
+
 
 /* Visual Feedback - Playing State */
 .tts-icon-speaker {

@@ -262,6 +262,13 @@ h1 {
   color: var(--accent);
 }
 
+.nav-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+  color: var(--accent);
+}
+
 .nav-link--current {
   color: var(--accent);
   cursor: default;
@@ -504,6 +511,12 @@ h1 {
   color: var(--accent);
   background: rgba(182, 234, 95, 0.08);
 }
+
+.prev-next-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  color: var(--accent);
+}
 .prev-next-prev {
   margin-right: auto;
 }
@@ -541,6 +554,40 @@ h1 {
 .footer-brand {
   font-family: "Gugi", "Offside", "Noto Sans TC", "SF Pro Display", "Inter", sans-serif;
   letter-spacing: 0.08em;
+}
+
+/* Tablet: 768px–859px — fills gap between desktop and mobile nav breakpoint */
+@media (min-width: 768px) and (max-width: 859px) {
+  .hero {
+    padding: 120px 6vw 40px;
+    justify-content: center;
+  }
+
+  .hero-content {
+    width: 70vw;
+    max-width: 600px;
+  }
+
+  .fit-section {
+    padding: 110px 6vw 60px;
+  }
+
+  .fit-section .hero-content {
+    max-width: 560px;
+  }
+
+  .site-nav {
+    padding: 14px 6vw;
+  }
+
+  .nav-link {
+    font-size: 0.8rem;
+    gap: 14px;
+  }
+
+  .nav-links {
+    gap: 14px;
+  }
 }
 
 @media (max-width: 860px) {

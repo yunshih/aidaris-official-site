@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layer 2: SLOs as Control Loops — From Metrics to Governance - AIDARIS Blog</title>
+    <meta name="description" content="Transform SLOs from reporting metrics into active control signals. Learn how SLO violations drive automatic decisions about deployments, scaling, and resource allocation." />
+    <link rel="canonical" href="https://aidaris.com/blog/slos-control-loops-layer-2/" />
+    <link rel="alternate" hreflang="en" href="https://aidaris.com/blog/slos-control-loops-layer-2/" />
+    <meta name="theme-color" content="#020301" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AIDARIS" />
+    <meta property="og:title" content="Layer 2: SLOs as Control Loops — From Metrics to Governance" />
+    <meta property="og:description" content="SLOs are not just reporting metrics. They are the signals that drive autonomous system governance." />
+    <meta property="og:url" content="https://aidaris.com/blog/slos-control-loops-layer-2/" />
+    <meta property="og:image" content="https://aidaris.com/assets/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="article:published_time" content="2026-04-15" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Layer 2: SLOs as Control Loops" />
+    <meta name="twitter:description" content="SLOs as active governance signals, not passive metrics." />
+    <meta name="twitter:image" content="https://aidaris.com/assets/og-image.png" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://aidaris.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://aidaris.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Layer 2: SLOs as Control Loops", "item": "https://aidaris.com/blog/slos-control-loops-layer-2/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Layer 2: SLOs as Control Loops — From Metrics to Governance",
+      "description": "Transform SLOs from reporting metrics into active control signals.",
+      "datePublished": "2026-04-15",
+      "author": {"@type": "Organization", "name": "Aidaris Technologies Ltd.", "url": "https://aidaris.com"},
+      "publisher": {"@type": "Organization", "name": "Aidaris Technologies Ltd.", "url": "https://aidaris.com"},
+      "inLanguage": "en",
+      "mainEntityOfPage": "https://aidaris.com/blog/slos-control-loops-layer-2/"
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@400;500;600&family=Offside&display=swap" />
+    <link rel="preload" href="../../assets/fonts/Aka-AcidGR-SuperG.woff" as="font" type="font/woff" crossorigin />
+    <link rel="stylesheet" href="../../style.css" />
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TLBV435S');</script>
+  </head>
+  <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLBV435S" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <canvas id="flow-canvas" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <a class="nav-brand" href="../../"><span class="nav-brand-initial">a</span><span class="nav-brand-text">AIDARIS</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../../who-we-are/">Who We Are</a>
+      <a class="nav-link" href="../../what-we-do/">What We Do</a>
+      <a class="nav-link" href="../../how-we-work/">How We Work</a>
+      <a class="nav-link" href="../../why-we-fit/">Why We Fit</a>
+      <a class="nav-link" href="../../when-to-engage/">When to Engage</a>
+      <a class="nav-link" href="../../where-to-find-us/">Where to Find Us</a>
+      <a class="nav-link nav-link--current" href="../">Blog</a>
+    </div>
+    <label for="nav-toggle" class="nav-menu-btn" aria-label="Open menu"><span></span><span></span><span></span></label>
+  </nav>
+
+  <main id="main-content" class="fit-section">
+    <div class="fit-content hero-content article-content">
+      <h1 class="eyebrow">Layer 2: SLOs as Control Loops — From Metrics to Governance</h1>
+      <p class="article-meta">April 2026 · 13 min read · Aidaris Technologies <span class="blog-category-badge">Architecture Series</span></p>
+      <div class="article-tags">
+        <span class="blog-tag">SLO</span>
+        <span class="blog-tag">Reliability</span>
+        <span class="blog-tag">Control Systems</span>
+        <span class="blog-tag">Error Budget</span>
+      </div>
+
+      <div class="article-body">
+        <p>Most organizations treat SLOs (Service Level Objectives) as a reporting mechanism: a dashboard that confirms at the end of the month whether they met their reliability commitments. This is backwards. In mature autonomous operations, SLOs are not reports—they are <em>active control signals</em> that govern system behavior in real time.</p>
+
+        <p>When your error budget is being consumed too quickly, the system automatically throttles deployments. When a canary deployment starts degrading your SLO, it rolls back automatically. When capacity pressure will push latency past your SLO threshold in the next hour, autoscaling fires before the threshold is crossed. The SLO is not something you check at the end of the month; it is something the system defends, moment by moment, with automated decisions.</p>
+
+        <p>This requires a shift in how you think about SLOs. They are not aspirational targets. They are operational constraints that the system must respect.</p>
+
+        <h2>SLOs as First Principles</h2>
+
+        <p>Before you can use SLOs as control signals, you must define them correctly. And "correctly" means grounded in business reality, not technical fashion.</p>
+
+        <p>Ask yourself:</p>
+
+        <ul>
+          <li><strong>Why this SLO?</strong> If your answer is "everyone else does 99.99%," you have not thought about this. Your answer should be "our customers will churn if we drop below 99.95%, so that is our SLO."</li>
+          <li><strong>What happens if we miss it?</strong> If missing your SLO costs you $0, it is not an SLO. It is a guess. Real SLOs have business consequences.</li>
+          <li><strong>Can we achieve it reliably?</strong> If your SLO requires 99.99% availability but your database is only available 99.95%, you cannot meet your SLO. The constraint is upstream.</li>
+        </ul>
+
+        <p>The SLOs that work as control loops are the ones grounded in first principles: what does the business actually need, and what does our infrastructure actually support?</p>
+
+        <h2>The Architecture of SLO-Driven Control</h2>
+
+        <h3>Measuring SLOs: From Prometheus to Grafana</h3>
+
+        <p>An SLO is defined in terms of Service Level Indicators (SLIs)—the actual metrics you measure. For a web service:</p>
+
+        <pre><code>SLI: (successful requests) / (total requests)
+SLO: SLI ≥ 99.95% over rolling 30-day window
+
+Where:
+- successful = HTTP status 2xx or 3xx (configurable)
+- total = all requests (including failures)</code></pre>
+
+        <p>In Prometheus, this looks like:</p>
+
+        <pre><code># Prometheus recording rule
+slo:request_success_rate:30d =
+  sum_over_time(
+    (sum(rate(http_requests_total{status=~"2..|3.."}[5m])) /
+     sum(rate(http_requests_total[5m])))
+    [30d]
+  )
+
+# Error budget
+error_budget:available =
+  (1 - 0.9995) * 30 * 24 * 60  # minutes per 30 days
+  = ~2160 minutes allowed to fail
+
+# Error budget consumed
+error_budget:consumed =
+  (1 - slo:request_success_rate:30d) * 30 * 24 * 60
+
+# Burn rate (how fast are we consuming error budget?)
+error_budget:burn_rate:1h =
+  error_budget:consumed:1h / error_budget:available</code></pre>
+
+        <p>Grafana visualizes this. A healthy SLO dashboard shows:</p>
+
+        <ul>
+          <li>Current compliance percentage (green if ≥99.95%, yellow if in danger, red if violated)</li>
+          <li>Error budget remaining (days before you hit your limit at current burn rate)</li>
+          <li>Burn rate (how fast are you consuming error budget?)</li>
+          <li>Trend (is burn rate accelerating or decelerating?)</li>
+        </ul>
+
+        <h3>The Control Loop: From SLO to Action</h3>
+
+        <p>Once you have SLOs measured in real time, you feed them into control loops:</p>
+
+        <pre><code>┌──────────────────────────────────────────────────────┐
+│  Every decision point in your system:                 │
+│  - Can we deploy?                                     │
+│  - Should we scale?                                   │
+│  - Are we spending error budget wisely?               │
+└──────────────────┬───────────────────────────────────┘
+                   │
+                   ▼
+        ┌──────────────────────┐
+        │ Query current SLO    │ (Prometheus)
+        │ error budget burn    │
+        └──────────┬───────────┘
+                   │
+        ┌──────────▼────────────────────────────────┐
+        │ Decision Engine                            │
+        │ IF error_budget:burn_rate > threshold THEN│
+        │   THROTTLE deployments                    │
+        │   SCALE aggressively                      │
+        │   ALERT: Error budget at risk             │
+        └──────────┬────────────────────────────────┘
+                   │
+    ┌──────────────┴──────────────┬──────────────┐
+    ▼                             ▼              ▼
+Deployment gate            Autoscaler        Alerting
+(CI/CD pauses)         (add capacity)   (notify humans)
+                   │
+        ┌──────────▼──────────┐
+        │ Measure impact      │ (Prometheus)
+        │ Did burn rate change?
+        └─────────────────────┘</code></pre>
+
+        <h3>Example 1: Deployment Throttling</h3>
+
+        <p>When your error budget is being consumed faster than expected, deploying new code is a liability. You might introduce bugs that make things worse.</p>
+
+        <pre><code>Deployment policy:
+IF error_budget:burn_rate:1h > 1.0
+  (meaning you are consuming budget 1x faster than sustainable)
+THEN
+  - Disable automated deployments
+  - Require explicit approval for manual deployments
+  - Notify on-call team: "Error budget under pressure"
+  - Skip low-priority deployments
+
+IF burn_rate < 0.5
+  (meaning you have time to spare)
+THEN
+  - Re-enable automated deployments
+  - Can deploy more aggressively</code></pre>
+
+        <p>This is not a human making a judgment call every time. This is a <em>policy encoded in the system</em>, querying Prometheus every minute and making decisions based on reality.</p>
+
+        <h3>Example 2: Canary Auto-Rollback</h3>
+
+        <p>A new deployment goes into canary (serving 10% of traffic). Within seconds, error rate jumps from 0.05% to 0.5%. You specified an SLO of 99.95%; this deployment is causing it to breach. What happens?</p>
+
+        <pre><code>Canary monitoring (every 30 seconds):
+IF (errors in canary) / (requests to canary) > SLO_threshold
+  AND (number of affected users < safety_threshold)
+THEN
+  - Automatically rollback the canary
+  - Notify on-call: "Canary rollback triggered due to SLO breach"
+  - Preserve all telemetry for post-mortem
+
+The decision is automatic.
+The rollback is immediate.
+Human involvement: post-incident review.</code></pre>
+
+        <p>This requires Layer 0 (observability) to work perfectly. You need accurate error counts within 30 seconds. You need to know which requests were affected by which deployment. Traditional monitoring cannot do this. Observability-driven systems can.</p>
+
+        <h3>Example 3: Predictive Scaling</h3>
+
+        <p>Your database latency SLI is 500ms at p95. Your SLO is that p95 latency stays ≤400ms. It is currently at 380ms and rising 10ms per hour. In the next 3 hours, you will breach.</p>
+
+        <pre><code>Predictive autoscaler:
+1. Query Prometheus: What is the current latency trend?
+2. Extrapolate: At current growth, when will we hit SLO limit?
+3. Predict: Will adding capacity reduce latency sufficiently?
+4. Decide: Add 30% more capacity now
+5. Verify: Did latency drop? Is burn rate reduced?
+
+Result: SLO breach predicted and prevented.
+        No human had to detect the trend.
+        No human had to decide when to scale.
+        The system did it automatically.</code></pre>
+
+        <h2>The Prerequisites: Getting SLOs Right</h2>
+
+        <p>SLO-driven control loops only work if SLOs are set intentionally and achievably. Common mistakes:</p>
+
+        <p><strong>SLOs disconnected from business impact.</strong> You set a 99.99% availability SLO because that sounds impressive. But your business doesn't actually need it. Meanwhile, the infrastructure required to maintain it is expensive. You have built a system that overperforms for your actual requirements.</p>
+
+        <p><strong>SLOs set too loosely.</strong> If your SLO is "99% uptime" but you are actually running at 99.9%, you have no signal. The error budget is never constrained. The SLO is not governing anything.</p>
+
+        <p><strong>SLOs that ignore upstream constraints.</strong> Your service SLO is 99.99%, but it depends on a third-party API that is 99%. You cannot possibly meet your SLO. Either adjust the SLO or redesign around the dependency.</p>
+
+        <p><strong>SLOs without consequences.</strong> If breaching your SLO costs you nothing—no customer churn, no revenue impact, no business consequence—then it is not an SLO. It is a target. SLOs are the ones that matter.</p>
+
+        <h2>The Feedback Loop: From Control to Learning</h2>
+
+        <p>As the system executes SLO-driven decisions, it generates data. Mine it:</p>
+
+        <ul>
+          <li><strong>Which deployments most frequently trigger canary rollbacks?</strong> Signal: those code paths have quality issues.</li>
+          <li><strong>How often does predictive scaling fire?</strong> Signal: your baseline capacity planning is off.</li>
+          <li><strong>When error budget is throttled, what actually caused the spike?</strong> Signal: you have a reliability weakness in that component.</li>
+          <li><strong>How many SLO breaches were caused by external factors vs. your code?</strong> Signal: how much control do you actually have?</li>
+        </ul>
+
+        <p>A Grafana dashboard should answer these questions. It becomes your feedback system: "The system is making these decisions because of these conditions. Should we be?"</p>
+
+        <h2>Common Pitfalls</h2>
+
+        <p><strong>Over-automation based on misaligned SLOs.</strong> If your SLO is set wrong, automating based on it just accelerates the wrong decisions. A deployment throttle based on a 99.99% SLO when your business needs 99% will block too many deployments and hurt velocity without gaining safety.</p>
+
+        <p><strong>No human override.</strong> Some situations require a human judgment call: "Yes, I know the error budget is tight, but this deployment is critical for a customer retention issue." Build in explicit override mechanisms so humans can make deliberate, logged decisions.</p>
+
+        <p><strong>Ignoring SLO drift.</strong> SLOs set 3 years ago might not reflect current business needs. Review them annually. If your system is consistently overperforming its SLO, ratchet it down slightly (less expensive infrastructure for same business outcome).</p>
+
+        <p><strong>SLOs without observability to back them.</strong> You cannot set a 99.99% SLO if your observability system has 1% loss. You cannot make deployments decisions based on SLOs if Prometheus has a 5-minute scrape lag. Layer 0 must be solid first.</p>
+
+        <h2>The Maturity Jump</h2>
+
+        <p>SLO-driven control loops represent a significant jump in operational maturity. It is the difference between:</p>
+
+        <ul>
+          <li><strong>Reactive:</strong> "Something is wrong, humans fix it"</li>
+          <li><strong>Autonomous:</strong> "The system governs itself based on reliability commitments"</li>
+        </ul>
+
+        <p>It requires integration across multiple layers: observability accurate enough to be trusted, runbook automation safe enough to be executed without human approval, and SLOs precise enough to guide decisions.</p>
+
+        <p>Organizations that reach this point report a dramatic shift: deployments happen faster, reliability stays consistent, and on-call load decreases—not because problems are hidden, but because the system prevents them from occurring.</p>
+
+        <h2>Next in the Series</h2>
+        <p>Control loops require confidence in automation, which requires being able to safely undo actions. The next layer—<strong>Immutable Infrastructure</strong>—makes safe remediation possible. <a href="../immutable-infrastructure-layer-3/" style="color:#ffbd59;text-decoration:underline">Read Layer 3</a>.</p>
+
+        <p>At AIDARIS, we help organizations design SLOs that are both achievable and consequential, then build the control loops to defend them. If you are unsure whether your SLOs are governance signals or just metrics, <a href="../../where-to-find-us/" style="color:#ffbd59;text-decoration:underline">let's discuss</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="prev-next" aria-label="Previous and next page">
+    <div class="prev-next-inner">
+      <a href="../runbook-automation-layer-1/" class="prev-next-link prev-next-prev">← Layer 1: Runbook Automation</a>
+      <a href="../immutable-infrastructure-layer-3/" class="prev-next-link prev-next-next">Layer 3: Immutable Infrastructure →</a>
+    </div>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="footer-tab">© 2025–2026 <span class="footer-brand">AIDARIS</span>. All rights reserved. <span class="footer-version" data-version>v</span></span>
+  </footer>
+
+  <script src="../../script.js"></script>
+  </body>
+</html>

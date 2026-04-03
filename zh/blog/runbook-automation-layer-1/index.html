@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="zh-Hant" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layer 1：運行手冊自動化 — 從文檔到執行 - AIDARIS 部落格</title>
+    <meta name="description" content="用運行手冊自動化來自動化已知故障。學習如何設計安全、可靠的自動化修復，消除日常工作同時保持人類監督。" />
+    <link rel="canonical" href="https://aidaris.com/zh/blog/runbook-automation-layer-1/" />
+    <link rel="alternate" hreflang="en" href="https://aidaris.com/blog/runbook-automation-layer-1/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/runbook-automation-layer-1/" />
+    <meta name="theme-color" content="#020301" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AIDARIS" />
+    <meta property="og:title" content="Layer 1：運行手冊自動化 — 從文檔到執行" />
+    <meta property="og:description" content="自動化已知故障。消除日常工作。讓人類專注於重要的事情。" />
+    <meta property="og:url" content="https://aidaris.com/zh/blog/runbook-automation-layer-1/" />
+    <meta property="og:image" content="https://aidaris.com/assets/og-image.png" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="article:published_time" content="2026-04-10" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Layer 1：運行手冊自動化" />
+    <meta name="twitter:description" content="自動化已知故障。消除日常工作。" />
+    <meta name="twitter:image" content="https://aidaris.com/assets/og-image.png" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://aidaris.com/zh/" },
+        { "@type": "ListItem", "position": 2, "name": "部落格", "item": "https://aidaris.com/zh/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Layer 1：運行手冊自動化", "item": "https://aidaris.com/zh/blog/runbook-automation-layer-1/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Layer 1：運行手冊自動化 — 從文檔到執行",
+      "description": "自動化已知故障與運行手冊。",
+      "datePublished": "2026-04-10",
+      "author": {"@type": "Organization", "name": "Aidaris Technologies Ltd.", "url": "https://aidaris.com"},
+      "publisher": {"@type": "Organization", "name": "Aidaris Technologies Ltd.", "url": "https://aidaris.com"},
+      "inLanguage": "zh-Hant",
+      "mainEntityOfPage": "https://aidaris.com/zh/blog/runbook-automation-layer-1/"
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@400;500;600&family=Offside&display=swap" />
+    <link rel="preload" href="../../../../assets/fonts/Aka-AcidGR-SuperG.woff" as="font" type="font/woff" crossorigin />
+    <link rel="stylesheet" href="../../../../style.css" />
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TLBV435S');</script>
+  </head>
+  <body>
+  <a href="#main-content" class="skip-link">跳到主要內容</a>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLBV435S" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <canvas id="flow-canvas" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <a class="nav-brand" href="../../../../zh/"><span class="nav-brand-initial">a</span><span class="nav-brand-text">AIDARIS</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../../../../zh/who-we-are/">關於我們</a>
+      <a class="nav-link" href="../../../../zh/what-we-do/">我們的服務</a>
+      <a class="nav-link" href="../../../../zh/how-we-work/">合作方式</a>
+      <a class="nav-link" href="../../../../zh/why-we-fit/">為什麼選擇我們</a>
+      <a class="nav-link" href="../../../../zh/when-to-engage/">何時合作</a>
+      <a class="nav-link" href="../../../../zh/where-to-find-us/">聯絡我們</a>
+      <a class="nav-link nav-link--current" href="../../">部落格</a>
+    </div>
+    <label for="nav-toggle" class="nav-menu-btn" aria-label="Open menu"><span></span><span></span><span></span></label>
+  </nav>
+
+  <main id="main-content" class="fit-section">
+    <div class="fit-content hero-content article-content">
+      <h1 class="eyebrow">Layer 1：運行手冊自動化 — 從文檔到執行</h1>
+      <p class="article-meta">2026 年 4 月 · 11 分鐘閱讀 · Aidaris Technologies <span class="blog-category-badge">架構系列</span></p>
+      <div class="article-tags">
+        <span class="blog-tag">自動化</span>
+        <span class="blog-tag">SRE</span>
+        <span class="blog-tag">運行手冊</span>
+        <span class="blog-tag">消除日常工作</span>
+      </div>
+
+      <div class="article-body">
+        <p>你已經建立了完美的可觀測性。你可以看到系統中發生的一切。告警立即觸發。然後——告警觸發的時刻——人類必須思考。他們必須記住手冊。他們必須執行命令。他們必須等待它們完成。他們必須驗證修復有效。他們必須在星期二凌晨 3 點做這件事。</p>
+
+        <p>這是運維的等價物，有菜譜但每次都從零開始烹飪。運行手冊自動化消除了這種浪費。你的團隊見過的每個故障模式、每個記錄的恢復程序、每個「只需重新啟動服務」的事件——這些都應該自動化。</p>
+
+        <p>運行手冊自動化不是關於替換工程師。它關於消除已解決問題的認知負擔，使工程時間可用於未解決的問題。當同樣三個服務每週失敗一次，你有一個記錄的恢復程序時，人類永遠不應該再執行那個程序。</p>
+
+        <h2>成熟度階段</h2>
+
+        <p>大多數組織在這個頻譜的某個地方：</p>
+
+        <ul>
+          <li><strong>階段 0：已記錄的知識。</strong> 運行手冊存在，散落在 wiki、Confluence 或人們的腦海中。執行是手動且不一致的。</li>
+          <li><strong>階段 1：告警關聯 + 文檔。</strong> 當已知故障發生時，告警包括運行手冊的鏈接。執行仍然是手動的。</li>
+          <li><strong>階段 2：半自動化。</strong> 運行手冊變成一鍵修復。點擊按鈕執行執行恢復的腳本。但決策是人類的：「我應該點擊這個按鈕嗎？」</li>
+          <li><strong>階段 3：條件自動化。</strong> 系統在條件安全時自動執行修復。它檢查服務是否已處於已知壞狀態、人類是否已在調查、自動擴展是否可能解決問題。</li>
+          <li><strong>階段 4：預測自動化。</strong> 系統預測故障即將發生並在用戶注意到之前進行修復。</li>
+        </ul>
+
+        <p>大多數成熟的運維存在於階段 2-3。階段 4 需要超出本層範圍的 AIOps 成熟度。目標是達到階段 3：安全、可觀測且仍受人類監督的自動化。</p>
+
+        <h2>自動化修復的架構</h2>
+
+        <h3>檢測層：可觀測性信號</h3>
+
+        <p>這是 Layer 0（可觀測性）與 Layer 1 集成的地方。你的 Prometheus 告警規則偵測已知的故障模式。你的 Grafana 儀表板顯示系統的狀態。你的 Kibana 日誌提供上下文。</p>
+
+        <p>為自動化設計的良好告警看起來像這樣：</p>
+
+        <pre><code>alert: HighMemoryUsageInAuthService
+  expr: container_memory_usage_bytes{service="auth"} > 800000000
+  for: 2m
+  annotations:
+    summary: "Auth 服務記憶體使用量關鍵"
+    runbook: "https://wiki/auth-service-oom-recovery"
+    auto_remediation: "restart_service"
+    severity: "critical"</code></pre>
+
+        <p>注意：它指定不僅是條件，還有補救行動。這是自動化的觸發器。</p>
+
+        <h3>決策層：安全檢查</h3>
+
+        <p>在執行任何自動化修復之前，你必須回答：這安全嗎？這需要條件邏輯：</p>
+
+        <pre><code>If (HighMemoryUsageInAuthService is true)
+  AND (no ongoing incident investigation for auth)
+  AND (at least 2 replicas of auth service healthy)
+  AND (error rate would not exceed SLO threshold if we restart)
+THEN execute restart_service</code></pre>
+
+        <p>注意警衛。在以下情況下重新啟動服務：</p>
+
+        <ul>
+          <li>工程師已在調查 → 破壞調查</li>
+          <li>只有一個複本健康 → 創建單一故障點</li>
+          <li>會導致錯誤率激增 → 在試圖恢復的同時違反 SLO</li>
+        </ul>
+
+        <p>這些警衛不是稍後添加的。它們必須從一開始就設計到自動化中。</p>
+
+        <h3>執行層：安全、可觀測的修復</h3>
+
+        <p>當條件滿足時，系統執行修復。這可能是：</p>
+
+        <ul>
+          <li><strong>Kubernetes 原生：</strong> <code>kubectl rollout restart deployment/auth</code> 或 pod 驅逐</li>
+          <li><strong>基於 Ansible：</strong> 執行執行服務重啟、快取清除或資料庫連接重置的 playbook</li>
+          <li><strong>自定義自動化：</strong> 呼叫觸發應用程度修復的 webhook</li>
+          <li><strong>基礎設施級別：</strong> 終止不健康的節點、重新平衡負載、添加容量</li>
+        </ul>
+
+        <p>無論機制如何，執行必須是：</p>
+
+        <ul>
+          <li><strong>已追蹤。</strong> 每個自動化行動都用完整上下文記錄：觸發了什麼、檢查了什麼條件、執行了什麼、結果是什麼。</li>
+          <li><strong>已監控。</strong> 執行修復後，系統立即檢查：它有效嗎？Prometheus 指標和日誌應顯示達到了期望的狀態。</li>
+          <li><strong>可逆轉。</strong> 如果修復使事情變得更糟，應該自動回滾或標記為立即人工審查。</li>
+        </ul>
+
+        <h2>常見陷阱</h2>
+
+        <p><strong>沒有可觀測性的運行手冊自動化。</strong> 如果你看不到什麼失敗了，你無法安全地自動化恢復。對看不見的故障的自動化響應是猜測。昂貴、快速的猜測。</p>
+
+        <p><strong>對自動化的盲目信任。</strong> 每個運行手冊自動化都應包含人工審查步驟：「我們應該做過這個嗎？」如果修復每週執行 1000 次，其中大多數決定是正確的。但其中 100 個可能是錯的。進行抽查。將反饋建立到流程中。</p>
+
+        <p><strong>修復級聯。</strong> 一個自動化行動觸發另一個。然後又觸發另一個。在你知道之前，整個系統正在執行一系列自動化決定，沒有人類能夠預測。限制自動化深度：更喜歡簡單的單一行動修復，而不是複雜的決策樹。</p>
+
+        <h2>前進的道路</h2>
+
+        <p>運行手冊自動化位於可觀測性和可靠性的交叉點。使用完美的可觀測性（Layer 0），你知道什麼時候出現問題。使用運行手冊自動化（Layer 1），你可以立即修復它。</p>
+
+        <p>下一層——SLO 作為控制迴圈——進一步進行。系統根據可靠性承諾自動控制其自身的行為，而不是響應個別故障。但這需要一個有效的自動化基礎。</p>
+
+        <p>大多數團隊直接從「我們有儀表板」跳到「我們想要完全自主性」。然後他們發現在沒有穩定的自動化基礎的情況下建立的自主性只是自動化混亂。</p>
+
+        <h2>系列中的下一個</h2>
+        <p>一旦你的已知故障是自動化的，下一步是 <strong>SLO 作為控制迴圈</strong>：使用可靠性承諾來自動控制部署、擴展和資源分配。<a href="../slos-control-loops-layer-2/" style="color:#ffbd59;text-decoration:underline">閱讀 Layer 2</a>。</p>
+
+        <p>在 AIDARIS，我們幫助團隊設計安全、可觀測且可維護的運行手冊自動化。如果你為運行手冊質量而掙扎或想知道如何安全地擴展自動化，<a href="../../../../zh/where-to-find-us/" style="color:#ffbd59;text-decoration:underline">讓我們談談</a>。</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="prev-next" aria-label="Previous and next page">
+    <div class="prev-next-inner">
+      <a href="../observability-layer-0/" class="prev-next-link prev-next-prev">← Layer 0：可觀測性</a>
+      <a href="../slos-control-loops-layer-2/" class="prev-next-link prev-next-next">Layer 2：SLO 作為控制迴圈 →</a>
+    </div>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="footer-tab">© 2025–2026 <span class="footer-brand">AIDARIS</span>. All rights reserved. <span class="footer-version" data-version>v</span></span>
+  </footer>
+
+  <script src="../../../../script.js"></script>
+  </body>
+</html>

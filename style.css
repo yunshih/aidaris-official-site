@@ -966,8 +966,15 @@ h1 {
 .blog-filter-bar {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
   margin-bottom: 24px;
+}
+
+/* Language switcher inside filter bar — pushed to the right */
+.blog-lang-switch {
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .blog-filter-btn {
@@ -1005,15 +1012,6 @@ h1 {
   margin-bottom: 24px;
 }
 
-/* Blog listing language switcher bar */
-.blog-lang-switch-bar {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 12px;
-}
-.blog-lang-switch-bar .lang-switch {
-  margin-left: 0;
-}
 
 /* Language switcher */
 .lang-switch {

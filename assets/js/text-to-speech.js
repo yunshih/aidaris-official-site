@@ -1,6 +1,6 @@
 /**
  * Text-to-Speech Module for Blog Articles
- * Supports English and Chinese (Traditional & Simplified)
+ * Supports English and Chinese with paragraph highlighting
  */
 
 class ArticleTextToSpeech {
@@ -12,6 +12,10 @@ class ArticleTextToSpeech {
     this.currentUtterance = null;
     this.synth = window.speechSynthesis;
     this.lang = options.lang || this.detectLanguage();
+
+    // Segment tracking
+    this.segments = [];
+    this.currentSegmentIndex = 0;
 
     if (this.container) {
       this.init();
@@ -25,8 +29,20 @@ class ArticleTextToSpeech {
   }
 
   init() {
+    this.extractSegments();
     this.createControls();
     this.attachEventListeners();
+  }
+
+  extractSegments() {
+    // Extract all readable segments: paragraphs, list items, and headings
+    const selectors = ['.article-body > p', '.article-body > ul > li', '.article-body > ol > li', '.article-body > h2'];
+    const elements = this.container.querySelectorAll(selectors.join(', '));
+
+    this.segments = Array.from(elements).map(el => ({
+      element: el,
+      text: el.innerText || el.textContent
+    })).filter(seg => seg.text.trim().length > 0);
   }
 
   createControls() {
@@ -86,10 +102,51 @@ class ArticleTextToSpeech {
     stopBtn.addEventListener('click', () => this.stop());
   }
 
-  getTextContent() {
-    const clone = this.container.cloneNode(true);
-    const text = clone.innerText;
-    return text;
+  playSegment(index) {
+    if (index >= this.segments.length) {
+      // Finished all segments
+      this.speaking = false;
+      this.currentSegmentIndex = 0;
+      this.clearHighlights();
+      this.updateButtonState();
+      this.updateVisualFeedback();
+      return;
+    }
+
+    const segment = this.segments[index];
+    const text = segment.text.trim();
+
+    if (!text) {
+      // Skip empty segments
+      this.playSegment(index + 1);
+      return;
+    }
+
+    this.currentSegmentIndex = index;
+    this.highlightSegment(segment);
+
+    this.currentUtterance = new SpeechSynthesisUtterance(text);
+    this.currentUtterance.lang = this.lang;
+    this.currentUtterance.rate = 1;
+
+    this.currentUtterance.onstart = () => {
+      this.speaking = true;
+      this.updateButtonState();
+      this.updateVisualFeedback();
+    };
+
+    this.currentUtterance.onend = () => {
+      // Play next segment
+      this.playSegment(index + 1);
+    };
+
+    this.currentUtterance.onerror = (e) => {
+      console.error('Speech error:', e);
+      this.playSegment(index + 1);
+    };
+
+    this.synth.cancel();
+    this.synth.speak(this.currentUtterance);
   }
 
   play() {
@@ -103,34 +160,8 @@ class ArticleTextToSpeech {
 
     if (this.speaking) return;
 
-    const text = this.getTextContent();
-    this.currentUtterance = new SpeechSynthesisUtterance(text);
-    this.currentUtterance.lang = this.lang;
-    this.currentUtterance.rate = 1;
-
-    this.currentUtterance.onstart = () => {
-      this.speaking = true;
-      this.updateButtonState();
-      this.updateVisualFeedback();
-    };
-
-    this.currentUtterance.onend = () => {
-      this.speaking = false;
-      this.paused = false;
-      this.updateButtonState();
-      this.updateVisualFeedback();
-    };
-
-    this.currentUtterance.onerror = (e) => {
-      console.error('Speech error:', e);
-      this.speaking = false;
-      this.paused = false;
-      this.updateButtonState();
-      this.updateVisualFeedback();
-    };
-
-    this.synth.cancel();
-    this.synth.speak(this.currentUtterance);
+    this.currentSegmentIndex = 0;
+    this.playSegment(0);
   }
 
   pause() {
@@ -146,8 +177,23 @@ class ArticleTextToSpeech {
     this.synth.cancel();
     this.speaking = false;
     this.paused = false;
+    this.currentSegmentIndex = 0;
+    this.clearHighlights();
     this.updateButtonState();
     this.updateVisualFeedback();
+  }
+
+  highlightSegment(segment) {
+    this.clearHighlights();
+    segment.element.classList.add('tts-highlighted');
+
+    // Scroll to highlighted segment
+    segment.element.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  clearHighlights() {
+    const highlighted = this.container.querySelectorAll('.tts-highlighted');
+    highlighted.forEach(el => el.classList.remove('tts-highlighted'));
   }
 
   updateButtonState() {

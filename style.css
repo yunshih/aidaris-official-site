@@ -689,20 +689,6 @@ h1 {
   .nav-links a.nav-link:hover {
     color: var(--accent);
   }
-  .nav-links .lang-switch {
-    margin-left: 0;
-    padding-left: 0;
-    border-left: none;
-    border: none;
-    border-bottom: 1px solid rgba(182, 234, 95, 0.08);
-    border-radius: 0;
-    background: none;
-    font-size: 1.05rem;
-    letter-spacing: 0.08em;
-    padding: 14px 0;
-    min-height: 48px;
-    color: var(--muted);
-  }
 
   .fit-section {
     padding-top: 100px;
@@ -1017,13 +1003,6 @@ h1 {
   gap: 6px;
   margin-top: 6px;
   margin-bottom: 24px;
-}
-
-/* Nav lang-switch separator */
-.nav-links .lang-switch {
-  margin-left: 4px;
-  border-left: 1px solid rgba(182, 234, 95, 0.15);
-  padding-left: 16px;
 }
 
 /* Language switcher */

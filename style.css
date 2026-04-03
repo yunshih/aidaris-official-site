@@ -1005,6 +1005,16 @@ h1 {
   margin-bottom: 24px;
 }
 
+/* Blog listing language switcher bar */
+.blog-lang-switch-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+.blog-lang-switch-bar .lang-switch {
+  margin-left: 0;
+}
+
 /* Language switcher */
 .lang-switch {
   display: inline-flex;

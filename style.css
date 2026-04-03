@@ -966,8 +966,24 @@ h1 {
 .blog-filter-bar {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 8px;
   margin-bottom: 24px;
+}
+
+/* Blog heading row: title + lang switch on the same line */
+.blog-heading-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 0;
+}
+.blog-heading-row .eyebrow {
+  margin-bottom: 0;
+}
+.blog-lang-switch {
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
 .blog-filter-btn {
@@ -1005,15 +1021,6 @@ h1 {
   margin-bottom: 24px;
 }
 
-/* Blog listing language switcher bar */
-.blog-lang-switch-bar {
-  display: flex;
-  justify-content: flex-end;
-  margin-bottom: 12px;
-}
-.blog-lang-switch-bar .lang-switch {
-  margin-left: 0;
-}
 
 /* Language switcher */
 .lang-switch {

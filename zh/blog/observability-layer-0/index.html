@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-Hant" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Layer 0：可觀測性 — 自主運維的基石 - AIDARIS 部落格</title>
+    <meta name="description" content="可觀測性不是監控。它是使自主運維成為可能的架構學科。學習如何用 OpenTelemetry、Prometheus、ELK 和 Grafana 建立可觀測性。" />
+    <link rel="canonical" href="https://aidaris.com/zh/blog/observability-layer-0/" />
+    <link rel="alternate" hreflang="en" href="https://aidaris.com/blog/observability-layer-0/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/observability-layer-0/" />
+    <meta name="theme-color" content="#020301" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AIDARIS" />
+    <meta property="og:title" content="Layer 0：可觀測性 — 自主運維的基石" />
+    <meta property="og:description" content="可觀測性不是監控。它是使自主運維成為可能的架構學科。" />
+    <meta property="og:url" content="https://aidaris.com/zh/blog/observability-layer-0/" />
+    <meta property="og:image" content="https://aidaris.com/assets/og-image.png" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="article:published_time" content="2026-04-05" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Layer 0：可觀測性 — 自主運維的基石" />
+    <meta name="twitter:description" content="可觀測性是使自主運維成為可能的架構學科。" />
+    <meta name="twitter:image" content="https://aidaris.com/assets/og-image.png" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://aidaris.com/zh/" },
+        { "@type": "ListItem", "position": 2, "name": "部落格", "item": "https://aidaris.com/zh/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Layer 0：可觀測性", "item": "https://aidaris.com/zh/blog/observability-layer-0/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Layer 0：可觀測性 — 自主運維的基石",
+      "description": "可觀測性不是監控。它是使自主運維成為可能的架構學科。",
+      "datePublished": "2026-04-05",
+      "author": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "inLanguage": "zh-Hant",
+      "mainEntityOfPage": "https://aidaris.com/zh/blog/observability-layer-0/"
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@400;500;600&family=Offside&display=swap" />
+    <link rel="preload" href="../../../../assets/fonts/Aka-AcidGR-SuperG.woff" as="font" type="font/woff" crossorigin />
+    <link rel="stylesheet" href="../../../../style.css" />
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TLBV435S');</script>
+  </head>
+  <body>
+  <a href="#main-content" class="skip-link">跳到主要內容</a>
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLBV435S" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <canvas id="flow-canvas" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <a class="nav-brand" href="../../../../zh/"><span class="nav-brand-initial">a</span><span class="nav-brand-text">AIDARIS</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../../../../zh/who-we-are/">關於我們</a>
+      <a class="nav-link" href="../../../../zh/what-we-do/">我們的服務</a>
+      <a class="nav-link" href="../../../../zh/how-we-work/">合作方式</a>
+      <a class="nav-link" href="../../../../zh/why-we-fit/">為什麼選擇我們</a>
+      <a class="nav-link" href="../../../../zh/when-to-engage/">何時合作</a>
+      <a class="nav-link" href="../../../../zh/where-to-find-us/">聯絡我們</a>
+      <a class="nav-link nav-link--current" href="../../">部落格</a>
+    </div>
+    <label for="nav-toggle" class="nav-menu-btn" aria-label="Open menu"><span></span><span></span><span></span></label>
+  </nav>
+
+  <main id="main-content" class="fit-section">
+    <div class="fit-content hero-content article-content">
+      <h1 class="eyebrow">Layer 0：可觀測性 — 自主運維的基石</h1>
+      <p class="article-meta">2026 年 4 月 · 12 分鐘閱讀 · Aidaris Technologies <span class="blog-category-badge">架構系列</span></p>
+      <div class="article-tags">
+        <span class="blog-tag">可觀測性</span>
+        <span class="blog-tag">OpenTelemetry</span>
+        <span class="blog-tag">SRE</span>
+        <span class="blog-tag">架構</span>
+      </div>
+
+      <div class="article-body">
+        <p>你無法自動化你看不到的東西。在系統能夠自主運行之前——在它能夠偵測故障、理解其根本原因並執行修復之前——它必須首先能夠以足夠的清晰度感知自己的狀態，以回答這個問題：<em>為什麼會發生這種情況？</em></p>
+
+        <p>這就是可觀測性。不是監控。不是告警。可觀測性是一門架構學科，它確保系統中的每個有意義的事件都被捕獲、關聯並能夠實時查詢。它是自主運維的每個後續層級都依賴的基礎層。</p>
+
+        <p>大多數組織認為他們擁有可觀測性，因為他們有儀表板。他們沒有。他們擁有的是監控——一組預定義的信號，告訴你<em>什麼</em>出了問題。可觀測性告訴你<em>為什麼</em>，因為系統發出足夠的結構化信息來描述其內部狀態，使你可以重建發生的事情，而無需猜測。</p>
+
+        <h2>監控與可觀測性之間的鴻溝</h2>
+
+        <p>這種區別不是語義上的。它是架構上的，它決定了你的自動化是可靠的還是魯莽的。</p>
+
+        <p>監控系統回答你預期提出的問題：「CPU 是否較高？我們是否收到錯誤？延遲是否上升？」這些很有用。它們會提醒你有問題。但它們不能解釋問題。</p>
+
+        <p>可觀測系統回答你沒有預期的問題。用戶報告他們的上傳間歇性失敗。你的錯誤率儀表板在整個集群中顯示 0.1% 的錯誤。你的 CPU、記憶體和磁盤都正常。你的監控提供了什麼都沒有。但一個可觀測的系統——一個有分佈式追蹤來追蹤該用戶的請求通過每個服務邊界的系統——可以向你顯示延遲峰值確切發生在哪裡、哪個資料庫查詢花費 15 秒（通常花費 50 毫秒），以及它是否與特定後端服務負載相關聯。</p>
+
+        <p>區別不在於複雜性。它在於結構。監控關於預定義信號。可觀測性關於擁有足夠的結構化信息，使你可以提出任何問題並找到答案。</p>
+
+        <h2>可觀測性的三大支柱</h2>
+
+        <h3>支柱 1：使用 OpenTelemetry 的分佈式追蹤</h3>
+
+        <p>分佈式追蹤是單個請求流經整個系統的完整記錄：從用戶的瀏覽器到你的 API 閘道，通過微服務，進入資料庫，然後返回。每個步驟都是一個「跨度」（span）——一個工作單位，具有時間、元數據和與其他跨度的因果關係。</p>
+
+        <p>OpenTelemetry 是捕獲這些追蹤的行業標準。它是供應商中立的、與語言無關的，並且設計為足夠輕量級以在生產環境中大規模運行。</p>
+
+        <p>為什麼這對自主運維很重要？因為當你的自動化系統偵測到延遲峰值時，它需要回答：「哪個服務很慢？它總是很慢還是特定於此區域？它是否與特定類型的請求相關聯？」沒有分佈式追蹤，這些問題幾乎不可能回答。有了它們，答案是立即的。</p>
+
+        <p>實施 OpenTelemetry 需要紀律：</p>
+
+        <ul>
+          <li><strong>每個邊界的檢測。</strong> API 呼叫、資料庫查詢、快取命中、外部服務呼叫——每個服務邊界的交叉都必須被追蹤。部分追蹤基本上是無用的。</li>
+          <li><strong>豐富的上下文傳播。</strong> 追蹤 ID 必須流經整個堆棧：從 HTTP 標頭到訊息佇列再到後台工作。如果追蹤被中斷，你就無法追蹤請求。</li>
+          <li><strong>深思熟慮的取樣。</strong> 追蹤每個請求可能代價不菲。取樣策略——捕獲 10% 的追蹤、所有錯誤追蹤或超過延遲閾值的追蹤——在保留信號的同時降低成本。</li>
+        </ul>
+
+        <p>儲存和查詢追蹤的基礎設施同樣重要。Jaeger（開源）或 Grafana Tempo（商用）等工具提供儲存和視覺化層。Tempo 特別有價值，因為它直接與 Grafana 集成，使你可以從 Grafana 告警點擊進入導致它的追蹤。</p>
+
+        <h3>支柱 2：使用 Prometheus 的結構化指標</h3>
+
+        <p>指標是時間序列數據：隨時間標記（維度）的數值。「下午 3:45 的 CPU 使用率為 78%。」「下午 3:46 的錯誤率為 2.3%。」「響應延遲 95 百分位數為 250 毫秒。」</p>
+
+        <p>Prometheus 是現代基礎設施中收集和儲存指標的標準。它使用一個簡單而強大的模型：每個指標由名稱和一組標籤標識。<code>http_request_duration_seconds{service="auth", method="POST", status="200"}</code> 告訴你返回 200 狀態碼的 auth 服務的 POST 請求的持續時間。</p>
+
+        <p>對於自主運維，指標是控制表面。當你希望系統根據延遲自動擴展時，你查詢 Prometheus。當你想決定是否回滾部署時，你檢查錯誤率是否增加。當你設置 SLO（服務等級目標）時，你根據 Prometheus 指標定義它們。</p>
+
+        <p>但指標必須捕獲正確的信號。大多數團隊為操作指標檢測系統：CPU、記憶體、磁盤、請求計數、錯誤計數、延遲。這些是基本的。高成熟度的可觀測性還捕獲商業信號：</p>
+
+        <ul>
+          <li>評估的功能標誌（哪些隊列正在使用哪些功能？）</li>
+          <li>購物車添加、結帳、付款失敗（用戶是否實際完成交易？）</li>
+          <li>搜索查詢、零結果搜索（搜索質量是否下降？）</li>
+          <li>首次有意義的渲染時間（前端是否很慢？）</li>
+        </ul>
+
+        <p>沒有商業信號，你的可觀測性系統可以告訴你系統很快但業務在失敗。有了它們，你可以將操作更改直接關聯到商業影響。</p>
+
+        <p>Prometheus 本身只是時間序列資料庫。對於視覺化、儲存和告警，Grafana 是行業標準。Grafana 儀表板不僅漂亮——它是一種查詢語言。儀表板應該提出你關心的問題：「我本週的錯誤預算消耗是多少？有多少服務違反其 SLO？過去 30 分鐘改變了什麼？」</p>
+
+        <h3>支柱 3：使用 ELK Stack 的結構化日誌</h3>
+
+        <p>日誌是系統的敘述。與聚合指標或追蹤請求的追蹤不同，日誌捕獲離散事件：「用戶登錄失敗」、「資料庫連接池耗盡」、「快取未命中率高」。當日誌是結構化的時——不是自由格式文本，而是帶有一致字段的 JSON 對象——日誌最有價值。</p>
+
+        <p>ELK Stack（Elasticsearch、Logstash、Kibana）仍然是使用最廣泛的開源日誌記錄平台。Elasticsearch 將日誌儲存在可以搜索和聚合的索引中。Logstash 在日誌流入時解析和轉換日誌數據。Kibana 是查詢和視覺化層。</p>
+
+        <p>對於自主運維，結構化日誌有兩個目的：</p>
+
+        <ul>
+          <li><strong>調查。</strong> 當出現問題時，Kibana 允許你按服務、按錯誤類型、按時間戳、按用戶 ID 搜索日誌。你可以從 Grafana 告警鑽進 Kibana 以查看實際發生的情況。</li>
+          <li><strong>模式檢測。</strong> AIOps 平台分析日誌以識別重複模式——故障前的事件序列。沒有結構化日誌，這是不可能的。</li>
+        </ul>
+
+        <p>一台機器每天記錄千兆字節的原始文本不是可觀測性。具有一致字段名、適當時間戳和有意義上下文的結構化日誌是必要的。日誌級別（debug、info、warn、error）不如日誌實際所說的重要，以及它們是否可以被搜索和聚合。</p>
+
+        <h2>架構：將其結合在一起</h2>
+
+        <p>三大支柱——追蹤、指標、日誌——必須集成以形成一個連貫的可觀測性系統：</p>
+
+        <pre><code>你的應用代碼（帶有 OpenTelemetry 檢測）
+  ↓
+收集器 → 處理層（取樣、批處理、轉換）
+  ↓
+Jaeger(追蹤) | Prometheus(指標) | Elasticsearch(日誌)
+  ↓
+Grafana 儀表板（統一視覺化層）
+  - 指標和 SLO 儀表板
+  - 追蹤探索器
+  - 日誌聚合
+  - 告警規則</code></pre>
+
+        <p>這個架構為自主運維提供了幾項關鍵功能：</p>
+
+        <ul>
+          <li><strong>診斷。</strong> 當出現問題時，你可以從 Grafana 告警導航到 Prometheus 查詢再到 Jaeger 追蹤再到 Kibana 日誌，重建確切發生的事情。</li>
+          <li><strong>自動化反饋。</strong> 自動化系統查詢 Prometheus 以獲取指標，搜索 Kibana 以查找模式，並追蹤以理解故障模式。</li>
+          <li><strong>學習。</strong> 每個事件都以結構化、可查詢的數據捕獲。事後分析不是猜測；它是基於證據的。</li>
+        </ul>
+
+        <h2>可觀測性作為一門工程學科</h2>
+
+        <p>建立可觀測性不是一個有終點的項目。這是一門持續的工程學科。它需要：</p>
+
+        <ul>
+          <li><strong>檢測標準。</strong> 每個服務都應該以相同的格式發出追蹤、指標和日誌。這需要商定的約定和工具支持。</li>
+          <li><strong>基數管理。</strong> 如果你發出具有無限維度的指標或日誌（如用戶 ID），儲存成本會爆炸。可觀測性基礎設施需要對標記內容和方式進行紀律性選擇。</li>
+          <li><strong>保留政策。</strong> 追蹤和日誌的儲存代價高昂。關於保留什麼以及多長時間的政策必須是有意的。高價值數據（錯誤、延遲異常值）可能保留 90 天；例行調試日誌保留 7 天。</li>
+          <li><strong>性能。</strong> 可觀測性檢測本身不能降低應用的速度。追蹤、指標收集和日誌發送必須是非同步的和容錯的。如果你的可觀測性系統失敗，你的應用必須繼續運行。</li>
+        </ul>
+
+        <h2>常見陷阱</h2>
+
+        <p><strong>追蹤檢測不足。</strong> 團隊將 OpenTelemetry 添加到主要服務，但忘記了資料庫驅動程序、HTTP 客户端庫或訊息佇列。部分追蹤幾乎沒有用。如果請求跨越 5 個服務邊界，你只檢測 3 個，你就會遺漏緩慢。</p>
+
+        <p><strong>沒有上下文的指標。</strong> 「響應時間：500 毫秒」告訴你很少。按端點、按區域、按客戶層分類的響應時間，並與並發流量相關聯，會告訴你一切。在豐富的標籤中投資。</p>
+
+        <p><strong>日誌作為調試。</strong> 具有自由格式文本的非結構化日誌難以聚合和分析。日誌聚合平台需要一致的結構。如果你不能按服務、按錯誤類型或按時間窗口查詢日誌，它們就無法提供可觀測性。</p>
+
+        <p><strong>「僅針對故障的可觀測性」錯誤。</strong> 大多數團隊只在出現故障時添加檢測。但可觀測性在顯示正常運行時最有價值。你需要健康狀況的基線，然後才能檢測到異常。</p>
+
+        <h2>一切的基礎</h2>
+
+        <p>可觀測性被稱為 Layer 0，不是因為它很簡單，而是因為一切都依賴於它。在不完整的可觀測性基礎上構建的自動化 runbook 系統將執行錯誤的修復。基於不反映現實的指標的 SLO 驅動控制迴圈將優化到錯誤的目標。在沒有追蹤的不可變基礎設施系統上構建的系統無法診斷問題。</p>
+
+        <p>我們在試圖自主運維的組織中看到的最常見的失敗模式是跳過 Layer 0。他們在為人類故障排除設計的監控系統之上部署複雜的 AIOps 平台、GitOps 工具和自我修復基礎設施。結果：漂亮的儀表板、昂貴的工具和沒有人理解的故障系統。</p>
+
+        <p>建立持久的自主運維的組織從這裡開始。他們投資於 OpenTelemetry 檢測。他們建立回答商業問題的 Grafana 儀表板。他們構造日誌，使模式可見。他們將可觀測性作為一級工程關注，而不是事後想法。</p>
+
+        <p>這個基礎——可觀測性作為一門架構學科——是使其後的一切成為可能的。</p>
+
+        <h2>系列中的下一個</h2>
+        <p>一旦可觀測性牢固，下一層是<strong>運行手冊自動化</strong>：取你現在可以看到的已知故障並自動化它們的修復。<a href="../runbook-automation-layer-1/" style="color:#ffbd59;text-decoration:underline">閱讀 Layer 1</a>。</p>
+
+        <p>在 AIDARIS，我們與團隊合作建立實際有效的可觀測性系統。如果你對你的可觀測性基礎是否能支持自主運維感到不確定，<a href="../../../../zh/where-to-find-us/" style="color:#ffbd59;text-decoration:underline">我們很想幫助你評估它</a>。</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="prev-next" aria-label="Previous and next page">
+    <div class="prev-next-inner">
+      <a href="../../" class="prev-next-link prev-next-prev">← 所有文章</a>
+      <a href="../runbook-automation-layer-1/" class="prev-next-link prev-next-next">Layer 1：運行手冊自動化 →</a>
+    </div>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="footer-tab">© 2025–2026 <span class="footer-brand">AIDARIS</span>. All rights reserved. <span class="footer-version" data-version>v</span></span>
+  </footer>
+
+  <script src="../../../../script.js"></script>
+  </body>
+</html>

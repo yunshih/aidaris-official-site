@@ -971,10 +971,19 @@ h1 {
   margin-bottom: 24px;
 }
 
-/* Language switcher inside filter bar — pushed to the right */
+/* Blog heading row: title + lang switch on the same line */
+.blog-heading-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 0;
+}
+.blog-heading-row .eyebrow {
+  margin-bottom: 0;
+}
 .blog-lang-switch {
   margin-left: auto;
-  margin-right: 0;
+  flex-shrink: 0;
 }
 
 .blog-filter-btn {

@@ -141,8 +141,14 @@ class ArticleTextToSpeech {
     };
 
     this.currentUtterance.onerror = (e) => {
-      console.error('Speech error:', e);
-      this.playSegment(index + 1);
+      if (e.error === 'not-allowed' || e.error === 'synthesis-unavailable' || e.error === 'audio-busy') {
+        this.stop();
+        this.showError(this.lang === 'zh-TW'
+          ? '無法播放語音，請確認瀏覽器允許音訊。'
+          : 'Audio playback failed. Check that your browser allows audio.');
+      } else {
+        this.playSegment(index + 1);
+      }
     };
 
     this.synth.cancel();
@@ -216,6 +222,16 @@ class ArticleTextToSpeech {
     } else {
       controls.classList.remove('tts-playing');
     }
+  }
+
+  showError(message) {
+    const existing = this.controls.querySelector('.tts-error');
+    if (existing) existing.remove();
+    const err = document.createElement('p');
+    err.className = 'tts-error';
+    err.textContent = message;
+    this.controls.appendChild(err);
+    setTimeout(() => err.remove(), 6000);
   }
 
   isSupported() {

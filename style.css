@@ -974,16 +974,17 @@ h1 {
 /* Blog heading row: title + lang switch on the same line */
 .blog-heading-row {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 16px;
   margin-bottom: 0;
 }
 .blog-heading-row .eyebrow {
+  flex: 1;
   margin-bottom: 0;
 }
 .blog-lang-switch {
-  margin-left: auto;
   flex-shrink: 0;
+  margin-left: 0;
 }
 
 .blog-filter-btn {

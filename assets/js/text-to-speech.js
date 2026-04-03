@@ -37,7 +37,7 @@ class ArticleTextToSpeech {
     controls.innerHTML = `
       <div class="tts-controls-inner">
         <div class="tts-label">
-          <svg class="tts-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <svg class="tts-icon tts-icon-speaker" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
             <path d="M15.54 8.46a7 7 0 0 1 0 9.9M20.16 3.84a11 11 0 0 1 0 15.52"></path>
           </svg>
@@ -63,33 +63,6 @@ class ArticleTextToSpeech {
               <rect x="6" y="6" width="12" height="12"></rect>
             </svg>
           </button>
-
-          <div class="tts-separator"></div>
-
-          <div class="tts-speed-control">
-            <label for="tts-speed" class="tts-speed-label">
-              ${this.lang === 'zh-TW' ? '速度' : 'Speed'}:
-            </label>
-            <select id="tts-speed" class="tts-speed-select">
-              <option value="0.75">0.75x</option>
-              <option value="1" selected>1x</option>
-              <option value="1.25">1.25x</option>
-              <option value="1.5">1.5x</option>
-            </select>
-          </div>
-
-          <div class="tts-separator"></div>
-
-          <div class="tts-lang-control">
-            <label for="tts-lang" class="tts-lang-label">
-              ${this.lang === 'zh-TW' ? '語言' : 'Language'}:
-            </label>
-            <select id="tts-lang" class="tts-lang-select">
-              <option value="en-US" ${this.lang === 'en-US' ? 'selected' : ''}>English</option>
-              <option value="zh-TW" ${this.lang === 'zh-TW' ? 'selected' : ''}>繁體中文</option>
-              <option value="zh-CN">簡體中文</option>
-            </select>
-          </div>
         </div>
       </div>
 
@@ -107,17 +80,10 @@ class ArticleTextToSpeech {
     const playBtn = this.controls.querySelector('.tts-play');
     const pauseBtn = this.controls.querySelector('.tts-pause');
     const stopBtn = this.controls.querySelector('.tts-stop');
-    const speedSelect = this.controls.querySelector('#tts-speed');
-    const langSelect = this.controls.querySelector('#tts-lang');
 
     playBtn.addEventListener('click', () => this.play());
     pauseBtn.addEventListener('click', () => this.pause());
     stopBtn.addEventListener('click', () => this.stop());
-    speedSelect.addEventListener('change', (e) => this.setSpeed(parseFloat(e.target.value)));
-    langSelect.addEventListener('change', (e) => {
-      this.lang = e.target.value;
-      if (this.speaking) this.stop();
-    });
   }
 
   getTextContent() {
@@ -131,6 +97,7 @@ class ArticleTextToSpeech {
       this.synth.resume();
       this.paused = false;
       this.updateButtonState();
+      this.updateVisualFeedback();
       return;
     }
 
@@ -139,17 +106,19 @@ class ArticleTextToSpeech {
     const text = this.getTextContent();
     this.currentUtterance = new SpeechSynthesisUtterance(text);
     this.currentUtterance.lang = this.lang;
-    this.currentUtterance.rate = parseFloat(document.querySelector('#tts-speed').value);
+    this.currentUtterance.rate = 1;
 
     this.currentUtterance.onstart = () => {
       this.speaking = true;
       this.updateButtonState();
+      this.updateVisualFeedback();
     };
 
     this.currentUtterance.onend = () => {
       this.speaking = false;
       this.paused = false;
       this.updateButtonState();
+      this.updateVisualFeedback();
     };
 
     this.currentUtterance.onerror = (e) => {
@@ -157,6 +126,7 @@ class ArticleTextToSpeech {
       this.speaking = false;
       this.paused = false;
       this.updateButtonState();
+      this.updateVisualFeedback();
     };
 
     this.synth.cancel();
@@ -168,6 +138,7 @@ class ArticleTextToSpeech {
       this.synth.pause();
       this.paused = true;
       this.updateButtonState();
+      this.updateVisualFeedback();
     }
   }
 
@@ -176,16 +147,7 @@ class ArticleTextToSpeech {
     this.speaking = false;
     this.paused = false;
     this.updateButtonState();
-  }
-
-  setSpeed(rate) {
-    if (this.currentUtterance) {
-      this.currentUtterance.rate = rate;
-      if (this.speaking || this.paused) {
-        this.stop();
-        setTimeout(() => this.play(), 100);
-      }
-    }
+    this.updateVisualFeedback();
   }
 
   updateButtonState() {
@@ -198,6 +160,15 @@ class ArticleTextToSpeech {
     } else {
       playBtn.classList.remove('hidden');
       pauseBtn.classList.add('hidden');
+    }
+  }
+
+  updateVisualFeedback() {
+    const controls = this.controls;
+    if (this.speaking && !this.paused) {
+      controls.classList.add('tts-playing');
+    } else {
+      controls.classList.remove('tts-playing');
     }
   }
 

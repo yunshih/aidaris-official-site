@@ -125,22 +125,33 @@ class ArticleTextToSpeech {
     this.currentSegmentIndex = index;
     this.highlightSegment(segment);
 
-    this.currentUtterance = new SpeechSynthesisUtterance(text);
-    this.currentUtterance.lang = this.lang;
-    this.currentUtterance.rate = 1;
+    // Null out handlers on previous utterance before cancel() to prevent
+    // browsers (Chrome/Safari) from re-firing onend when cancel() is called.
+    if (this.currentUtterance) {
+      this.currentUtterance.onstart = null;
+      this.currentUtterance.onend = null;
+      this.currentUtterance.onerror = null;
+    }
 
-    this.currentUtterance.onstart = () => {
+    this.synth.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = this.lang;
+    utterance.rate = 1;
+    this.currentUtterance = utterance;
+
+    utterance.onstart = () => {
       this.speaking = true;
       this.updateButtonState();
       this.updateVisualFeedback();
     };
 
-    this.currentUtterance.onend = () => {
+    utterance.onend = () => {
       // Play next segment
       this.playSegment(index + 1);
     };
 
-    this.currentUtterance.onerror = (e) => {
+    utterance.onerror = (e) => {
       if (e.error === 'not-allowed' || e.error === 'synthesis-unavailable' || e.error === 'audio-busy') {
         this.stop();
         this.showError(this.lang === 'zh-TW'
@@ -151,8 +162,7 @@ class ArticleTextToSpeech {
       }
     };
 
-    this.synth.cancel();
-    this.synth.speak(this.currentUtterance);
+    this.synth.speak(utterance);
   }
 
   play() {

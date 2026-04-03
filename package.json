@@ -1,0 +1,15 @@
+{
+  "name": "aidaris-official-site",
+  "private": true,
+  "scripts": {
+    "build": "node build.js",
+    "build:css": "postcss style.css --use cssnano -o style.css && postcss assets/css/text-to-speech.css --use cssnano -o assets/css/text-to-speech.css",
+    "build:js": "terser script.js -o script.js && terser assets/js/text-to-speech.js -o assets/js/text-to-speech.js"
+  },
+  "devDependencies": {
+    "cssnano": "^7.0.6",
+    "postcss": "^8.5.3",
+    "postcss-cli": "^11.0.0",
+    "terser": "^5.39.0"
+  }
+}

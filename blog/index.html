@@ -257,6 +257,8 @@
       applyFilter(filter);
       document.querySelectorAll('.blog-tag').forEach(function (t) { t.classList.remove('active'); });
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: 'blog_filter', filter_type: 'category', filter_value: filter });
     });
 
     document.querySelectorAll('.blog-tag[data-tag]').forEach(function (tag) {
@@ -275,9 +277,12 @@
           t.classList.toggle('active', t.dataset.tag === tagName);
         });
         window.scrollTo({ top: 0, behavior: 'smooth' });
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({ event: 'blog_filter', filter_type: 'tag', filter_value: tagName });
       });
     });
   })();
   </script>
+    <script src="../assets/js/analytics.js"></script>
   </body>
 </html>

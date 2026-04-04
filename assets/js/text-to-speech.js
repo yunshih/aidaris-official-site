@@ -12,6 +12,7 @@ class ArticleTextToSpeech {
     this.currentUtterance = null;
     this.synth = window.speechSynthesis;
     this.lang = options.lang || this.detectLanguage();
+    this._articleTitle = (document.querySelector('h1.eyebrow') || {}).textContent || document.title;
 
     // Segment tracking
     this.segments = [];
@@ -110,6 +111,7 @@ class ArticleTextToSpeech {
       this.clearHighlights();
       this.updateButtonState();
       this.updateVisualFeedback();
+      this.pushEvent('complete');
       return;
     }
 
@@ -165,18 +167,30 @@ class ArticleTextToSpeech {
     this.synth.speak(utterance);
   }
 
+  pushEvent(action) {
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event: 'tts_interaction',
+      tts_action: action,
+      article_title: this._articleTitle,
+      page_location: window.location.href
+    });
+  }
+
   play() {
     if (this.paused) {
       this.synth.resume();
       this.paused = false;
       this.updateButtonState();
       this.updateVisualFeedback();
+      this.pushEvent('resume');
       return;
     }
 
     if (this.speaking) return;
 
     this.currentSegmentIndex = 0;
+    this.pushEvent('play');
     this.playSegment(0);
   }
 
@@ -186,6 +200,7 @@ class ArticleTextToSpeech {
       this.paused = true;
       this.updateButtonState();
       this.updateVisualFeedback();
+      this.pushEvent('pause');
     }
   }
 
@@ -197,6 +212,7 @@ class ArticleTextToSpeech {
     this.clearHighlights();
     this.updateButtonState();
     this.updateVisualFeedback();
+    this.pushEvent('stop');
   }
 
   highlightSegment(segment) {

@@ -424,6 +424,8 @@
     "logoGuide": "docs/LOGO_USAGE_GUIDE.md",
     "colorSystem": "docs/BRAND_COLORS.md",
     "typographySystem": "docs/BRAND_TYPOGRAPHY.md",
-    "designTokens": "docs/design-tokens.json"
+    "assetsInventory": "docs/BRAND_ASSETS_INVENTORY.md",
+    "designTokens": "docs/design-tokens.json",
+    "readme": "docs/README.md"
   }
 }

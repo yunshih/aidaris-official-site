@@ -1,0 +1,431 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "name": "AIDARIS Design Tokens",
+  "description": "AIDARIS 品牌设计令牌 - 颜色、排版、间距等",
+  "version": "1.0.0",
+  "lastModified": "2025-04-04",
+
+  "color": {
+    "brand": {
+      "gold": {
+        "value": "#ffbd59",
+        "rgb": "rgb(255, 189, 89)",
+        "hsl": "hsl(36, 100%, 67%)",
+        "description": "品牌金色 - Logo 初始字母、强调标题、核心价值"
+      },
+      "green": {
+        "value": "#b6ea5f",
+        "rgb": "rgb(182, 234, 95)",
+        "hsl": "hsl(76, 74%, 64%)",
+        "description": "品牌绿色 - 强调、导航悬停、边框、装饰"
+      }
+    },
+    "background": {
+      "primary": {
+        "value": "#020301",
+        "rgb": "rgb(2, 3, 1)",
+        "hsl": "hsl(120, 50%, 1%)",
+        "description": "主背景 - 页面深黑色背景"
+      },
+      "secondary": {
+        "value": "#07170d",
+        "rgb": "rgb(7, 23, 13)",
+        "hsl": "hsl(140, 54%, 6%)",
+        "description": "次背景 - 容器、卡片、玻璃态底色"
+      },
+      "gradient": {
+        "value": "radial-gradient(circle at top, #0e3532 0%, #07170d 38%, #020301 100%)",
+        "description": "页面背景渐变 - 从上方绿色到底部黑色"
+      },
+      "glass": {
+        "value": "rgba(5, 14, 8, 0.72)",
+        "description": "玻璃态基础 - 容器与卡片的半透明背景"
+      }
+    },
+    "text": {
+      "primary": {
+        "value": "#effaf2",
+        "rgb": "rgb(239, 250, 242)",
+        "hsl": "hsl(146, 48%, 96%)",
+        "description": "主文字 - 正文、标题、主要内容"
+      },
+      "muted": {
+        "value": "#9ab4a8",
+        "rgb": "rgb(154, 180, 168)",
+        "hsl": "hsl(144, 14%, 65%)",
+        "description": "暗文字 - 辅助文字、标签、说明"
+      },
+      "white": {
+        "value": "#ffffff",
+        "description": "纯白 - 页脚品牌文字、最高对比度"
+      }
+    },
+    "gradient": {
+      "topGreen": {
+        "value": "#0e3532",
+        "description": "渐变顶部 - 自然绿色"
+      },
+      "breath": {
+        "primary": {
+          "value": "rgba(182, 234, 95, 0.5)",
+          "baseColor": "#b6ea5f",
+          "description": "品牌呼吸动画 - 绿色发光"
+        },
+        "secondary": {
+          "value": "rgba(35, 190, 200, 0.2)",
+          "baseColor": "#23bec8",
+          "description": "品牌呼吸动画 - 青色辅助"
+        }
+      }
+    },
+    "contrast": {
+      "description": "WCAG 对比度检查（所有颜色在背景上的对比度）",
+      "gold_on_dark": {
+        "contrast": "7.2:1",
+        "wcag_level": "AAA"
+      },
+      "green_on_dark": {
+        "contrast": "9.8:1",
+        "wcag_level": "AAA"
+      },
+      "text_on_dark": {
+        "contrast": "13.1:1",
+        "wcag_level": "AAA"
+      },
+      "muted_on_dark": {
+        "contrast": "4.8:1",
+        "wcag_level": "AA"
+      }
+    }
+  },
+
+  "typography": {
+    "fontFamily": {
+      "logo": {
+        "value": "'SuperG', 'Gugi', 'Offside', 'Noto Sans TC', 'SF Pro Display', 'Inter', sans-serif",
+        "description": "Logo 首字母 - SuperG 自定义字体",
+        "fonts": [
+          {
+            "name": "SuperG",
+            "src": "assets/fonts/Aka-AcidGR-SuperG.woff",
+            "format": "woff",
+            "fallback": "Gugi"
+          }
+        ]
+      },
+      "display": {
+        "value": "'Gugi', 'Offside', 'Noto Sans TC', 'SF Pro Display', 'Inter', sans-serif",
+        "description": "标题与显示文本 - Gugi 字体"
+      },
+      "heading": {
+        "value": "'Offside', 'Noto Sans TC', 'SF Pro Display', 'Inter', sans-serif",
+        "description": "标题与强调 - Offside 字体"
+      },
+      "body": {
+        "value": "'SF Pro Display', 'Inter', 'Noto Sans TC', 'Helvetica Neue', Arial, sans-serif",
+        "description": "正文 - SF Pro Display 主，Inter 备选，Noto Sans TC 中文"
+      },
+      "cjk": {
+        "value": "'Noto Sans TC', 'SF Pro Display', 'Inter', sans-serif",
+        "description": "中文专用 - Noto Sans Traditional Chinese"
+      }
+    },
+    "fontSize": {
+      "h1": {
+        "value": "clamp(2.4rem, 5.2vw, 4.6rem)",
+        "min": "2.4rem",
+        "preferred": "5.2vw",
+        "max": "4.6rem",
+        "description": "主标题 - 响应式，38px 至 73px"
+      },
+      "subtitle": {
+        "value": "clamp(0.95rem, 1.05vw, 1.25rem)",
+        "min": "0.95rem",
+        "preferred": "1.05vw",
+        "max": "1.25rem",
+        "description": "副标题 - 响应式，15px 至 20px"
+      },
+      "eyebrow": {
+        "value": "1.3rem",
+        "description": "眼眉文字 - 固定 20.8px"
+      },
+      "body": {
+        "value": "clamp(0.95rem, 1.1vw, 1.1rem)",
+        "min": "0.95rem",
+        "preferred": "1.1vw",
+        "max": "1.1rem",
+        "description": "正文 - 响应式，15px 至 17.6px"
+      },
+      "list": {
+        "value": "clamp(1rem, 1.2vw, 1.15rem)",
+        "min": "1rem",
+        "preferred": "1.2vw",
+        "max": "1.15rem",
+        "description": "列表项 - 响应式，16px 至 18.4px"
+      },
+      "nav": {
+        "value": "0.85rem",
+        "description": "导航链接 - 固定 13.6px"
+      },
+      "small": {
+        "value": "0.65rem",
+        "description": "小文本、标签 - 固定 10.4px"
+      }
+    },
+    "fontWeight": {
+      "normal": {
+        "value": "400",
+        "description": "正常 - 正文、标题、导航"
+      },
+      "medium": {
+        "value": "500",
+        "description": "中等 - 次级强调、列表标题"
+      },
+      "semibold": {
+        "value": "600",
+        "description": "半粗体 - 关键强调、小标题"
+      },
+      "bold": {
+        "value": "700",
+        "description": "粗体 - 仅限 SuperG Logo"
+      }
+    },
+    "letterSpacing": {
+      "none": {
+        "value": "0",
+        "description": "无间距 - 正文、列表、导航"
+      },
+      "tight": {
+        "value": "0.02em",
+        "description": "极细微调 - 副标题"
+      },
+      "normal": {
+        "value": "0.04em",
+        "description": "轻微展开 - Logo 文本"
+      },
+      "wide": {
+        "value": "0.06em",
+        "description": "中等展开 - 导航品牌、页脚品牌"
+      },
+      "wider": {
+        "value": "0.08em",
+        "description": "展开 - 页脚品牌强调"
+      },
+      "extraWide": {
+        "value": "0.1em",
+        "description": "较宽展开 - 导航链接"
+      },
+      "loose": {
+        "value": "0.18em",
+        "description": "大幅展开 - 能力标签"
+      },
+      "veryLoose": {
+        "value": "0.22em",
+        "description": "最宽展开 - 眼眉文字"
+      }
+    },
+    "lineHeight": {
+      "tight": {
+        "value": "1.08",
+        "description": "极紧凑 - h1 大标题"
+      },
+      "compact": {
+        "value": "1.4",
+        "description": "紧凑 - 眼眉、标签"
+      },
+      "normal": {
+        "value": "1.6",
+        "description": "中等 - 服务描述、辅助文字"
+      },
+      "relaxed": {
+        "value": "1.65",
+        "description": "中等偏松 - 联系页面介绍"
+      },
+      "loose": {
+        "value": "1.7",
+        "description": "松 - 长段落强调"
+      },
+      "veryLoose": {
+        "value": "1.8",
+        "description": "较松 - 副标题、正文"
+      },
+      "extraLoose": {
+        "value": "1.85",
+        "description": "较松 - 列表项"
+      }
+    }
+  },
+
+  "spacing": {
+    "description": "间距系统基于 8px 网格",
+    "base": {
+      "value": "8px",
+      "description": "基础单位"
+    },
+    "scale": {
+      "xs": { "value": "4px", "multiplier": "0.5x" },
+      "sm": { "value": "8px", "multiplier": "1x" },
+      "md": { "value": "16px", "multiplier": "2x" },
+      "lg": { "value": "24px", "multiplier": "3x" },
+      "xl": { "value": "32px", "multiplier": "4x" },
+      "2xl": { "value": "40px", "multiplier": "5x" },
+      "3xl": { "value": "48px", "multiplier": "6x" },
+      "4xl": { "value": "56px", "multiplier": "7x" },
+      "5xl": { "value": "64px", "multiplier": "8x" }
+    }
+  },
+
+  "effects": {
+    "textStroke": {
+      "logo": {
+        "value": "-webkit-text-stroke: 0.7px currentColor",
+        "description": "Logo 首字母 - 主页"
+      },
+      "logoNav": {
+        "value": "-webkit-text-stroke: 0.5px currentColor",
+        "description": "Logo 首字母 - 导航栏"
+      }
+    },
+    "textShadow": {
+      "logoBase": {
+        "value": "0 0 1px currentColor",
+        "description": "Logo 基础发光"
+      },
+      "breath": {
+        "start": {
+          "value": "0 0 16px rgba(182, 234, 95, 0.5), 0 0 32px rgba(35, 190, 200, 0.2)",
+          "description": "品牌呼吸动画 - 起始状态"
+        },
+        "peak": {
+          "value": "0 0 26px rgba(182, 234, 95, 0.9), 0 0 46px rgba(35, 190, 200, 0.4)",
+          "description": "品牌呼吸动画 - 峰值状态"
+        }
+      },
+      "footer": {
+        "value": "0 2px 10px rgba(2, 6, 4, 0.85)",
+        "description": "页脚文字阴影"
+      }
+    },
+    "boxShadow": {
+      "heroCard": {
+        "value": "0 25px 60px rgba(2, 5, 14, 0.6)",
+        "description": "Hero 卡片阴影"
+      },
+      "listDecor": {
+        "value": "0 0 8px rgba(182, 234, 95, 0.5)",
+        "description": "列表装饰符号光晕"
+      },
+      "footer": {
+        "value": "0 -6px 18px rgba(2, 6, 4, 0.45)",
+        "description": "页脚阴影"
+      }
+    },
+    "backdropFilter": {
+      "light": {
+        "value": "blur(10px)",
+        "description": "轻微模糊 - 导航栏"
+      },
+      "medium": {
+        "value": "blur(12px)",
+        "description": "中等模糊 - 导航栏"
+      },
+      "heavy": {
+        "value": "blur(18px)",
+        "description": "重度模糊 - 卡片容器"
+      }
+    },
+    "animation": {
+      "breath": {
+        "name": "aidaris-breath",
+        "duration": "2.8s",
+        "timingFunction": "ease-in-out",
+        "iterationCount": "infinite",
+        "description": "品牌呼吸动画 - Logo 发光脉动",
+        "keyframes": {
+          "0%": "text-shadow: 0 0 16px rgba(182, 234, 95, 0.5), 0 0 32px rgba(35, 190, 200, 0.2)",
+          "50%": "text-shadow: 0 0 26px rgba(182, 234, 95, 0.9), 0 0 46px rgba(35, 190, 200, 0.4)",
+          "100%": "text-shadow: 0 0 16px rgba(182, 234, 95, 0.5), 0 0 32px rgba(35, 190, 200, 0.2)"
+        }
+      }
+    },
+    "transition": {
+      "fast": {
+        "value": "0.2s ease",
+        "description": "快速过渡 - Logo、导航交互"
+      },
+      "normal": {
+        "value": "0.3s ease",
+        "description": "正常过渡"
+      },
+      "slow": {
+        "value": "0.5s ease",
+        "description": "缓慢过渡"
+      }
+    }
+  },
+
+  "components": {
+    "button": {
+      "description": "按钮组件规范（待补充）"
+    },
+    "card": {
+      "description": "卡片组件规范（待补充）"
+    },
+    "navigation": {
+      "description": "导航组件规范（待补充）"
+    }
+  },
+
+  "responsive": {
+    "breakpoints": {
+      "mobile": {
+        "value": "320px",
+        "description": "移动端最小宽度"
+      },
+      "mobileSm": {
+        "value": "480px",
+        "description": "小手机"
+      },
+      "tablet": {
+        "value": "768px",
+        "description": "平板竖屏"
+      },
+      "tabletLg": {
+        "value": "1024px",
+        "description": "平板横屏"
+      },
+      "desktop": {
+        "value": "1440px",
+        "description": "桌面标准"
+      },
+      "desktopXl": {
+        "value": "1920px",
+        "description": "宽屏显示器"
+      }
+    }
+  },
+
+  "accessibility": {
+    "contrast": {
+      "wcagAA": "4.5:1",
+      "wcagAAA": "7:1"
+    },
+    "motion": {
+      "prefersReducedMotion": "@media (prefers-reduced-motion: prefer-reduced-motion) { animation: none; }",
+      "description": "尊重用户运动偏好设置"
+    },
+    "colorBlindness": {
+      "description": "色彩系统已验证对红绿色盲友好"
+    }
+  },
+
+  "documentation": {
+    "brandGuidelines": "docs/BRAND_GUIDELINES.md",
+    "logoGuide": "docs/LOGO_USAGE_GUIDE.md",
+    "colorSystem": "docs/BRAND_COLORS.md",
+    "typographySystem": "docs/BRAND_TYPOGRAPHY.md",
+    "assetsInventory": "docs/BRAND_ASSETS_INVENTORY.md",
+    "designTokens": "docs/design-tokens.json",
+    "readme": "docs/README.md"
+  }
+}

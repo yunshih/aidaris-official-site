@@ -1,0 +1,24 @@
+{
+  "name": "AIDARIS",
+  "short_name": "AIDARIS",
+  "description": "Software engineering and cloud architecture insights from Aidaris Technologies.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#020301",
+  "theme_color": "#020301",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "/assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

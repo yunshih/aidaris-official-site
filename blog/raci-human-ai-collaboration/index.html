@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Who Does What When AI Is on the Team? Rethinking RACI for Human-AI Collaboration - AIDARIS Blog</title>
+    <meta name="description" content="RACI was designed for humans. When AI agents join the team, the old model breaks. Learn how to redesign RACI for multi-agent systems—and why Accountability must always stay human." />
+    <link rel="canonical" href="https://aidaris.com/blog/raci-human-ai-collaboration/" />
+    <link rel="alternate" hreflang="en" href="https://aidaris.com/blog/raci-human-ai-collaboration/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/raci-human-ai-collaboration/" />
+    <link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/raci-human-ai-collaboration/" />
+    <meta name="theme-color" content="#020301" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AIDARIS" />
+    <meta property="og:title" content="Who Does What When AI Is on the Team? Rethinking RACI for Human-AI Collaboration" />
+    <meta property="og:description" content="RACI was designed for humans. When AI agents join the team, the old model breaks. Learn how to redesign RACI for multi-agent systems—and why Accountability must always stay human." />
+    <meta property="og:url" content="https://aidaris.com/blog/raci-human-ai-collaboration/" />
+    <meta property="og:image" content="https://aidaris.com/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AIDARIS — Software Engineering &amp; Cloud Architecture Insights" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_TW" />
+    <meta property="article:published_time" content="2026-05-16" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Who Does What When AI Is on the Team? Rethinking RACI for Human-AI Collaboration" />
+    <meta name="twitter:description" content="RACI was designed for humans. When multi-agent AI joins the team, you need a new model for accountability." />
+    <meta name="twitter:image" content="https://aidaris.com/assets/og-image.png" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://aidaris.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://aidaris.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "Rethinking RACI for Human-AI Collaboration", "item": "https://aidaris.com/blog/raci-human-ai-collaboration/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Who Does What When AI Is on the Team? Rethinking RACI for Human-AI Collaboration",
+      "description": "RACI was designed for humans. When AI agents join the team, the old model breaks. Learn how to redesign RACI for multi-agent systems—and why Accountability must always stay human.",
+      "datePublished": "2026-05-16",
+      "dateModified": "2026-05-16",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://aidaris.com/assets/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "inLanguage": "en",
+      "mainEntityOfPage": "https://aidaris.com/blog/raci-human-ai-collaboration/"
+    }
+    </script>
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@400;500;600&family=Offside&display=swap" />
+    <link rel="preload" href="../../assets/fonts/Aka-AcidGR-SuperG.woff" as="font" type="font/woff" crossorigin />
+    <link rel="stylesheet" href="../../style.css" />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TLBV435S');</script>
+    <link rel="stylesheet" href="../../assets/css/text-to-speech.css" />
+  </head>
+  <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLBV435S"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <canvas id="flow-canvas" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <a class="nav-brand" href="../../"><span class="nav-brand-initial">a</span><span class="nav-brand-text">AIDARIS</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../../who-we-are/">Who We Are</a>
+      <a class="nav-link" href="../../what-we-do/">What We Do</a>
+      <a class="nav-link" href="../../how-we-work/">How We Work</a>
+      <a class="nav-link" href="../../why-we-fit/">Why We Fit</a>
+      <a class="nav-link" href="../../when-to-engage/">When to Engage</a>
+      <a class="nav-link" href="../../where-to-find-us/">Where to Find Us</a>
+      <a class="nav-link nav-link--current" href="../">Blog</a>
+    </div>
+    <label for="nav-toggle" class="nav-menu-btn" aria-label="Open menu"><span></span><span></span><span></span></label>
+  </nav>
+
+  <main id="main-content" class="fit-section">
+    <div class="fit-content hero-content article-content">
+      <div class="blog-heading-row">
+        <h1 class="eyebrow">Who Does What When AI Is on the Team? Rethinking RACI for Human-AI Collaboration</h1>
+        <a class="lang-switch blog-lang-switch" href="../../zh/blog/raci-human-ai-collaboration/" title="切換為中文" lang="zh-Hant">🌐 中文</a>
+      </div>
+      <p class="article-meta">May 2026 · 10 min read · Aidaris Technologies <span class="blog-category-badge">AI &amp; Engineering</span></p>
+      <div class="article-tags">
+        <span class="blog-tag">RACI</span>
+        <span class="blog-tag">Human-AI</span>
+        <span class="blog-tag">Multi-Agent</span>
+        <span class="blog-tag">Team Design</span>
+      </div>
+
+      <div class="article-body">
+        <p>Every team that has worked with a RACI matrix has had the same experience: you sit down with a whiteboard, list your stakeholders, draw the grid, and assign letters. The process forces useful conversations. Who actually owns this decision? Who needs to be in the room? Who signs off?</p>
+
+        <p>RACI works because it surfaces assumptions about responsibility that people otherwise leave implicit. It was designed for a world where every actor in the matrix is a human being—someone with intent, memory, moral agency, and skin in the game.</p>
+
+        <p>Now AI is joining the team. And the instinct most organizations have is to add an "AI" column to the RACI matrix and keep going. That instinct is wrong—and understanding why reveals something important about how to actually build effective human-AI workflows.</p>
+
+        <h2>A Quick Recap of RACI</h2>
+        <p>For those who haven't used it recently, RACI assigns one of four roles to each actor for each task:</p>
+        <ul>
+          <li><strong>Responsible (R)</strong>: The person who does the work. There can be multiple.</li>
+          <li><strong>Accountable (A)</strong>: The person who owns the outcome. There must be exactly one—the buck stops here.</li>
+          <li><strong>Consulted (C)</strong>: People whose input is sought before decisions are finalized.</li>
+          <li><strong>Informed (I)</strong>: People who are kept up to date but don't need to act.</li>
+        </ul>
+        <p>The model assumes continuity: the Accountable person can be held responsible over time. The Consulted person can push back based on expertise. The Informed person processes information and adjusts their behavior. These assumptions work because every actor is human.</p>
+
+        <h2>The Trap: Treating AI Like a Person</h2>
+        <p>When teams first start working with AI, they anthropomorphize it. They say it "understands" requirements, "decides" which approach to take, and "takes responsibility" for its output. These are useful shorthand phrases in conversation, but they mask a dangerous misconception when it comes to designing workflows.</p>
+
+        <p>A single AI agent—even a highly capable one—has none of the properties that make RACI work for humans:</p>
+        <ul>
+          <li><strong>No persistent memory across sessions.</strong> Each interaction starts fresh. The AI that wrote your code yesterday has no recollection of it today unless you explicitly provide that context.</li>
+          <li><strong>No consequence awareness.</strong> When an AI produces a wrong answer, it does not experience regret, does not grow more cautious, and does not carry forward any lesson. There is no natural feedback loop between error and correction.</li>
+          <li><strong>No moral agency.</strong> The AI cannot be held accountable in any meaningful sense. It will not appear in a post-mortem. It will not learn that its confidence was misplaced. It will not lose credibility with stakeholders.</li>
+          <li><strong>No understanding of "why this matters."</strong> AI can produce a deliverable that meets a specification without any grasp of why the specification exists, what it serves, or what failure would cost.</li>
+        </ul>
+        <p>Placing a single "AI" in your RACI matrix creates the illusion that something—or someone—is covering that role. In reality, the role is empty. Accountability has disappeared into a black box.</p>
+
+        <h2>The Deeper Problem: AI Is Not One Actor</h2>
+        <p>There is a second, less obvious problem. When teams think about "AI on the team," they imagine a single, coherent agent—something like a very capable new hire who happens to work at machine speed. But modern AI systems, especially in engineering contexts, are rarely a single agent. They are networks of specialized agents working in coordination.</p>
+
+        <p>Consider what a production AI-assisted engineering workflow actually looks like under the hood:</p>
+        <ul>
+          <li>An <strong>Orchestrator Agent</strong> receives a high-level task, decomposes it into subtasks, and routes work to specialist agents. It acts like a project manager—but one with no judgment about whether the task decomposition is correct.</li>
+          <li><strong>Specialist Agents</strong> handle specific subtasks: one generates code, another writes tests, another searches documentation, another drafts a summary. Each operates within its narrow scope.</li>
+          <li>A <strong>Critic or Reviewer Agent</strong> evaluates the outputs of specialist agents against a rubric—checking for errors, inconsistencies, or policy violations. It can flag issues but cannot fix them without another execution cycle.</li>
+          <li>A <strong>Memory or Context Agent</strong> maintains state across tasks: storing prior decisions, retrieved documents, and relevant history. But this memory is only as good as what humans have chosen to store and structure.</li>
+        </ul>
+
+        <p>Here is the critical insight: <strong>none of these agents have accountability relationships with each other.</strong> The Orchestrator does not actually care whether the Specialist produces correct output. The Critic cannot override the pipeline. The Memory Agent does not flag when stored context has gone stale. They are process nodes, not teammates.</p>
+
+        <p>When something goes wrong in a multi-agent pipeline, there is no natural place to look for accountability. The Orchestrator followed its instructions. The Specialist generated plausible output. The Critic found no obvious errors. And yet the final result was wrong in a way that matters—perhaps deeply. Without a human checkpoint, that failure propagates unchallenged.</p>
+
+        <h2>Redesigning RACI for Human-AI Workflows</h2>
+        <p>The solution is not to abandon RACI. It is to redesign it with a clear understanding of what AI agents actually are: powerful, fast, stateless execution nodes that can cover specific capabilities within a human-designed framework.</p>
+
+        <p>Here is how each RACI role needs to be rethought:</p>
+
+        <h3>Responsible: AI Executes, Humans Gate</h3>
+        <p>AI agents can and should take the Responsible role for execution tasks: generating first drafts, running analyses, producing test cases, formatting outputs, summarizing documents. This is where AI provides genuine leverage—speed and consistency at scale.</p>
+        <p>But "Responsible" in a human-AI context must always include a human review gate before the output becomes an input to the next stage. The AI is responsible for producing; the human is responsible for validating. Both are essential parts of the R role. Skipping the human gate does not make the AI more Responsible—it makes the workflow ungoverned.</p>
+        <p>In practice, this means your RACI should distinguish between <em>R-AI</em> (AI executes) and <em>R-Human</em> (human reviews and approves) rather than collapsing them into a single "AI" entry.</p>
+
+        <h3>Accountable: This Is Always Human</h3>
+        <p>Accountability cannot be delegated to an AI agent—not to one, not to many. Accountability requires that someone can be asked "why did this happen?" and give a meaningful answer. It requires someone who will experience consequences if the outcome is wrong. It requires someone with the authority to make judgment calls when the situation does not fit the specification.</p>
+        <p>In a multi-agent pipeline, the temptation to diffuse accountability is especially strong. There are so many nodes, so many outputs, so many intermediate steps. It can feel as though the system itself is accountable. It is not. A human must own the outcome of any workflow that touches the real world—a shipped feature, a sent communication, a deployed configuration, a published document.</p>
+        <p>If you cannot name the human who is Accountable, your workflow is not ready to run autonomously.</p>
+
+        <h3>Consulted: AI as a High-Speed Advisory Layer</h3>
+        <p>This is where multi-agent systems genuinely shine. The Consulted role traditionally involves soliciting expert opinions—a slow, scheduling-constrained process. AI agents can provide consultation at a speed and breadth that no human team can match.</p>
+        <p>Need a second opinion on a security design? An agent can evaluate it against known vulnerability patterns in seconds. Want to explore three alternative architectures before committing? An agent can draft and critique all three before your next meeting. Wondering whether your API contract has edge cases you haven't considered? An agent can enumerate dozens of scenarios instantly.</p>
+        <p>But AI consultation has a structural limit: it has breadth without depth of context. It does not know your organization's history, your customers' implicit expectations, your team's constraints, or your stakeholders' risk tolerance. Human domain experts remain irreplaceable as Consulted parties for decisions where that contextual depth matters. The right model is <strong>AI for breadth, humans for depth</strong>—and knowing which kind of consultation a given decision requires.</p>
+
+        <h3>Informed: Structured Context as a Design Discipline</h3>
+        <p>In traditional RACI, the Informed role is about keeping people updated so they can adjust their behavior. For AI agents, the equivalent is maintaining situational awareness through structured context: what has been decided, what constraints apply, what the current state of the system is.</p>
+        <p>But here is the key difference: a human who is Informed can ask questions, notice when information seems wrong, and raise concerns. An AI agent that receives context cannot do any of these things reliably. It will use whatever context it is given, even if that context is outdated, incomplete, or misleading.</p>
+        <p>This means the design of context pipelines—what gets stored, how it gets retrieved, when it gets refreshed—is itself a human responsibility. The Memory Agent does not maintain itself. Someone must decide what information AI agents need to stay grounded, and that someone is always a human engineer or architect.</p>
+
+        <h2>Three Things Humans Must Never Delegate</h2>
+        <p>Regardless of how capable multi-agent systems become, there are three responsibilities that must remain with humans—not because AI cannot perform related tasks, but because these responsibilities require properties that AI does not have.</p>
+
+        <p><strong>1. Final decision authority and ethical judgment.</strong> When a decision has real-world consequences—for a customer, for a team member, for a business—a human must make it. AI can present options, evaluate trade-offs, and recommend a path. But the act of choosing, with full awareness of what is at stake, belongs to a human. This is not about AI capability. It is about consequence: only humans can be held responsible for choices in any meaningful sense.</p>
+
+        <p><strong>2. Quality gatekeeping with full context.</strong> AI agents evaluate outputs against what they can observe: a rubric, a test suite, a set of examples. They cannot evaluate against what they do not know. A Critic Agent can tell you that your code passes its tests. It cannot tell you that the entire approach is wrong given a strategic shift your company made last quarter, or that the edge case it missed happens to be the most common scenario for your largest customer. Only a human with full organizational context can catch that kind of failure.</p>
+
+        <p><strong>3. Framework design and intent setting.</strong> Before you can tell an agent what to do, you must know what you want done—and why. The architecture of a multi-agent workflow, the rubrics used by Critic Agents, the boundaries of autonomous execution, the escalation triggers that route decisions back to humans: all of this must be designed by humans. An AI cannot design the system it operates within. That is the highest-leverage human contribution in a world of AI assistance, and it requires the deepest judgment.</p>
+
+        <h2>Practical Steps for Engineering Teams</h2>
+        <p>Here is what this looks like in practice:</p>
+        <ul>
+          <li><strong>Name your agents explicitly in the RACI.</strong> Do not write "AI" in a cell. Write "Code Generation Agent," "Review Agent," or "Orchestrator." This forces clarity about which capability is being applied and where human checkpoints are needed.</li>
+          <li><strong>Build a maintained list of autonomous vs. gated tasks.</strong> Some outputs are low-stakes enough that AI can execute end-to-end with periodic human review. Others require a human gate on every cycle. Make this distinction explicit, write it down, and revisit it in your retrospectives.</li>
+          <li><strong>Do not let AI speed mask accountability gaps.</strong> The faster a pipeline runs, the easier it is to ship without adequate human review. Speed is a feature; ungoverned speed is a liability. Design your review gates before you optimize your pipeline.</li>
+          <li><strong>Treat context pipeline design as a first-class engineering task.</strong> The quality of what your AI agents know is at least as important as the quality of what they can do. Stale, incomplete, or poorly structured context produces confidently wrong outputs. Invest in your context architecture the same way you invest in your model selection.</li>
+          <li><strong>Run retrospectives on AI-assisted workflows.</strong> Which agent-handled tasks have become stable enough to reduce human review frequency? Which ones have produced failures that require tighter gates? The right balance shifts as your agents improve and your understanding of their failure modes deepens.</li>
+        </ul>
+
+        <h2>The Reframe</h2>
+        <p>RACI was built on a set of assumptions that made sense for human teams: actors have memory, consequences matter to them, and the people in the matrix can be held responsible. When AI enters the picture, those assumptions break—not because AI is weak, but because it is a fundamentally different kind of actor.</p>
+
+        <p>The right way to think about AI in a RACI matrix is not as a new team member filling existing roles. It is as a set of powerful, stateless capability modules that operate within a framework humans design, at gates humans control, toward outcomes humans own.</p>
+
+        <p>Multi-agent systems do not change this principle—they amplify it. More agents means more execution power, but also more surface area for accountability to disappear. The answer is not fewer agents. It is clearer human ownership at every consequential decision point.</p>
+
+        <p>The human role in an AI-augmented team is not diminished. It is elevated—from doing to designing, from executing to governing, from answering questions to deciding which questions matter. That elevation only works if humans accept the accountability that comes with it, rather than assuming AI has absorbed it.</p>
+
+        <p>At AIDARIS, this is how we build. Not by handing responsibility to the pipeline, but by designing pipelines that keep responsibility exactly where it belongs. If that approach to human-AI collaboration resonates with how you think about engineering, <a href="../../where-to-find-us/">we'd like to hear from you</a>.</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="prev-next" aria-label="Previous and next page">
+    <div class="prev-next-inner">
+      <a href="../" class="prev-next-link prev-next-prev">← All Articles</a>
+    </div>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="footer-tab">© 2025–2026 <span class="footer-brand">AIDARIS</span>. All rights reserved. <span class="footer-version" data-version>v</span></span>
+  </footer>
+
+  <script src="../../script.js"></script>
+  <script src="../../assets/js/reading-progress.js"></script>
+  <script src="../../assets/js/text-to-speech.js"></script>
+  <script src="../../assets/js/analytics.js"></script>
+  </body>
+</html>

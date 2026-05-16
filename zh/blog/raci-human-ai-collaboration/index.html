@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="zh-Hant" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>當 AI 加入團隊，誰該負責什麼？用 RACI 重新定義人機分工 - AIDARIS Blog</title>
+    <meta name="description" content="RACI 矩陣是為人類設計的。當 AI Agent 進入工作流程，舊的模型就會失效。學習如何為多 Agent 系統重新設計 RACI——以及為什麼「當責」永遠必須屬於人類。" />
+    <link rel="canonical" href="https://aidaris.com/zh/blog/raci-human-ai-collaboration/" />
+    <link rel="alternate" hreflang="en" href="https://aidaris.com/blog/raci-human-ai-collaboration/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/raci-human-ai-collaboration/" />
+    <link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/raci-human-ai-collaboration/" />
+    <meta name="keywords" content="RACI, 人機協作, Multi-Agent, AI 工作流程, 責任矩陣, 人工智慧分工, 工程團隊設計, AIDARIS" />
+    <meta name="theme-color" content="#020301" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AIDARIS" />
+    <meta property="og:title" content="當 AI 加入團隊，誰該負責什麼？用 RACI 重新定義人機分工" />
+    <meta property="og:description" content="RACI 矩陣是為人類設計的。當 AI Agent 進入工作流程，舊的模型就會失效。了解如何為多 Agent 系統重新設計 RACI，以及為什麼「當責」永遠必須屬於人類。" />
+    <meta property="og:url" content="https://aidaris.com/zh/blog/raci-human-ai-collaboration/" />
+    <meta property="og:image" content="https://aidaris.com/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AIDARIS — 軟體工程與雲端架構見解" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="article:published_time" content="2026-05-16" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="當 AI 加入團隊，誰該負責什麼？用 RACI 重新定義人機分工" />
+    <meta name="twitter:description" content="RACI 是為人類設計的。當多 Agent AI 加入團隊，你需要一套全新的問責模型。" />
+    <meta name="twitter:image" content="https://aidaris.com/assets/og-image.png" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://aidaris.com/" },
+        { "@type": "ListItem", "position": 2, "name": "部落格", "item": "https://aidaris.com/zh/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "用 RACI 重新定義人機分工", "item": "https://aidaris.com/zh/blog/raci-human-ai-collaboration/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "當 AI 加入團隊，誰該負責什麼？用 RACI 重新定義人機分工",
+      "description": "RACI 矩陣是為人類設計的。當 AI Agent 進入工作流程，舊的模型就會失效。學習如何為多 Agent 系統重新設計 RACI——以及為什麼「當責」永遠必須屬於人類。",
+      "datePublished": "2026-05-16",
+      "dateModified": "2026-05-16",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://aidaris.com/assets/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "inLanguage": "zh-Hant",
+      "mainEntityOfPage": "https://aidaris.com/zh/blog/raci-human-ai-collaboration/"
+    }
+    </script>
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@400;500;600&family=Offside&display=swap" />
+    <link rel="preload" href="../../../assets/fonts/Aka-AcidGR-SuperG.woff" as="font" type="font/woff" crossorigin />
+    <link rel="stylesheet" href="../../../style.css" />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TLBV435S');</script>
+    <link rel="stylesheet" href="../../../assets/css/text-to-speech.css" />
+  </head>
+  <body>
+  <a href="#main-content" class="skip-link">跳至內容</a>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLBV435S"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <canvas id="flow-canvas" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="主要導覽">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <a class="nav-brand" href="../../../"><span class="nav-brand-initial">a</span><span class="nav-brand-text">AIDARIS</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../../../who-we-are/">Who We Are</a>
+      <a class="nav-link" href="../../../what-we-do/">What We Do</a>
+      <a class="nav-link" href="../../../how-we-work/">How We Work</a>
+      <a class="nav-link" href="../../../why-we-fit/">Why We Fit</a>
+      <a class="nav-link" href="../../../when-to-engage/">When to Engage</a>
+      <a class="nav-link" href="../../../where-to-find-us/">Where to Find Us</a>
+      <a class="nav-link nav-link--current" href="../">Blog</a>
+    </div>
+    <label for="nav-toggle" class="nav-menu-btn" aria-label="開啟選單"><span></span><span></span><span></span></label>
+  </nav>
+
+  <main id="main-content" class="fit-section">
+    <div class="fit-content hero-content article-content">
+      <div class="blog-heading-row">
+        <h1 class="eyebrow">當 AI 加入團隊，誰該負責什麼？用 RACI 重新定義人機分工</h1>
+        <a class="lang-switch blog-lang-switch" href="../../../blog/raci-human-ai-collaboration/" title="Switch to English" lang="en">🌐 English</a>
+      </div>
+      <p class="article-meta">2026 年 5 月 · 閱讀約 10 分鐘 · Aidaris Technologies <span class="blog-category-badge">AI &amp; Engineering</span></p>
+      <div class="article-tags">
+        <span class="blog-tag">RACI</span>
+        <span class="blog-tag">人機協作</span>
+        <span class="blog-tag">Multi-Agent</span>
+        <span class="blog-tag">團隊設計</span>
+      </div>
+
+      <div class="article-body">
+        <p>每個用過 RACI 矩陣的團隊都有相同的經驗：你們圍著白板坐下，列出利害關係人，畫出格子，填上字母。這個過程會迫使大家進行有意義的對話——誰真正擁有這個決策？誰需要在場？誰來拍板？</p>
+
+        <p>RACI 有效，是因為它把人們習慣留在隱性狀態的責任假設攤在檯面上。它是為一個所有角色都是真實人類的世界所設計的——每個人都有意圖、記憶、道德能動性，以及切身的利害關係。</p>
+
+        <p>現在 AI 加入了團隊。而大多數組織的直覺反應是：在 RACI 矩陣裡加一欄「AI」然後繼續。這個直覺是錯的——理解為什麼錯，能揭示如何真正建構有效的人機協作工作流程。</p>
+
+        <h2>RACI 快速回顧</h2>
+        <p>對於不常使用這個框架的人，RACI 為每個任務的每個參與者指定四種角色之一：</p>
+        <ul>
+          <li><strong>負責執行（Responsible，R）</strong>：做這件事的人，可以有多人。</li>
+          <li><strong>當責（Accountable，A）</strong>：對結果負最終責任的人，必須只有一人——責任止於此。</li>
+          <li><strong>諮詢（Consulted，C）</strong>：在決策定案前會被徵詢意見的人。</li>
+          <li><strong>知會（Informed，I）</strong>：需要被告知進度但不需要採取行動的人。</li>
+        </ul>
+        <p>這個模型預設了連續性：當責者可以在事後被追問責任；諮詢者可以根據專業提出反對意見；知會者接收資訊並調整自身行為。這些假設之所以成立，是因為每個角色都是人。</p>
+
+        <h2>陷阱：把 AI 當成人</h2>
+        <p>當團隊開始與 AI 合作時，往往會對它產生擬人化的投射。他們說 AI「理解」需求、「決定」採用哪種方案、「對輸出負責」。這些說法在日常對話中是方便的簡稱，但當你要設計工作流程時，它們會掩蓋一個危險的誤解。</p>
+
+        <p>一個 AI Agent——即使是能力極強的那種——並不具備讓 RACI 在人類身上有效運作的任何特質：</p>
+        <ul>
+          <li><strong>沒有跨對話的持久記憶。</strong>每次互動都從零開始。昨天幫你寫程式的 AI，今天對那段程式毫無印象，除非你明確地把上下文帶入。</li>
+          <li><strong>沒有對後果的感知。</strong>當 AI 產出錯誤答案時，它不會感到遺憾，不會因此變得更謹慎，也不會把任何教訓帶到下一次。錯誤與修正之間沒有自然的回饋迴路。</li>
+          <li><strong>沒有道德能動性。</strong>AI 無法在任何有意義的層面上被追責。它不會出現在事後檢討會議裡，不會意識到自己的自信是錯誤的，也不會在利害關係人眼中失去信譽。</li>
+          <li><strong>不理解「為什麼這件事很重要」。</strong>AI 可以產出一份符合規格的成果，卻完全不理解那份規格因何而存在、它服務於什麼目的、或失敗的代價是什麼。</li>
+        </ul>
+        <p>在 RACI 矩陣裡放一個「AI」欄位，會製造一種「有人在負責」的假象。事實上，那個角色是空的——問責已經消失進了一個黑盒子裡。</p>
+
+        <h2>更深層的問題：AI 不是單一角色</h2>
+        <p>還有第二個比較少被意識到的問題。當團隊談論「AI 在團隊裡」時，他們想像的是一個單一、連貫的 Agent——像是一個碰巧以機器速度工作的能幹新成員。但現代 AI 系統，尤其在工程情境中，幾乎從來都不是單一 Agent，而是由多個專門化 Agent 協作組成的網絡。</p>
+
+        <p>想想一個生產環境中的 AI 輔助工程工作流程在底層實際是什麼樣子：</p>
+        <ul>
+          <li><strong>協調 Agent（Orchestrator Agent）</strong>：接收高層次任務，將它分解成子任務，並將工作分派給各個專門 Agent。它像是一個專案經理——但對任務分解是否正確毫無判斷能力。</li>
+          <li><strong>專門 Agent（Specialist Agents）</strong>：負責特定子任務：一個生成程式碼、一個撰寫測試、一個搜尋文件、一個產生摘要。每個都在自己狹窄的範疇內運作。</li>
+          <li><strong>評審 Agent（Critic / Reviewer Agent）</strong>：根據評分標準評估各專門 Agent 的輸出——檢查錯誤、不一致或違反規範之處。它可以標記問題，但無法在沒有新一輪執行的情況下自行修正。</li>
+          <li><strong>記憶 Agent（Memory / Context Agent）</strong>：跨任務維護狀態：儲存過去的決策、擷取的文件、相關歷史。但這份記憶的品質，取決於人類選擇儲存與結構化什麼資訊。</li>
+        </ul>
+
+        <p>關鍵洞察在此：<strong>這些 Agent 彼此之間沒有任何問責關係。</strong>協調 Agent 並不真正在意專門 Agent 的輸出是否正確。評審 Agent 無法凌駕整條流程管線。記憶 Agent 不會在儲存的上下文過時時發出警告。它們是流程節點，不是隊友。</p>
+
+        <p>當多 Agent 流程管線出錯時，沒有一個自然的地方可以追究責任。協調 Agent 照指令行事。專門 Agent 產出了看似合理的輸出。評審 Agent 沒有發現明顯錯誤。然而最終結果卻在一個重要的層面上是錯的——甚至可能嚴重出錯。沒有人類的檢查點，這個失敗就這樣無聲無息地向下傳遞。</p>
+
+        <h2>為人機工作流程重新設計 RACI</h2>
+        <p>解決方案不是拋棄 RACI，而是在清楚理解 AI Agent 本質的前提下重新設計它：AI 是強大、快速、無狀態的執行節點，在人類設計的框架內、於人類把控的閘門處、朝著人類擁有的結果運作。</p>
+
+        <p>以下是每個 RACI 角色需要重新思考的方式：</p>
+
+        <h3>負責執行（R）：AI 執行，人類把關</h3>
+        <p>AI Agent 可以、也應該承擔執行任務的「R」角色：產出初稿、執行分析、生成測試案例、格式化輸出、摘要文件。這正是 AI 提供真實槓桿效應的地方——規模化的速度與一致性。</p>
+        <p>但人機協作情境中的「負責執行」，必須永遠在輸出成為下一個階段的輸入之前，包含一個人類審查閘門。AI 負責產出；人類負責驗證。兩者都是「R」角色不可或缺的部分。跳過人類閘門並不會讓 AI 更有責任感——它只會讓工作流程失去治理。</p>
+        <p>在實務上，這意味著你的 RACI 應該區分 <em>R-AI</em>（AI 執行）與 <em>R-人類</em>（人類審查並核准），而不是把兩者合併成一個「AI」條目。</p>
+
+        <h3>當責（A）：永遠是人類</h3>
+        <p>問責無法委派給 AI Agent——無論是一個還是多個。問責的前提是：有人可以被追問「為什麼會發生這件事？」並給出有意義的回答；有人會在結果出錯時承擔後果；有人有權在情境不符合規格時做出判斷。</p>
+        <p>在多 Agent 流程管線中，問責擴散的誘惑特別強。節點那麼多、輸出那麼多、中間步驟那麼多。很容易讓人覺得系統本身就是當責者。它不是。任何觸及真實世界的工作流程——一個上線的功能、一封發出的通訊、一個部署的設定、一份發布的文件——都必須有一個人類擁有其結果。</p>
+        <p>如果你無法說出當責者是誰，你的工作流程還沒有準備好自主執行。</p>
+
+        <h3>諮詢（C）：AI 作為高速諮詢層</h3>
+        <p>這是多 Agent 系統真正出類拔萃的地方。傳統的「諮詢」角色需要徵詢專家意見——一個緩慢、受制於行程安排的過程。AI Agent 可以以任何人類團隊都無法企及的速度與廣度提供諮詢。</p>
+        <p>需要對一個安全設計做第二意見審查？Agent 可以在幾秒鐘內對照已知漏洞模式進行評估。想在承諾之前探索三種備選架構？Agent 可以在你下次開會之前就把三種都草擬並評論完畢。想知道你的 API 合約是否有未考慮到的邊界案例？Agent 可以即時列舉出幾十種情境。</p>
+        <p>但 AI 諮詢有一個結構性的侷限：它有廣度，卻缺乏脈絡深度。它不知道你們組織的歷史、你們客戶未明言的期望、你們團隊的限制，或你們利害關係人的風險承受度。在這種脈絡深度至關重要的決策上，人類領域專家作為「諮詢」角色依然不可取代。正確的模型是：<strong>AI 負責廣度，人類負責深度</strong>——並且知道某個決策需要哪種諮詢。</p>
+
+        <h3>知會（I）：結構化上下文是一門設計紀律</h3>
+        <p>在傳統 RACI 中，「知會」角色是讓人們掌握進度以調整行為。對 AI Agent 而言，相對應的做法是透過結構化上下文維持情境感知：已做出哪些決策、適用哪些限制、系統目前的狀態是什麼。</p>
+        <p>但有一個關鍵差異：被「知會」的人類可以提問、注意到資訊看起來有誤、並提出疑慮。被動接收上下文的 AI Agent 無法可靠地做到這些事。它會使用被給予的任何上下文，即使那個上下文是過時的、不完整的，或者具有誤導性的。</p>
+        <p>這意味著上下文流程管線的設計——儲存什麼、如何擷取、何時更新——本身就是人類的責任。記憶 Agent 不會自我維護。必須有人決定 AI Agent 需要什麼資訊才能保持正確定向，而那個人永遠是人類工程師或架構師。</p>
+
+        <h2>三件人類絕對不能委派的事</h2>
+        <p>無論多 Agent 系統變得多麼強大，有三個責任必須留在人類手中——不是因為 AI 無法執行相關任務，而是因為這些責任需要 AI 所沒有的特質。</p>
+
+        <p><strong>1. 最終決策權與道德判斷。</strong>當一個決策對真實世界——客戶、團隊成員、企業——有實際後果時，必須由人類做出。AI 可以呈現選項、評估利弊、推薦方向。但在充分意識到利害關係的前提下做出選擇這件事，屬於人類。這不是能力問題——而是後果問題：只有人類可以在任何有意義的層面上為選擇負責。</p>
+
+        <p><strong>2. 具備完整脈絡的品質把關。</strong>AI Agent 依據它能觀察到的事物評估輸出：一個評分標準、一套測試、一組範例。它無法依據它不知道的事物進行評估。評審 Agent 可以告訴你程式碼通過了測試。它無法告訴你整個方案在公司上季的策略轉向後已經錯了方向，或者它遺漏的邊界案例恰好是你最大客戶最常遇到的情境。只有具備完整組織脈絡的人類才能發現這種失敗。</p>
+
+        <p><strong>3. 框架設計與意圖訂定。</strong>在你告訴 Agent 要做什麼之前，你必須知道你想做什麼——以及為什麼。多 Agent 工作流程的架構、評審 Agent 使用的評分標準、自主執行的邊界、將決策路由回人類的觸發條件：這一切都必須由人類設計。AI 無法設計它自身運作的系統。在 AI 輔助的世界中，這是人類貢獻最高的槓桿點，也需要最深刻的判斷。</p>
+
+        <h2>給工程團隊的實踐建議</h2>
+        <p>以下是實際執行的具體做法：</p>
+        <ul>
+          <li><strong>在 RACI 中明確命名各個 Agent。</strong>不要在格子裡寫「AI」。寫「程式碼生成 Agent」、「評審 Agent」或「協調 Agent」。這會強制釐清使用了哪種能力，以及需要在哪裡設置人類檢查點。</li>
+          <li><strong>建立並維護「AI 可自主執行」與「人類必須把關」的任務清單。</strong>有些輸出風險夠低，AI 可以端對端執行，只需人類定期審查。其他任務則需要在每個循環都設置人類閘門。把這個區分明確寫出來，並在回顧會議中持續更新。</li>
+          <li><strong>不要讓 AI 的速度掩蓋問責的缺失。</strong>流程管線跑得越快，就越容易在沒有充分人類審查的情況下出貨。速度是特性；失控的速度是風險。在優化流程管線之前，先設計好你的審查閘門。</li>
+          <li><strong>把上下文流程管線設計視為一等工程任務。</strong>AI Agent 所知道的品質，至少和它能做到的品質同樣重要。過時、不完整或結構不良的上下文，會產生自信但錯誤的輸出。用對待模型選擇同等的重視度來投資你的上下文架構。</li>
+          <li><strong>對 AI 輔助工作流程進行回顧。</strong>哪些 Agent 處理的任務已經夠穩定，可以降低人類審查頻率？哪些產生了需要更嚴格把關的失敗？隨著 Agent 改進以及你對其失敗模式理解加深，正確的平衡點也會隨之移動。</li>
+        </ul>
+
+        <h2>重新定框</h2>
+        <p>RACI 建立在一套對人類團隊行之有效的假設之上：角色有記憶、後果對他們很重要、矩陣裡的人可以被追責。當 AI 進入這個畫面，這些假設就失效了——不是因為 AI 能力不足，而是因為它是一種根本上不同類型的角色。</p>
+
+        <p>在 RACI 矩陣中思考 AI 的正確方式，不是把它當成一個填補現有角色的新團隊成員，而是把它視為一組強大的、無狀態的能力模組，在人類設計的框架內、於人類把控的閘門處、朝著人類擁有的結果運作。</p>
+
+        <p>多 Agent 系統不會改變這個原則——它只會放大它。更多的 Agent 意味著更強的執行能力，但也意味著更大的問責消失的風險面。答案不是更少的 Agent，而是在每個有後果的決策節點，更清晰的人類所有權。</p>
+
+        <p>在 AI 增強的團隊中，人類的角色並沒有被削弱，而是被提升了——從執行到設計、從運作到治理、從回答問題到決定哪些問題重要。這種提升只有在人類接受隨之而來的問責時才能發揮作用，而不是假設 AI 已經吸收了它。</p>
+
+        <p>在 AIDARIS，這就是我們的建構方式。不是把責任交給流程管線，而是設計讓責任精確地留在它該在之處的流程管線。如果這種對人機協作的思考方式與你對工程的理解產生共鳴，<a href="../../../where-to-find-us/">歡迎與我們聯繫</a>。</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="prev-next" aria-label="上下頁導覽">
+    <div class="prev-next-inner">
+      <a href="../" class="prev-next-link prev-next-prev">← 所有文章</a>
+    </div>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="footer-tab">© 2025–2026 <span class="footer-brand">AIDARIS</span>. All rights reserved. <span class="footer-version" data-version>v</span></span>
+  </footer>
+
+  <script src="../../../script.js"></script>
+  <script src="../../../assets/js/reading-progress.js"></script>
+  <script src="../../../assets/js/text-to-speech.js"></script>
+  <script src="../../../assets/js/analytics.js"></script>
+  </body>
+</html>

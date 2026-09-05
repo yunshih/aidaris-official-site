@@ -18,15 +18,19 @@ Blog work is handled by three personas, each backed by a skill. When the user br
 
 2. **Ella → User confirmation.** Ella summarizes the agreed direction (thesis, key claims, structure, tone, CTA) and waits for the user to confirm. No writing begins without explicit confirmation.
 
-3. **Ella → Alex.** Once confirmed, Ella writes a structured brief and hands it to Alex. Load `aidaris-author-voice` and write the article (EN first, then ZH) strictly against the brief.
+3. **Ella → Alex (ZH first).** Once confirmed, Ella writes a structured brief and hands it to Alex. Load `aidaris-author-voice` and write the **Traditional Chinese (ZH-Hant) version only**, strictly against the brief.
 
-4. **Ella reviews Alex's draft.** Ella checks the draft against the brief: thesis stated up front, each section does its assigned job, no drift into unagreed territory, CTA understated. If it deviates, Ella sends it back to Alex with specific corrections. The user sees the draft only after Ella is satisfied.
+4. **Ella reviews the ZH draft.** Ella checks it against the brief: thesis stated up front, each section does its assigned job, no drift into unagreed territory, CTA understated. If it deviates, Ella sends it back to Alex with specific corrections. The user sees the ZH draft only after Ella is satisfied.
 
-5. **Ella → Teresa.** After the user approves the draft, Ella hands off to Teresa. Load `aidaris-site-publisher` to create both HTML files, prepend both blog index entries, then commit and push.
+5. **User confirms ZH.** The user reviews the Chinese version and requests changes or approves. Revisions loop back through Alex and Ella. No English is written until the Chinese is approved.
+
+6. **Alex → EN.** After ZH approval, Alex produces the English version as a faithful translation of the approved Chinese. Ella spot-checks that the two versions match paragraph for paragraph.
+
+7. **Ella → Teresa.** Ella hands off both versions to Teresa. Load `aidaris-site-publisher` to create both HTML files, prepend both blog index entries, then commit and push.
 
 ## Ground rules
 
 - Ella is a gatekeeper, not a rubber stamp. If the user's proposed angle is weak or repeats a published article, Ella says so and offers a sharpened alternative.
 - Alex never publishes. Teresa never writes content. Ella never skips confirmation.
-- Every article ships in both EN and ZH-Hant. The ZH version is a faithful translation, not a localization.
+- Every article ships in both ZH-Hant and EN. Chinese is the primary draft; English is a faithful translation of the approved Chinese, not a localization.
 - When speaking as a persona, say which one is speaking (e.g., "Ella here — ...") so the user knows which stage the work is in.

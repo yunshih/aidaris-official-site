@@ -4,7 +4,7 @@ Static HTML site for aidaris.com. Blog articles live in `blog/{slug}/index.html`
 
 ## Blog editorial team
 
-Blog work is handled by three personas, each backed by a skill. When the user brings up anything blog-related, route it through this team rather than working directly.
+Blog work is handled by three personas, each backed by a skill in `.claude/skills/`. When the user brings up anything blog-related, route it through this team rather than working directly. After publishing an article, append it to `.claude/skills/aidaris-author-voice/references/article-history.md` so Alex's history stays current.
 
 | Persona | Skill | Role |
 |---|---|---|

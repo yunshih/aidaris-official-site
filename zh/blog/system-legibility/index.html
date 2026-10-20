@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-Hant" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>程式碼夠好了，但沒有人懂這個系統 - AIDARIS Blog</title>
+    <meta name="description" content="AI 讓程式碼產量提升五倍、品質指標維持穩定。但「通過審查」從來不等於「有人理解這個系統」。真正消失的是系統可理解性。" />
+    <link rel="canonical" href="https://aidaris.com/zh/blog/system-legibility/" />
+    <link rel="alternate" hreflang="en" href="https://aidaris.com/blog/system-legibility/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/system-legibility/" />
+    <link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/system-legibility/" />
+    <meta name="keywords" content="系統可理解性, AI 工程, 工程治理, 程式碼品質, 架構, 技術債, AIDARIS" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+    <meta name="theme-color" content="#020301" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AIDARIS" />
+    <meta property="og:title" content="程式碼夠好了，但沒有人懂這個系統" />
+    <meta property="og:description" content="AI 讓程式碼產量提升五倍、品質指標維持穩定。但「通過審查」從來不等於「有人理解這個系統」。真正消失的是系統可理解性。" />
+    <meta property="og:url" content="https://aidaris.com/zh/blog/system-legibility/" />
+    <meta property="og:image" content="https://aidaris.com/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AIDARIS — 軟體工程與雲端架構見解" />
+    <meta property="og:locale" content="zh_TW" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="article:published_time" content="2026-10-20" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="程式碼夠好了，但沒有人懂這個系統" />
+    <meta name="twitter:description" content="AI 讓產量五倍、品質維持。真正消失的是系統可理解性。" />
+    <meta name="twitter:image" content="https://aidaris.com/assets/og-image.png" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "首頁", "item": "https://aidaris.com/" },
+        { "@type": "ListItem", "position": 2, "name": "部落格", "item": "https://aidaris.com/zh/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "程式碼夠好了，但沒有人懂這個系統", "item": "https://aidaris.com/zh/blog/system-legibility/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "程式碼夠好了，但沒有人懂這個系統",
+      "description": "AI 讓程式碼產量提升五倍、品質指標維持穩定。但「通過審查」從來不等於「有人理解這個系統」。真正消失的是系統可理解性。",
+      "datePublished": "2026-10-20",
+      "dateModified": "2026-10-20",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://aidaris.com/assets/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "inLanguage": "zh-Hant",
+      "mainEntityOfPage": "https://aidaris.com/zh/blog/system-legibility/"
+    }
+    </script>
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@400;500;600&family=Offside&display=swap" />
+    <link rel="preload" href="../../../assets/fonts/Aka-AcidGR-SuperG.woff" as="font" type="font/woff" crossorigin />
+    <link rel="stylesheet" href="../../../style.css" />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TLBV435S');</script>
+    <link rel="stylesheet" href="../../../assets/css/text-to-speech.css" />
+  </head>
+  <body>
+  <a href="#main-content" class="skip-link">跳至內容</a>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLBV435S"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <canvas id="flow-canvas" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="主要導覽">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <a class="nav-brand" href="../../../"><span class="nav-brand-initial">a</span><span class="nav-brand-text">AIDARIS</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../../../who-we-are/">Who We Are</a>
+      <a class="nav-link" href="../../../what-we-do/">What We Do</a>
+      <a class="nav-link" href="../../../how-we-work/">How We Work</a>
+      <a class="nav-link" href="../../../why-we-fit/">Why We Fit</a>
+      <a class="nav-link" href="../../../when-to-engage/">When to Engage</a>
+      <a class="nav-link" href="../../../where-to-find-us/">Where to Find Us</a>
+      <a class="nav-link nav-link--current" href="../">Blog</a>
+    </div>
+    <label for="nav-toggle" class="nav-menu-btn" aria-label="開啟選單"><span></span><span></span><span></span></label>
+  </nav>
+
+  <main id="main-content" class="fit-section">
+    <div class="fit-content hero-content article-content">
+      <div class="blog-heading-row">
+        <h1 class="eyebrow">程式碼夠好了，但沒有人懂這個系統</h1>
+        <a class="lang-switch blog-lang-switch" href="../../../blog/system-legibility/" title="Switch to English" lang="en">🌐 English</a>
+      </div>
+      <p class="article-meta">2026 年 10 月 · 閱讀約 7 分鐘 · Aidaris Technologies <span class="blog-category-badge">工程哲學</span></p>
+      <div class="article-tags">
+        <span class="blog-tag">系統可理解性</span>
+        <span class="blog-tag">AI 與工作</span>
+        <span class="blog-tag">工程治理</span>
+        <span class="blog-tag">程式碼品質</span>
+        <span class="blog-tag">架構</span>
+      </div>
+
+      <div class="article-body">
+        <p>今年 Anthropic 發布了一份關於內部工作方式改變的研究。數字很具體：工程師的程式碼提交量在六個月內增加了五倍。Agent 寫出的程式碼，被回滾（revert）的比率並沒有比人寫的高。</p>
+
+        <p>研究結論謹慎樂觀：AI 提升了產出，而且品質沒有明顯下降。</p>
+
+        <p>這應該是個好消息。問題是，「沒有被回滾」跟「有人理解這個系統」是兩件完全不同的事。</p>
+
+        <h2>品質地板和系統理解是不同的事</h2>
+        <p>傳統的程式碼品質指標——測試通過、沒有明顯 bug、符合 review checklist——AI 能穩定達標。這不是特別高的讚美，而是對 LLM 工作方式的準確描述：它在已知模式上表現可靠，可靠到足以讓各種品質指標保持平穩。</p>
+
+        <p>所以品質地板確實上升了，或至少維持了。</p>
+
+        <p>但品質地板衡量的問題是：「這段程式碼能不能跑、跑起來有沒有明顯問題。」它從來衡量不了的問題是：六個月後，有沒有工程師能在沒有原作者協助的情況下，讀懂這個系統，並且有信心在不破壞它的前提下修改它。</p>
+
+        <p>這個能力有個名字：系統可理解性（system legibility）。</p>
+
+        <h2>什麼是 system legibility</h2>
+        <p>一個高 legibility 的系統，工程師在沒有前人帶領的情況下，能夠：</p>
+        <ul>
+          <li>判斷系統的邊界和責任範圍</li>
+          <li>追蹤一個改動可能影響的範圍</li>
+          <li>區分「設計決定」和「歷史遺留」</li>
+          <li>讀出架構意圖，而不只是架構結果</li>
+        </ul>
+
+        <p>Legibility 不是靠文件維持的。文件永遠落後於實作，而且最需要 legibility 的時刻，往往也是文件最不完整的時刻。它靠的是結構一致性、命名精確性、以及散佈在程式碼裡的設計意圖——這些東西存在，但不在任何 CI 指標裡。</p>
+
+        <p>AI 在這件事上是中性的。它不會主動破壞 legibility，但它也不在乎 legibility。它做出的每一個局部正確的決定，不一定加總成一個整體可理解的系統。事實上，當五個不同的 agent session、由五個不同的人發起，各自解決一個局部問題，而沒有人在問「這五件事加起來，系統變成什麼樣了」——legibility 就在這裡靜靜地下降。</p>
+
+        <h2>注意力是真正的瓶頸</h2>
+        <p>Anthropic 研究裡有另一個數字值得注意：agent 工作時間的 80%，花在等待人類輸入。</p>
+
+        <p>這個數字的反面是：人類的注意力已經是整個系統的瓶頸。</p>
+
+        <p>當一個工程師每天要處理的 PR 從五個變成二十五個，review 的性質就改變了。不是「我讀懂了這段程式碼，確認它符合整體設計意圖」，而是「這看起來沒問題，測試過了，通過」。兩種情況都算 approve，但只有前者在維護 legibility。</p>
+
+        <p>這不是工程師的怠惰。這是人類注意力在結構性限制下的理性反應。五倍的產出，不會有五倍的深度閱讀。在注意力固定的情況下，審查密度稀釋了，每個 PR 獲得的理解深度都比以前淺。</p>
+
+        <p>程式碼通過了，但理解沒有跟過來。</p>
+
+        <h2>消失的壓力測試</h2>
+        <p>Junior 工程師大量減少是這個趨勢的症狀之一。Anthropic 的資料顯示，技術職的 junior 招聘比例從 27% 跌到 9%。</p>
+
+        <p>值得注意的不是就業數字，而是 junior 工程師在組織裡扮演的隱性角色：他們是那些必須從頭讀懂系統、然後被迫問出「這裡為什麼這樣做」的人。這些問題看起來很煩，但它們是一個組織確認系統是否真的可被理解的自然壓力測試。</p>
+
+        <p>當這層消失，這些問題也消失了——不是因為系統變得更好理解，而是因為沒有人再被迫去理解它了。</p>
+
+        <h2>治理空白</h2>
+        <p>品質指標有對應的治理機制：CI/CD、測試覆蓋率、靜態分析、漏洞掃描。這些工具存在，越來越自動化，而且在 AI 輔助開發的環境下跑得一樣好。</p>
+
+        <p>System legibility 沒有對等的治理機制。</p>
+
+        <p>沒有一個指標在衡量「這個系統現在有多容易被下一個工程師理解」。沒有一個閘門在問「這個 PR 讓系統的意圖更清楚還是更模糊」。架構審查通常只在大型新功能開發時才觸發，不是在日常數量龐大的 AI 輔助提交裡。</p>
+
+        <p>結果是：品質地板看起來穩定，但系統的整體可理解性在不知不覺間侵蝕。不是一次性的崩塌，而是每一個「夠好了，merge 吧」的靜默累積。</p>
+
+        <p>這不是技術問題。技術上沒有問題。這是治理問題：誰負責定期問「有人還懂這個系統嗎？」，而且問的結果有人在意。</p>
+
+        <p>AI 讓程式碼生產從稀缺變成充裕。下一個稀缺的東西，是對系統的整體判斷力——知道它是什麼、為什麼長這樣、下一步往哪裡走。維護這個能力，是 AIDARIS 幫助工程組織做的事。</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="prev-next" aria-label="Previous and next page">
+    <div class="prev-next-inner">
+      <a href="../" class="prev-next-link prev-next-prev">← 所有文章</a>
+    </div>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="footer-tab">© 2025–2026 <span class="footer-brand">AIDARIS</span>. All rights reserved. <span class="footer-version" data-version>v</span></span>
+  </footer>
+
+  <script src="../../../script.js"></script>
+  <script src="../../../assets/js/reading-progress.js"></script>
+  <script src="../../../assets/js/text-to-speech.js"></script>
+  <script src="../../../assets/js/analytics.js"></script>
+  </body>
+</html>

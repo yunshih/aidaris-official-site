@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en" translate="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="google" content="notranslate" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Code Is Fine. Nobody Understands the System. - AIDARIS Blog</title>
+    <meta name="description" content="AI has lifted code output fivefold while quality metrics held steady. But passing review has never meant anyone understands the system. The thing quietly disappearing is system legibility." />
+    <link rel="canonical" href="https://aidaris.com/blog/system-legibility/" />
+    <link rel="alternate" hreflang="en" href="https://aidaris.com/blog/system-legibility/" />
+    <link rel="alternate" hreflang="zh-Hant" href="https://aidaris.com/zh/blog/system-legibility/" />
+    <link rel="alternate" hreflang="x-default" href="https://aidaris.com/blog/system-legibility/" />
+    <meta name="keywords" content="system legibility, AI engineering, engineering governance, code quality, architecture, technical debt, AIDARIS" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png" />
+    <meta name="theme-color" content="#020301" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⬡</text></svg>" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="AIDARIS" />
+    <meta property="og:title" content="The Code Is Fine. Nobody Understands the System." />
+    <meta property="og:description" content="AI has lifted code output fivefold while quality metrics held steady. But passing review has never meant anyone understands the system. The thing quietly disappearing is system legibility." />
+    <meta property="og:url" content="https://aidaris.com/blog/system-legibility/" />
+    <meta property="og:image" content="https://aidaris.com/assets/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="AIDARIS — Software Engineering &amp; Cloud Architecture Insights" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="zh_TW" />
+    <meta property="article:published_time" content="2026-10-20" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Code Is Fine. Nobody Understands the System." />
+    <meta name="twitter:description" content="AI lifted output fivefold. Quality metrics held. System legibility didn't." />
+    <meta name="twitter:image" content="https://aidaris.com/assets/og-image.png" />
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://aidaris.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://aidaris.com/blog/" },
+        { "@type": "ListItem", "position": 3, "name": "The Code Is Fine. Nobody Understands the System.", "item": "https://aidaris.com/blog/system-legibility/" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The Code Is Fine. Nobody Understands the System.",
+      "description": "AI has lifted code output fivefold while quality metrics held steady. But passing review has never meant anyone understands the system. The thing quietly disappearing is system legibility.",
+      "datePublished": "2026-10-20",
+      "dateModified": "2026-10-20",
+      "image": {
+        "@type": "ImageObject",
+        "url": "https://aidaris.com/assets/og-image.png",
+        "width": 1200,
+        "height": 630
+      },
+      "author": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Aidaris Technologies Ltd.",
+        "url": "https://aidaris.com"
+      },
+      "inLanguage": "en",
+      "mainEntityOfPage": "https://aidaris.com/blog/system-legibility/"
+    }
+    </script>
+    <!-- Preconnect for Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gugi&family=Noto+Sans+TC:wght@400;500;600&family=Offside&display=swap" />
+    <link rel="preload" href="../../assets/fonts/Aka-AcidGR-SuperG.woff" as="font" type="font/woff" crossorigin />
+    <link rel="stylesheet" href="../../style.css" />
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TLBV435S');</script>
+    <link rel="stylesheet" href="../../assets/css/text-to-speech.css" />
+  </head>
+  <body>
+  <a href="#main-content" class="skip-link">Skip to content</a>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLBV435S"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+  <canvas id="flow-canvas" aria-hidden="true"></canvas>
+
+  <nav class="site-nav" aria-label="Main navigation">
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <a class="nav-brand" href="../../"><span class="nav-brand-initial">a</span><span class="nav-brand-text">AIDARIS</span></a>
+    <div class="nav-links">
+      <a class="nav-link" href="../../who-we-are/">Who We Are</a>
+      <a class="nav-link" href="../../what-we-do/">What We Do</a>
+      <a class="nav-link" href="../../how-we-work/">How We Work</a>
+      <a class="nav-link" href="../../why-we-fit/">Why We Fit</a>
+      <a class="nav-link" href="../../when-to-engage/">When to Engage</a>
+      <a class="nav-link" href="../../where-to-find-us/">Where to Find Us</a>
+      <a class="nav-link nav-link--current" href="../">Blog</a>
+    </div>
+    <label for="nav-toggle" class="nav-menu-btn" aria-label="Open menu"><span></span><span></span><span></span></label>
+  </nav>
+
+  <main id="main-content" class="fit-section">
+    <div class="fit-content hero-content article-content">
+      <div class="blog-heading-row">
+        <h1 class="eyebrow">The Code Is Fine. Nobody Understands the System.</h1>
+        <a class="lang-switch blog-lang-switch" href="../../zh/blog/system-legibility/" title="切換至中文" lang="zh-Hant">🌐 中文</a>
+      </div>
+      <p class="article-meta">October 2026 · 7 min read · Aidaris Technologies <span class="blog-category-badge">Engineering Philosophy</span></p>
+      <div class="article-tags">
+        <span class="blog-tag">System Legibility</span>
+        <span class="blog-tag">AI &amp; Work</span>
+        <span class="blog-tag">Engineering Governance</span>
+        <span class="blog-tag">Code Quality</span>
+        <span class="blog-tag">Architecture</span>
+      </div>
+
+      <div class="article-body">
+        <p>Earlier this year, Anthropic published a study on how work has changed inside the company. The numbers are specific: code commits per engineer rose approximately fivefold over six months. Code written by agents showed no higher rate of later removal or reversion than code written by humans.</p>
+
+        <p>The conclusion is cautiously optimistic: AI increased output, and quality did not noticeably decline.</p>
+
+        <p>This should be good news. The problem is that "not reverted" and "someone understands this system" are two entirely different things.</p>
+
+        <h2>Quality Floor and System Understanding Are Not the Same Thing</h2>
+        <p>The traditional code quality signals — tests passing, no obvious bugs, review checklist satisfied — AI hits them reliably. This is not high praise; it is an accurate description of how LLMs work. They perform consistently on known patterns, consistently enough to keep quality metrics stable.</p>
+
+        <p>So the quality floor has risen, or at least held.</p>
+
+        <p>But the quality floor measures one question: "Does this code run, and does it run without obvious problems?" It has never measured a different question: six months from now, can an engineer who wasn't involved read this system, understand it, and make changes without breaking it?</p>
+
+        <p>That capability has a name: system legibility.</p>
+
+        <h2>What System Legibility Is</h2>
+        <p>In a high-legibility system, an engineer with no prior context can:</p>
+        <ul>
+          <li>Identify the system's boundaries and areas of responsibility</li>
+          <li>Trace the likely scope of any given change</li>
+          <li>Distinguish intentional design decisions from historical accidents</li>
+          <li>Read architectural intent, not just architectural outcome</li>
+        </ul>
+
+        <p>Legibility is not maintained through documentation. Documentation always lags implementation, and the moments when legibility matters most are usually the moments when documentation is least complete. Legibility is maintained through structural consistency, naming precision, and design intent distributed across the codebase — things that exist, but don't appear in any CI metric.</p>
+
+        <p>AI is neutral on this. It does not actively degrade legibility, but it does not care about legibility either. Every locally correct decision it makes does not necessarily add up to a globally comprehensible system. When five different agent sessions, initiated by five different people, each solve a local problem, and nobody is asking what the system looks like when all five are combined — legibility quietly erodes.</p>
+
+        <h2>Attention Is the Real Bottleneck</h2>
+        <p>There is another number in the Anthropic study worth noting: 80% of interactive agent session time is spent waiting for human input.</p>
+
+        <p>The implication is that human attention is already the bottleneck for the entire system.</p>
+
+        <p>When an engineer goes from reviewing five pull requests a day to twenty-five, the nature of review changes. Not "I have read and understood this code and confirmed it fits the overall design intent," but "this looks fine, tests passed, approved." Both count as an approval. Only the first maintains legibility.</p>
+
+        <p>This is not laziness. It is the rational response to a structural constraint on human attention. Five times the output does not produce five times the depth of comprehension. With attention fixed, review density thins, and the depth of understanding each PR receives is shallower than before.</p>
+
+        <p>The code went through. The understanding did not follow.</p>
+
+        <h2>The Pressure Test That Disappeared</h2>
+        <p>The sharp decline in junior engineers is one symptom of this trend. Anthropic's data shows the junior share of technical hires falling from 27% to 9%.</p>
+
+        <p>What matters here is not the employment number — it is the role junior engineers played in the organization. They were the ones who had to read the system from scratch, and who were therefore forced to ask "why does this work this way?" These questions are inconvenient. They are also the natural pressure test for whether a system is actually understandable.</p>
+
+        <p>When that layer disappears, so do the questions — not because the system became easier to understand, but because nobody is forced to understand it anymore.</p>
+
+        <h2>The Governance Gap</h2>
+        <p>Quality metrics have corresponding governance mechanisms: CI/CD, test coverage, static analysis, vulnerability scanning. These tools exist, they are increasingly automated, and they work just as well in AI-assisted development environments.</p>
+
+        <p>System legibility has no equivalent governance mechanism.</p>
+
+        <p>There is no metric measuring "how easy is this system for the next engineer to understand." There is no gate asking "does this pull request make the system's intent clearer or more opaque." Architecture review typically triggers only for large new features, not across the daily volume of AI-assisted commits.</p>
+
+        <p>The result: the quality floor looks stable, while the system's overall legibility erodes without notice. Not a single collapse — a silent accumulation of every "good enough, merge it."</p>
+
+        <p>This is not a technical problem. Nothing is technically wrong. It is a governance problem: who is responsible for regularly asking "does anyone still understand this system," and ensuring that the answer matters.</p>
+
+        <p>AI has made code production abundant. The next scarce thing is system-level judgment — knowing what a system is, why it is built the way it is, and where it can go next. Preserving that capability is the work AIDARIS helps engineering organizations do.</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="prev-next" aria-label="Previous and next page">
+    <div class="prev-next-inner">
+      <a href="../" class="prev-next-link prev-next-prev">← All Articles</a>
+    </div>
+  </nav>
+
+  <footer class="site-footer">
+    <span class="footer-tab">© 2025–2026 <span class="footer-brand">AIDARIS</span>. All rights reserved. <span class="footer-version" data-version>v</span></span>
+  </footer>
+
+  <script src="../../script.js"></script>
+  <script src="../../assets/js/reading-progress.js"></script>
+  <script src="../../assets/js/text-to-speech.js"></script>
+  <script src="../../assets/js/analytics.js"></script>
+  </body>
+</html>

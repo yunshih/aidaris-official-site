@@ -4,6 +4,30 @@ All published articles, newest first.
 
 ---
 
+## October 2026 — The Code Is Fine. Nobody Understands the System.
+
+**ZH title:** 程式碼夠好了，但沒有人懂這個系統
+**Slug:** `system-legibility`
+**Category:** Engineering Philosophy
+**Tags:** System Legibility, AI & Work, Engineering Governance, Code Quality, Architecture
+**Read time:** 7 min
+
+**Thesis:** AI produces code that passes all quality metrics — but "passing review" has never meant "someone understands the system." When output is fivefold, human attention is the bottleneck, and junior engineers disappear, what silently degrades is not code quality but system legibility: the ability of an engineer with no prior context to read, understand, and safely modify the system.
+
+**Grounding:** Anthropic's internal employment research (2026) — 5x code commits, no higher revert rate for agent-written code, 80% of agent session time waiting for human input, junior technical hire share dropping from 27% to 9%.
+
+**Key claims:**
+- Quality floor and system legibility are different things; AI maintains the former but is neutral on the latter
+- System legibility depends on structural consistency, naming precision, and distributed design intent — none of which appear in CI metrics
+- Five locally correct AI decisions do not necessarily add up to one globally comprehensible system
+- With attention fixed and output fivefold, review density thins; the depth of understanding per PR decreases
+- Junior engineers were the natural pressure test for legibility (forced to ask "why does this work this way?"); their disappearance removes the test, not the problem
+- System legibility has no governance equivalent to CI/CD or test coverage — no metric, no gate, no owner
+
+**Editorial notes:** First article grounded in external empirical research (Anthropic employment study). ZH-first production process. Connects to Aug 2026 (cost inversion) and Sep 2026 (wrong solution at speed) as an implicit third chapter on AI speed's hidden costs.
+
+---
+
 ## September 2026 — AI Can Build Anything. It Can't Tell You What to Build.
 
 **ZH title:** AI 什麼都能做，但它不知道你該做什麼

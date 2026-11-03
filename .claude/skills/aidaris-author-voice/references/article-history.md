@@ -4,6 +4,28 @@ All published articles, newest first.
 
 ---
 
+## November 2026 — The Person Who Uses AI Well Is Not Who You Think
+
+**ZH title:** 能用好 AI 的人，不是你以為的那種人
+**Slug:** `who-uses-ai-well`
+**Category:** Engineering Philosophy
+**Tags:** Orchestration, AI & Work, Engineering Governance, Team Building, Leadership
+**Read time:** 7 min
+
+**Thesis:** The two most common criteria organizations use to evaluate AI talent — domain expertise and tool proficiency — are both secondary. Experts have expert blind spots (errors at domain boundaries, tendency to reproduce past selves rather than reach new places); inexperienced adopters lack calibration (can't distinguish "sounds right" from "is right"). The person who actually uses AI well is the orchestrator: someone who maps team capability, routes the right judgment to the right node, and establishes clear accountability at AI-human handoff points.
+
+**Key claims:**
+- Expert risk: failure at domain boundaries, not domain center; expertise built when knowledge was scarce may lead them to reproduce past selves via AI rather than explore new territory
+- Inexperienced risk: no resistance to AI but no calibration; the appearance is productivity, the underlying gap is judgment
+- Orchestration = mapping team capability + routing judgment correctly + establishing accountability at handoffs
+- Individual skill frameworks measure secondary things; orchestration cannot be learned quickly
+- True scarcity = person asking "who owns this handoff?" — not because they like process, but because they understand how failure accumulates in unaccountable AI-human workflows
+- Organizations need to create conditions where orchestration capability can be seen and developed, not just screened for
+
+**Editorial notes:** Fourth article in the AI-work cluster. ZH-first production process. Builds directly on the system legibility argument (Oct 2026) — legibility was the governance gap at code level; this article addresses the equivalent gap at team level. The "third profile" framing (expert / inexperienced / orchestrator) provides the structural spine.
+
+---
+
 ## October 2026 — The Code Is Fine. Nobody Understands the System.
 
 **ZH title:** 程式碼夠好了，但沒有人懂這個系統

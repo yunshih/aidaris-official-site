@@ -1051,3 +1051,13 @@ h1 {
   outline-offset: 2px;
 }
 
+
+.footer-privacy {
+  color: inherit;
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+.contact-page-block p + p {
+  margin-top: 0.75em;
+}
